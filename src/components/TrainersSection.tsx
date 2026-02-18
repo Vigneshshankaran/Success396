@@ -1,0 +1,181 @@
+import { motion } from "framer-motion";
+import { Linkedin, Twitter, Award, Users, ArrowRight, BookOpen } from "lucide-react";
+import trainer1 from "@/assets/trainer-1.jpg";
+import trainer2 from "@/assets/trainer-2.jpg";
+
+const trainers = [
+  {
+    name: "Dr. Ajayya Kumar",
+    title: "Co-creator and steward",
+    image: trainer1,
+    bio: "Dr. Ajayya Kumar is a global thought leader, educator, mentor, entrepreneur, and philanthropist known for his work in leadership, purpose, and human potential.",
+    philosophy: "True leadership isn't about control—it's about alignment. When your inner world is clear, everything you touch reflects that clarity.",
+    credentials: ["Ph.D. Academic Leader", "Global Entrepreneur", "Dedicated Philanthropist"],
+    specialties: ["Leadership Excellence", "Purpose Discovery", "Human Potential"],
+    stats: { clients: "10k+", years: "25+", workshops: "1000+" },
+  },
+  {
+    name: "Praveen Parameswar",
+    title: "Co-creator and steward",
+    image: trainer2,
+    bio: "Praveen Parameswar is an education entrepreneur and mentor helping people navigate growth and transitions with clarity and confidence.",
+    philosophy: "Growth happens when clarity meets action. My mission is to help individuals navigate their journey with confidence and purpose.",
+    credentials: ["Education Entrepreneur", "Strategic Mentor", "Growth Specialist"],
+    specialties: ["Career Navigation", "Strategic Growth", "Clarity Coaching"],
+    stats: { clients: "5k+", years: "15+", workshops: "750+" },
+  },
+];
+
+const TrainersSection = () => {
+  return (
+    <section className="py-20 px-4 sm:px-6 bg-background relative overflow-hidden">
+      {/* Ambient glows */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-14 md:mb-20 max-w-4xl mx-auto"
+        >
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-[1px] w-8 bg-primary/60" />
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+Stewards of Success369            </p>
+            <span className="h-[1px] w-8 bg-primary/60" />
+          </div>
+          <h2 className="mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+Guided by Experience. Grounded in Integrity.          </h2>
+          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+Success369 is guided by two stewards who believe success is cultivated with clarity and care. They safeguard its philosophy and guide its application across individuals, teams, and organisations ensuring it evolves through real-world practice.          </p>
+        </motion.div>
+
+        {/* Trainers — alternating full-width rows */}
+        <div className="space-y-20 md:space-y-32">
+          {trainers.map((trainer, index) => {
+            const isReversed = index % 2 !== 0;
+            return (
+              <motion.div
+                key={trainer.name}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className={`flex flex-col ${isReversed ? "md:flex-row-reverse" : "md:flex-row"} gap-8 md:gap-14 items-center`}
+              >
+                {/* Image side */}
+                <div className="w-full md:w-[45%] shrink-0">
+                  <div className="group relative rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-[4/5]">
+                    <img
+                      src={trainer.image}
+                      alt={trainer.name}
+                      className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+
+                    {/* Stats bar at bottom of image */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <div className="flex gap-2 sm:gap-3">
+                        {[
+                          { icon: Users, label: "Clients", value: trainer.stats.clients },
+                          { icon: Award, label: "Years", value: trainer.stats.years },
+                          { icon: BookOpen, label: "Workshops", value: trainer.stats.workshops },
+                        ].map(({ icon: Icon, label, value }) => (
+                          <div
+                            key={label}
+                            className="flex-1 rounded-xl bg-background/50 backdrop-blur-md border border-border/40 px-3 py-3 text-center"
+                          >
+                            <Icon className="h-3.5 w-3.5 text-primary mx-auto mb-1" />
+                            <p className="font-display text-sm sm:text-base font-bold text-foreground leading-none">
+                              {value}
+                            </p>
+                            <p className="text-[10px] text-muted-foreground uppercase tracking-wider mt-0.5">
+                              {label}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Decorative accent line */}
+                    <div className={`absolute top-0 ${isReversed ? "right-0" : "left-0"} w-1 h-24 bg-gradient-to-b from-primary to-transparent`} />
+                  </div>
+                </div>
+
+                {/* Content side */}
+                <div className="w-full md:w-[55%]">
+                  <div className="space-y-5">
+                    <div>
+                      <p className="font-display text-xs uppercase tracking-[0.2em] text-primary mb-2">
+                        {trainer.title}
+                      </p>
+                      <h3 className="text-foreground">
+                        {trainer.name}
+                      </h3>
+                    </div>
+
+                    <p className="text-muted-foreground text-base md:text-lg">
+                      {trainer.bio}
+                    </p>
+
+                    {/* Philosophy quote */}
+                    <div className="border-l-2 border-primary/40 pl-5 py-1">
+                      <p className="text-foreground/80 text-lg md:text-xl italic font-light">
+                        "{trainer.philosophy}"
+                      </p>
+                    </div>
+
+                    {/* Specialties */}
+                    <div className="flex flex-wrap gap-2">
+                      {trainer.specialties.map((s) => (
+                        <span
+                          key={s}
+                          className="text-[11px] font-display font-medium uppercase tracking-wider px-3 py-1.5 rounded-full border border-primary/20 text-primary/80 bg-primary/5"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Credentials */}
+                    <div className="flex flex-wrap gap-3">
+                      {trainer.credentials.map((cred) => (
+                        <div key={cred} className="flex items-center gap-2 text-muted-foreground">
+                          <Award className="h-3.5 w-3.5 text-primary/60" />
+                          <span className="text-xs sm:text-sm">{cred}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-4 pt-2">
+                      <button className="group flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-display text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all duration-300 hover:shadow-[var(--slider-glow)]">
+                        Book a Session
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                      </button>
+                      <div className="flex gap-2">
+                        <button className="h-9 w-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors duration-300">
+                          <Linkedin className="h-4 w-4" />
+                        </button>
+                        <button className="h-9 w-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors duration-300">
+                          <Twitter className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TrainersSection;
