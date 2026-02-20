@@ -18,7 +18,7 @@ const videoCards: VideoCard[] = [
     title: "GITA-Clarity Before Action",
     description:
       "For moments when decisions matter and clarity is essential.",
-    cta: "Begin with Clarity ",
+    cta: "Begin with GITA ",
     videoUrl: gitaVideo,
   },
   {
