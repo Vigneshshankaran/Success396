@@ -64,7 +64,7 @@ const VideoCardsSection = () => {
   const activeCard = videoCards[activeIndex];
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 overflow-hidden">
+    <section id="showcase" className="relative py-20 px-4 sm:px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

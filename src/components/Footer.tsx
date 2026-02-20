@@ -49,8 +49,8 @@ const Footer = () => {
             className="sm:col-span-2 lg:col-span-1"
           >
             <a href="#" className="flex items-center gap-2 group mb-6">
-              <div className="w-[170px] h-[40px] flex items-center justify-center overflow-hidden transition-all duration-300">
-                <img src={logo} alt="Success369" className="w-full h-full object-contain" />
+              <div className="h-[80px] w-auto flex items-center justify-center transition-all duration-300">
+                <img src={logo} alt="Success369" className="h-full w-auto object-contain" />
               </div>
             </a>
             <p className="text-muted-foreground text-base mb-6">

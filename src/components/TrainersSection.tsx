@@ -28,7 +28,7 @@ const trainers = [
 
 const TrainersSection = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 bg-background relative overflow-hidden">
+    <section id="trainers" className="py-20 px-4 sm:px-6 bg-background relative overflow-hidden">
       {/* Ambient glows */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[120px] pointer-events-none" />

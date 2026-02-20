@@ -104,7 +104,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 bg-background relative overflow-hidden">
+    <section id="testimonials" className="py-20 px-4 sm:px-6 bg-background relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-primary/3 blur-[140px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-accent/3 blur-[120px] pointer-events-none translate-y-1/4 -translate-x-1/4" />

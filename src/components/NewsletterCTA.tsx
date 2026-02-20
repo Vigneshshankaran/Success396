@@ -22,7 +22,7 @@ const NewsletterCTA = () => {
   };
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 overflow-hidden">
+    <section id="newsletter" className="relative py-20 px-4 sm:px-6 overflow-hidden">
       {/* Background video */}
       <div className="absolute inset-0">
         <video

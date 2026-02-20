@@ -95,6 +95,7 @@ const HeroSlider = () => {
 
   return (
     <section
+      id="hero"
       className="relative h-screen w-full overflow-hidden bg-background"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -140,7 +141,7 @@ const HeroSlider = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="mb-3 sm:mb-4 inline-block rounded-full border border-primary/30 bg-primary/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-primary"
+                className="mb-3 sm:mb-4 inline-block rounded-full border border-yellow-400/30 bg-yellow-400/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-yellow-400"
               >
                 {slide.tag}
               </motion.span>

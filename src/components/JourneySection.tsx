@@ -37,7 +37,7 @@ const cards = [
 
 const JourneySection = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 bg-background relative overflow-hidden">
+    <section id="journey" className="py-20 px-4 sm:px-6 bg-background relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none -translate-x-1/2" />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] pointer-events-none translate-x-1/4 -translate-y-1/4" />
