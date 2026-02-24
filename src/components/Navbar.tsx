@@ -53,10 +53,10 @@ const resourceSections = [
 ];
 
 const programSections = [
-  { label: "GITA", description: "Clarity Shift", icon: Eye, href: "/program-gita" },
-  { label: "MAYA", description: "Seeing Clearly", icon: Layers, href: "/program-maya" },
-  { label: "SARVAM", description: "Complete Architecture", icon: Zap, href: "/program-sarvam" },
-  { label: "SHAKTI", description: "Activation Layer", icon: Sun, href: "/program-shakti" },
+  { label: "Phase 1: GITA", description: "Clarity Before Action", icon: Eye, href: "/program-gita" },
+  { label: "Phase 2: MAYA", description: "Realigning Unseen Patterns", icon: Layers, href: "/program-maya" },
+  { label: "Phase 3: SARVAM", description: "Architecting Sustainable Success", icon: Zap, href: "/program-sarvam" },
+  { label: "Phase 4: SHAKTI", description: "Activating Aligned Momentum", icon: Sun, href: "/program-shakti" },
 ];
 
 const Navbar = () => {

@@ -1,224 +1,282 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Zap, Users, Eye, Target, Clock, Shield } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { ArrowRight, Zap, Sparkles, Shield, Search, Route, Users, Target, Clock, Globe } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import sarvamVideo from "@/assets/sarvam.mp4";
+import card1 from "@/assets/card-1.jpg";
+import card2 from "@/assets/card-2.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
   }),
 };
-
-const phases = [
-  {
-    icon: Eye,
-    title: "Clarity",
-    subtitle: "See with precision",
-    description: "Dissolve the fog. Understand who you truly are beneath the roles, titles, and expectations. Map the gap between your current operating system and your deepest values.",
-  },
-  {
-    icon: Target,
-    title: "Congruence",
-    subtitle: "Align action with truth",
-    description: "Bridge the distance between what you say matters and how you actually live. Build radical honesty as a daily practice — with yourself, your team, and your organisation.",
-  },
-  {
-    icon: Zap,
-    title: "Catalysis",
-    subtitle: "Ignite sustainable momentum",
-    description: "When clarity and congruence converge, transformation becomes inevitable. Remove friction so growth happens naturally — not through force, but through alignment.",
-  },
-];
-
-const contentSections = [
-  {
-    icon: Zap,
-    title: "Overview",
-    content: "SARVAM is the complete architecture for sustainable success — a deep, extended journey through all three pillars of the Success369 framework. It's not a programme you attend. It's a transformation you undertake. SARVAM integrates clarity, congruence, and catalysis into a unified experience that restructures how you lead, relate, and grow.",
-  },
-  {
-    icon: Users,
-    title: "Who It's For",
-    content: "Senior leaders, founders, and high-impact professionals who are done with incremental improvement. People who've done the inner work before and are ready for the complete architecture. Organisations ready to invest in the deepest level of leadership transformation for their key people.",
-  },
-  {
-    icon: Clock,
-    title: "Duration & Format",
-    content: "SARVAM unfolds over an extended period — typically 6 to 12 months — with a combination of intensive sessions, reflection periods, integration practices, and ongoing stewardship. The format is bespoke, adapting to your pace, your context, and your depth of readiness.",
-  },
-  {
-    icon: Shield,
-    title: "Stewardship & Responsibility",
-    content: "SARVAM is a significant commitment — for both participant and guide. Entry is by application, not purchase. We take responsibility for ensuring readiness, and we steward the process with the seriousness it deserves. This is not a product. It's a partnership in transformation.",
-  },
-];
 
 const ProgramSarvam = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 sm:pt-44 sm:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-primary/8 rounded-full blur-[140px]" />
-
-        <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6">
-          <motion.div initial="hidden" animate="visible">
-            <motion.span
-              custom={0}
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8 text-xs font-medium text-primary tracking-wide uppercase"
-            >
-              <Zap size={14} />
-              Success369 — SARVAM
-            </motion.span>
-
-            <motion.h1
-              custom={1}
-              variants={fadeUp}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6"
-            >
-              The Complete Architecture for
-              <br />
-              <span className="text-glow text-primary">Sustainable Success</span>
-            </motion.h1>
-
-            <motion.p
-              custom={2}
-              variants={fadeUp}
-              className="text-muted-foreground text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto"
-            >
-              The deepest journey in the Success369 ecosystem. SARVAM integrates clarity, congruence, and catalysis into a complete transformation experience.
-            </motion.p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              <CTAButton
-                href="/#newsletter"
-                size="md"
-                variant="shimmer"
-              >
-                Apply for SARVAM
-              </CTAButton>
-              <CTAButton
-                href="/#newsletter"
-                size="md"
-                variant="outline"
-                icon={null as any}
-              >
-                Speak with Us
-              </CTAButton>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Overview & Who it's for */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-card/10" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 space-y-16">
-          {contentSections.slice(0, 2).map((section, i) => (
-            <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="relative p-8 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30"
-            >
-              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <section.icon size={20} className="text-primary" />
-                </div>
-                <h3 className="font-display text-xl font-bold">{section.title}</h3>
-              </div>
-              <p className="text-muted-foreground leading-relaxed">{section.content}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Three Phases */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-card/10 via-background to-card/10" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+      {/* --- HERO SECTION --- */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-60"
           >
-            <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">How the Journey Unfolds</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold">
-              Three phases. One transformation.
-            </h2>
+            <source src={sarvamVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md">
+              <Sparkles size={14} />
+              Success369 – Phase 3: BUILD
+            </span>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {phases.map((phase, i) => (
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight"
+          >
+            The Architecture for <br />
+            <span className="text-primary text-glow italic">Sustainable Success</span>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={2}
+            className="text-xl sm:text-2xl text-foreground/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
+          >
+            Some seek clarity. Some seek realignment. SARVAM is for those ready to build integrated, stable, and enduring success across time and responsibility.
+          </motion.p>
+
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <CTAButton
+              to="/free-session"
+              size="lg"
+              variant="shimmer"
+            >
+              Apply for SARVAM
+            </CTAButton>
+            <CTAButton
+              href="/#newsletter"
+              size="lg"
+              variant="outline"
+              icon={null as any}
+            >
+              Speak with Us
+            </CTAButton>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- WHO IT'S FOR (Foundation Style) --- */}
+      <section className="py-24 px-4 sm:px-6 bg-background relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none -translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] pointer-events-none translate-x-1/4 -translate-y-1/4" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-14 md:mb-20 max-w-4xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-primary/60" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                Legacy-Level Responsibility
+              </p>
+              <span className="h-[1px] w-8 bg-primary/60" />
+            </div>
+            <h2 className="mb-8 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Who is SARVAM For?
+            </h2>
+            <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+              SARVAM is for individuals carrying significant responsibility and ready for long-term alignment across all dimensions of life.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 items-start pb-20">
+            {[
+              {
+                image: card1,
+                title: "Leaders at Inflection Points",
+                description: "Senior leaders, CXOs, and founders who are done with incremental improvement and are ready for the complete architecture of sustainable success.",
+                step: "01",
+              },
+              {
+                image: card2,
+                title: "Stepping into Legacy",
+                description: "Professionals stepping into legacy-level responsibility who need to align identity, leadership, and influence into a coherent, enduring structure.",
+                step: "02",
+              },
+            ].map((card, index) => (
               <motion.div
-                key={phase.title}
-                initial={{ opacity: 0, y: 30 }}
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="group relative p-8 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_50px_-15px_hsl(var(--primary)/0.15)]"
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                style={{ marginTop: (index % 2 === 1) ? "100px" : "0px" }}
+                className="group relative"
               >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <phase.icon size={24} className="text-primary" />
+                <span className="absolute -top-16 -right-8 font-display text-[10rem] md:text-[14rem] font-black text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.07] group-hover:-translate-y-8 group-hover:-translate-x-4">
+                  {card.step}
+                </span>
+
+                <div className="relative rounded-[2.5rem] border border-border/40 bg-card/30 backdrop-blur-2xl overflow-hidden transition-all duration-700 hover:border-primary/40 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
+                  <div className="relative h-64 sm:h-80 md:h-[400px] overflow-hidden">
+                    <motion.img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover grayscale brightness-75 transition-all duration-1000 ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/20 to-transparent" />
+                  </div>
+
+                  <div className="p-10 md:p-12">
+                    <motion.div className="w-16 h-1 bg-primary/20 mb-8 overflow-hidden rounded-full">
+                      <motion.div className="h-full bg-primary" initial={{ x: "-100%" }} whileInView={{ x: "0%" }} transition={{ duration: 1 }} />
+                    </motion.div>
+                    <h3 className="mb-4 text-2xl font-bold text-foreground tracking-tight">{card.title}</h3>
+                    <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">{card.description}</p>
+                  </div>
                 </div>
-                <h3 className="font-display text-2xl font-bold mb-1">{phase.title}</h3>
-                <p className="text-primary text-sm font-medium mb-4">{phase.subtitle}</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">{phase.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Duration & Stewardship */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-card/10 to-background" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 space-y-16">
-          {contentSections.slice(2).map((section, i) => (
+      {/* --- WHAT IS SARVAM? (Process) --- */}
+      <section className="py-24 sm:py-32 relative bg-card/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="relative p-8 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30"
+              transition={{ duration: 0.8 }}
             >
-              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <section.icon size={20} className="text-primary" />
-                </div>
-                <h3 className="font-display text-xl font-bold">{section.title}</h3>
+              <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The Living Architecture</span>
+              <h2 className="font-display text-4xl sm:text-5xl font-bold mb-8 leading-[1.1]">
+                Building success that <br />
+                <span className="text-primary italic">actually lasts.</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-xl">
+                SARVAM approaches success as a complete system—aligning identity, leadership, work, relationships, and financial direction. It is about building conditions where outcomes endure.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {[
+                  { icon: Clock, label: "12-month journey" },
+                  { icon: Users, label: "Dedicated 1:1 engagement" },
+                  { icon: Globe, label: "Hybrid format" },
+                  { icon: Shield, label: "Living Architecture" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <item.icon size={18} className="text-primary" />
+                    </div>
+                    <span className="text-foreground/90 font-medium text-sm">{item.label}</span>
+                  </div>
+                ))}
               </div>
-              <p className="text-muted-foreground leading-relaxed">{section.content}</p>
             </motion.div>
-          ))}
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200"
+                  alt="Success Architecture"
+                  className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-8 -left-8 p-6 rounded-2xl bg-card border border-primary/20 backdrop-blur-xl shadow-xl max-w-[200px]">
+                <p className="text-primary font-display text-3xl font-bold mb-1">SARVAM</p>
+                <p className="text-muted-foreground text-xs leading-tight font-medium">The complete architecture for enduring outcomes.</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- WHAT YOU GAIN --- */}
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">What You Gain</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Success is a complete system — refined over time."</p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Identity Clarity", desc: "Deep clarity beyond roles and titles.", icon: Search },
+              { title: "Strategic Alignment", desc: "Coherence across life and leadership.", icon: Target },
+              { title: "Decision Stability", desc: "Long-term stability in significant choices.", icon: Shield },
+              { title: "Sustainable Momentum", desc: "Balanced progress that compounds naturally.", icon: Route }
+            ].map((gain, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
+                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="font-display text-xl font-bold mb-3">{gain.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       <GlobalCTA
         title={
-          <h2 className="font-display text-3xl sm:text-4xl font-bold leading-[1.1] mb-6 text-white uppercase tracking-wider">
-            Ready for the complete
-            <br />
-            <span className="text-primary italic">transformation?</span>
+          <h2 className="font-display text-4xl sm:text-6xl font-bold mb-8 leading-tight text-white">
+            Build your <span className="text-primary italic">legacy architecture.</span>
           </h2>
         }
-        description="SARVAM is by application only. Speak with us to explore if this is the right time."
+        description="SARVAM is by application only. Book a conversation to explore if this is the right time for your transformation."
         ctaText="Apply for SARVAM"
-        ctaHref="/#newsletter"
+        ctaHref="/free-session"
         showPillars={false}
       />
 

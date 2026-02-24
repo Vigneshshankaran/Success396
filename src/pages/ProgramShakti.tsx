@@ -1,210 +1,265 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sun, Users, Puzzle, Workflow, MessageCircle, Crown, UsersRound, Flame } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { ArrowRight, Sun, Sparkles, Zap, Search, Route, Users, Target, Clock, Globe, Shield } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import shaktiVideo from "@/assets/shakti.mp4";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
   }),
 };
-
-const contentSections = [
-  {
-    icon: Sun,
-    title: "Overview",
-    content: "SHAKTI is the activation layer of the Success369 ecosystem. It's not a journey you enter — it's a force you apply. Modular, practical sessions that translate the insights from GITA, MAYA, or SARVAM into real-world capability. Think of SHAKTI as the bridge between understanding and embodiment.",
-  },
-  {
-    icon: Users,
-    title: "Who It's For",
-    content: "Leaders who've gained clarity and now need to express it in their daily leadership. Teams that need alignment without corporate jargon. Organisations implementing culture change who need practical, applied activation at every level. Anyone in the Success369 ecosystem who wants to turn insight into action.",
-  },
-  {
-    icon: Puzzle,
-    title: "What SHAKTI Strengthens",
-    content: "Authentic communication that creates trust instead of compliance. Decision-making rooted in values rather than pressure. Team dynamics that emerge from alignment rather than hierarchy. The ability to lead change without burning out yourself or your people.",
-  },
-  {
-    icon: Workflow,
-    title: "How SHAKTI Works",
-    content: "SHAKTI is modular and applied — not linear. Sessions can be woven into any journey or delivered standalone. Each module is practical, experiential, and immediately applicable. There's no theory without practice, no insight without integration. SHAKTI adapts to your context, your team, and your real challenges.",
-  },
-];
-
-const modules = [
-  {
-    icon: MessageCircle,
-    title: "Clarity-Led Communication",
-    description: "Express what matters with precision and warmth. Build trust through radical honesty, not performative transparency.",
-  },
-  {
-    icon: Crown,
-    title: "Credible Leadership Presence",
-    description: "Lead from alignment, not authority. Develop a presence that inspires trust — not because of your title, but because of your congruence.",
-  },
-  {
-    icon: UsersRound,
-    title: "Aligned Teams & Trust Networks",
-    description: "Build teams that operate from shared values rather than shared pressure. Create trust networks that outlast any individual.",
-  },
-  {
-    icon: Flame,
-    title: "Purpose-Driven Performance",
-    description: "Connect organisational performance to human purpose. Build systems that sustain momentum without sacrificing meaning.",
-  },
-];
 
 const ProgramShakti = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 sm:pt-44 sm:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-primary/8 rounded-full blur-[140px]" />
+      {/* --- HERO SECTION --- */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-60"
+          >
+            <source src={shaktiVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+        </div>
 
-        <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6">
-          <motion.div initial="hidden" animate="visible">
-            <motion.span
-              custom={0}
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8 text-xs font-medium text-primary tracking-wide uppercase"
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md">
+              <Sparkles size={14} />
+              Success369 – Phase 4: ACTIVATE
+            </span>
+          </motion.div>
+
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight"
+          >
+            Activating <br />
+            <span className="text-primary text-glow italic">Aligned Momentum</span>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={2}
+            className="text-xl sm:text-2xl text-foreground/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
+          >
+            Clarity without movement creates frustration. Alignment without activation creates delay. SHAKTI exists to turn alignment into impact.
+          </motion.p>
+
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <CTAButton
+              href="/#newsletter"
+              size="lg"
+              variant="shimmer"
             >
-              <Sun size={14} />
-              Success369 — SHAKTI
-            </motion.span>
-
-            <motion.h1
-              custom={1}
-              variants={fadeUp}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6"
+              Explore SHAKTI
+            </CTAButton>
+            <CTAButton
+              to="/free-session"
+              size="lg"
+              variant="outline"
+              icon={null as any}
             >
-              Activating
-              <br />
-              <span className="text-glow text-primary">Aligned Momentum</span>
-            </motion.h1>
-
-            <motion.p
-              custom={2}
-              variants={fadeUp}
-              className="text-muted-foreground text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto"
-            >
-              Insight without application is incomplete. SHAKTI turns your clarity into capability — modular, practical, and immediately applicable.
-            </motion.p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              <CTAButton
-                href="/#newsletter"
-                size="md"
-                variant="shimmer"
-              >
-                Explore SHAKTI
-              </CTAButton>
-              <CTAButton
-                href="/#newsletter"
-                size="md"
-                variant="outline"
-                icon={null as any}
-              >
-                Request a Session
-              </CTAButton>
-            </div>
+              Request a Free Session
+            </CTAButton>
           </motion.div>
         </div>
       </section>
 
-      {/* Content sections */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-card/10" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 space-y-16">
-          {contentSections.map((section, i) => (
-            <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="relative p-8 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30"
-            >
-              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <section.icon size={20} className="text-primary" />
-                </div>
-                <h3 className="font-display text-xl font-bold">{section.title}</h3>
-              </div>
-              <p className="text-muted-foreground leading-relaxed">{section.content}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      {/* --- WHO IT'S FOR (Foundation Style) --- */}
+      <section className="py-24 px-4 sm:px-6 bg-background relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none -translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] pointer-events-none translate-x-1/4 -translate-y-1/4" />
 
-      {/* Where SHAKTI Fits */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-card/10 via-background to-card/10" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative p-8 sm:p-12 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30 text-center"
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-14 md:mb-20 max-w-4xl mx-auto"
           >
-            <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-            <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">Ecosystem Position</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4">Where SHAKTI Fits</h3>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
-              SHAKTI runs alongside every journey in the Success369 ecosystem. Whether you've just completed a GITA clarity session, you're deep in MAYA, or you're building your SARVAM architecture — SHAKTI activates what you've learned into how you lead, communicate, and perform every day.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {["GITA", "MAYA", "SARVAM"].map((name) => (
-                <span key={name} className="px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium">
-                  {name} + SHAKTI
-                </span>
-              ))}
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-primary/60" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                Translation to Impact
+              </p>
+              <span className="h-[1px] w-8 bg-primary/60" />
             </div>
+            <h2 className="mb-8 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Who is SHAKTI For?
+            </h2>
+            <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+              SHAKTI is for those who already have clarity and alignment — and are ready to move. This is an accelerator, not a starting point.
+            </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 items-start pb-20">
+            {[
+              {
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
+                title: "Leaders & Teams in Motion",
+                description: "Leaders strengthening presence and communication, and teams seeking alignment and execution rhythm. Translating purpose into performance.",
+                step: "01",
+              },
+              {
+                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
+                title: "Journey Integration",
+                description: "Individuals and organisations emerging from GITA, MAYA, or SARVAM who need to translate their insights into real-world capability.",
+                step: "02",
+              },
+            ].map((card, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                style={{ marginTop: (index % 2 === 1) ? "100px" : "0px" }}
+                className="group relative"
+              >
+                <span className="absolute -top-16 -right-8 font-display text-[10rem] md:text-[14rem] font-black text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.07] group-hover:-translate-y-8 group-hover:-translate-x-4">
+                  {card.step}
+                </span>
+
+                <div className="relative rounded-[2.5rem] border border-border/40 bg-card/30 backdrop-blur-2xl overflow-hidden transition-all duration-700 hover:border-primary/40 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
+                  <div className="relative h-64 sm:h-80 md:h-[400px] overflow-hidden">
+                    <motion.img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover grayscale brightness-75 transition-all duration-1000 ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/20 to-transparent" />
+                  </div>
+
+                  <div className="p-10 md:p-12">
+                    <motion.div className="w-16 h-1 bg-primary/20 mb-8 overflow-hidden rounded-full">
+                      <motion.div className="h-full bg-primary" initial={{ x: "-100%" }} whileInView={{ x: "0%" }} transition={{ duration: 1 }} />
+                    </motion.div>
+                    <h3 className="mb-4 text-2xl font-bold text-foreground tracking-tight">{card.title}</h3>
+                    <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">{card.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Example Modules */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-card/10 to-background" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+      {/* --- WHAT IS SHAKTI? (Process) --- */}
+      <section className="py-24 sm:py-32 relative bg-card/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The Activation Journey</span>
+              <h2 className="font-display text-4xl sm:text-5xl font-bold mb-8 leading-[1.1]">
+                Insight into execution, <br />
+                <span className="text-primary italic">alignment into influence.</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-xl">
+                SHAKTI is a focused activation journey rooted in the Catalysis pillar of Success369. It is not about working harder—it is about directing energy where it matters most.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {[
+                  { icon: Clock, label: "3–6 hours per module" },
+                  { icon: Users, label: "Individual or Team" },
+                  { icon: Globe, label: "Online or in-person" },
+                  { icon: Zap, label: "Catalysis Rooted" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <item.icon size={18} className="text-primary" />
+                    </div>
+                    <span className="text-foreground/90 font-medium text-sm">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200"
+                  alt="Activation Session"
+                  className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-8 -left-8 p-6 rounded-2xl bg-card border border-primary/20 backdrop-blur-xl shadow-xl max-w-[200px]">
+                <p className="text-primary font-display text-3xl font-bold mb-1">SHAKTI</p>
+                <p className="text-muted-foreground text-xs leading-tight font-medium">Converting intention into outcomes through catalysis.</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- WHAT YOU GAIN --- */}
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">Example Modules</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold">
-              What SHAKTI looks like in practice
-            </h2>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">What You Gain</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Movement becomes clean and confident — not forced."</p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {modules.map((mod, i) => (
+            {[
+              { title: "Sharper Execution", desc: "Translate your clarity into precise action.", icon: Target },
+              { title: "Stronger Influence", desc: "Build credibility through alignment and presence.", icon: Sparkles },
+              { title: "Team Alignment", desc: "Create execution rhythm without corporate jargon.", icon: Users },
+              { title: "Usable Tools", desc: "Practical, immediately applicable activation frameworks.", icon: Shield }
+            ].map((gain, i) => (
               <motion.div
-                key={mod.title}
-                initial={{ opacity: 0, y: 30 }}
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group p-6 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_50px_-15px_hsl(var(--primary)/0.15)]"
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                  <mod.icon size={20} className="text-primary" />
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
+                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="font-display text-lg font-bold mb-2">{mod.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{mod.description}</p>
+                <h3 className="font-display text-xl font-bold mb-3">{gain.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -213,15 +268,13 @@ const ProgramShakti = () => {
 
       <GlobalCTA
         title={
-          <h2 className="font-display text-3xl sm:text-4xl font-bold leading-[1.1] mb-6 text-white uppercase tracking-wider">
-            Ready to activate
-            <br />
-            <span className="text-primary italic">what you've learned?</span>
+          <h2 className="font-display text-4xl sm:text-6xl font-bold mb-8 leading-tight text-white">
+            Activate your <span className="text-primary italic">aligned momentum.</span>
           </h2>
         }
-        description="Request a SHAKTI session tailored to your context — individual, team, or organisation."
-        ctaText="Explore SHAKTI"
-        ctaHref="/#newsletter"
+        description="Book a free session to explore how SHAKTI can accelerate impact for you, your team, or your organisation."
+        ctaText="Request a Free Session"
+        ctaHref="/free-session"
         showPillars={false}
       />
 

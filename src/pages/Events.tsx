@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
 import { allEvents, stats } from "@/data/events-list";
+import eventVideo from "@/assets/Events Video.mp4";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -39,42 +40,44 @@ const Events = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        {featuredEvent?.videoUrl && (
-          <div className="absolute inset-0">
-            <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-              <source src={featuredEvent.videoUrl} type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
-          </div>
-        )}
-        <div className="absolute bottom-0 left-1/4 w-[500px] h-[300px] bg-primary/10 rounded-full blur-[150px]" />
+      <section className="relative min-h-[90vh] flex items-end overflow-hidden bg-background">
+        <div className="absolute inset-0 z-0">
+          <video 
+            src={eventVideo}
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            className="w-full h-full object-cover"
+          />
+          {/* Hero Overlay System (matched to home page) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
+        </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center pt-32 pb-20">
-          <motion.div initial="hidden" animate="visible">
-            <motion.span
+        <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 pb-28 sm:pb-32">
+          <motion.div initial="hidden" animate="visible" className="max-w-3xl">
+            <motion.div
               custom={0}
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6 text-xs font-medium text-primary tracking-wide uppercase"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-xl mb-6"
             >
-              <Sparkles size={14} />
-              Success369 Live Experiences
-            </motion.span>
+              <Sparkles size={14} className="text-primary" />
+              <span className="text-[10px] font-bold text-primary tracking-[0.3em] uppercase">Success369 Live Experiences</span>
+            </motion.div>
 
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-[1.08] mb-6"
+              className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6"
             >
               Experience the magic of{" "}
-              <span className="text-primary text-glow">transformation</span>
+              <span className="italic text-primary text-glow font-light">transformation</span>
             </motion.h1>
 
             <motion.p
               custom={2}
               variants={fadeUp}
-              className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+              className="text-lg sm:text-xl leading-relaxed font-light text-muted-foreground/90 mb-10 max-w-2xl"
             >
               Some experiences don't just teach you — they rewire you. Join seekers, leaders, and visionaries who've discovered that the fastest path to growth isn't online. It's in the room.
             </motion.p>
@@ -82,8 +85,9 @@ const Events = () => {
             <motion.div custom={3} variants={fadeUp}>
               <CTAButton
                 href="#events"
-                size="md"
-                variant="outline"
+                size="lg"
+                variant="shimmer"
+                className="px-10"
               >
                 Find your event
               </CTAButton>

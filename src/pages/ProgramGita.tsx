@@ -45,7 +45,7 @@ const ProgramGita = () => {
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md">
               <Sparkles size={14} />
-              Success369 – GITA
+              Success369 – Phase 1: PAUSE
             </span>
           </motion.div>
 

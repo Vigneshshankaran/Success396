@@ -1,385 +1,289 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import {
   ArrowRight, Compass, Users, Building2, Sparkles,
-  Eye, Layers, Zap, Sun, ChevronRight,
+  Eye, Layers, Zap, Sun, ChevronRight, Target, Shield, Pause, Quote, Heart, Coffee, MoveDown
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
+import journeyVideo from "@/assets/Journey op 1.mp4";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
   }),
 };
 
-const audiences = [
-  {
-    icon: Compass,
-    title: "Individuals",
-    description: "Professionals, founders, and seekers who sense a gap between where they are and who they could become. You're ready for depth, not just tips.",
-  },
-  {
-    icon: Users,
-    title: "Leaders",
-    description: "Those shaping teams and cultures. You want leadership that's rooted in clarity and trust — not just strategy and authority.",
-  },
-  {
-    icon: Building2,
-    title: "Organisations",
-    description: "Companies seeking sustainable transformation. You're ready to align people, purpose, and performance at every level.",
-  },
-];
-
-const journeySteps = [
-  { label: "Free Session", description: "First contact — low-pressure, high-value", href: "/#newsletter", color: "from-muted-foreground to-muted-foreground" },
-  { label: "GITA", description: "A clarity shift before action", href: "/program-gita", color: "from-primary to-primary" },
-  { label: "MAYA", description: "Seeing through unconscious momentum", href: "/program-maya", color: "from-primary to-pink-500" },
-  { label: "SARVAM", description: "The complete architecture", href: "/program-sarvam", color: "from-pink-500 to-primary" },
+const pathwaySteps = [
+  { icon: Pause, label: "Pause", description: "Phase 1: GITA", color: "bg-primary/20" },
+  { icon: Target, label: "Align", description: "Phase 2: MAYA", color: "bg-primary/20" },
+  { icon: Building2, label: "Build", description: "Phase 3: SARVAM", color: "bg-primary/20" },
+  { icon: Zap, label: "Activate", description: "Phase 4: SHAKTI", color: "bg-primary/20" },
 ];
 
 const programCards = [
   {
     icon: Eye,
     title: "GITA",
-    subtitle: "Clarity Shift",
-    description: "A single powerful session that cuts through noise and reveals what's actually driving your decisions.",
+    subtitle: "Clarity Before Action",
+    description: "For decision points where perspective matters. Witness your direction before moving forward.",
     href: "/program-gita",
-    cta: "Begin with Clarity",
+    outcome: "Clear direction and confident next steps.",
+    cta: "Begin Your Clarity",
+    phase: "Phase 1"
   },
   {
     icon: Layers,
     title: "MAYA",
-    subtitle: "Seeing Clearly",
-    description: "A guided journey to dissolve the unconscious patterns that keep you stuck in loops you can't name.",
+    subtitle: "Realigning Unseen Patterns",
+    description: "For those progressing outwardly but feeling inner friction. Dissolve invisible cycles.",
     href: "/program-maya",
-    cta: "Explore MAYA",
+    outcome: "Coherence, focus, and grounded momentum.",
+    cta: "Explore the Unseen",
+    phase: "Phase 2"
   },
   {
-    icon: Zap,
+    icon: Shield,
     title: "SARVAM",
-    subtitle: "Complete Architecture",
-    description: "The full transformation — from clarity through congruence to catalysis. For those ready for lasting change.",
+    subtitle: "Architecting Sustainable Success",
+    description: "For individuals ready to build long-term value. Integrate identity, work, and legacy.",
     href: "/program-sarvam",
-    cta: "Apply for SARVAM",
+    outcome: "A stable success architecture that endures.",
+    cta: "Begin the Architecture",
+    phase: "Phase 3"
   },
   {
     icon: Sun,
     title: "SHAKTI",
-    subtitle: "Activation Layer",
-    description: "Modular, applied sessions that activate aligned momentum wherever you are in your journey.",
+    subtitle: "Activating Aligned Momentum",
+    description: "For leaders and teams ready to execute. Translate alignment into real-world strength.",
     href: "/program-shakti",
-    cta: "Explore SHAKTI",
+    outcome: "Sharper execution without losing alignment.",
+    cta: "Activate Momentum",
+    phase: "Phase 4"
   },
 ];
 
 const Programs = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.98]);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div ref={containerRef} className="min-h-screen bg-background text-foreground/90 selection:bg-primary/30 overflow-x-hidden">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 sm:pt-44 sm:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/8 rounded-full blur-[160px]" />
+      {/* --- HERO SECTION --- */}
+      <section className="relative min-h-[90vh] flex items-end pt-20 overflow-hidden bg-background/90">
+        {/* Cinematic Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            src={journeyVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover"
+          />
+          {/* Hero Overlay System (matched to home page) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
+        </div>
 
-        <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6">
+        <motion.div 
+          style={{ scale: heroScale }}
+          className="relative max-w-7xl mx-auto w-full text-left px-4 sm:px-6 pb-28 sm:pb-32 z-10"
+        >
           <motion.div initial="hidden" animate="visible">
-            <motion.span
+            <motion.div
               custom={0}
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8 text-xs font-medium text-primary tracking-wide uppercase"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-xl mb-8"
             >
-              <Sparkles size={14} />
-              Success369 Journeys
-            </motion.span>
+              <Sparkles size={12} className="text-primary" />
+              <span className="text-[10px] font-bold text-primary tracking-[0.3em] uppercase">Building Success for the Meaning Economy</span>
+            </motion.div>
 
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6"
+              className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-8 tracking-tight text-white"
             >
-              Guided Growth,
-              <br />
-              <span className="text-glow text-primary">Not Forced Momentum</span>
+              Build Success <br />
+              <span className="italic text-primary text-glow">That Is Aligned.</span>
             </motion.h1>
 
-            <motion.p
-              custom={2}
-              variants={fadeUp}
-              className="text-muted-foreground text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto"
-            >
-              Success369 Journeys are structured transformation experiences — designed to align who you are with how you lead, live, and grow.
-            </motion.p>
+            <motion.div custom={2} variants={fadeUp} className="max-w-2xl mb-12 space-y-6 text-left">
+              <p className="text-lg sm:text-xl leading-relaxed font-light text-muted-foreground/90">
+                In a world driven by speed and performance, many people are <span className="text-white font-medium">successful — but not fulfilled.</span>
+                <br />
+                Others are <span className="text-white font-medium">capable — but unclear.</span>
+              </p>
+              <p className="text-base sm:text-lg leading-relaxed font-light text-muted-foreground/70 italic">
+                Success369 Journeys are designed to align who you are, what you value, and how you act — so success grows with clarity, confidence, and meaning.
+              </p>
+            </motion.div>
 
-            <motion.div custom={3} variants={fadeUp} className="flex flex-wrap justify-center gap-4">
-              <CTAButton
-                href="#which-journey"
-                size="md"
-                variant="shimmer"
-              >
-                Find Your Journey
+            <motion.div custom={3} variants={fadeUp} className="flex flex-col sm:flex-row justify-start items-center gap-6 mb-16">
+              <CTAButton href="#journeys-intro" size="lg" variant="shimmer" className="px-10">
+                Begin Your Journey
               </CTAButton>
-              <CTAButton
-                href="/#newsletter"
-                size="md"
-                variant="outline"
-                icon={null as any}
-              >
+              <CTAButton to="/free-session" size="lg" variant="outline" icon={null as any} className="px-10 border-white/10 hover:border-primary/50">
                 Take a Free Session
               </CTAButton>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1.5 }}
+              className="flex justify-center text-primary/20"
+            >
+              <MoveDown className="animate-bounce" size={24} />
+            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* What are Success369 Journeys */}
-      <section className="relative py-20 sm:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/5 rounded-full blur-[150px]" />
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="inline-flex items-center gap-2 text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-6">
-              <Sparkles size={14} />
-              Understanding the Journeys
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] mb-8">
-              What are Success369 Journeys?
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto mb-6">
-              They are guided transformation experiences — not courses, not coaching, not therapy. Each Journey is a structured space where you confront what's real, dissolve what's unconscious, and build what's aligned.
-            </p>
-            <p className="text-muted-foreground text-base leading-relaxed max-w-2xl mx-auto">
-              Every Journey is built on the Success369 framework of <span className="text-foreground font-medium">Clarity</span>, <span className="text-foreground font-medium">Congruence</span>, and <span className="text-foreground font-medium">Catalysis</span> — and designed to meet you exactly where you are.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Philosophy */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-card/10 to-background" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* --- WHAT ARE SUCCESS369 JOURNEYS? --- */}
+      <section id="journeys-intro" className="py-24 sm:py-32 relative bg-black/40 border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 1 }}
             >
-              <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">Our Philosophy</span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-                Alignment before
-                <br />
-                <span className="text-primary">acceleration</span>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-3 mb-6">
+                <span className="h-[1px] w-8 bg-primary/60" />
+                <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                  Ready to Transition?
+                </p>
+                <span className="h-[1px] w-8 bg-primary/60" />
+              </div>
+              <h2 className="font-display text-4xl sm:text-5xl font-bold mb-8 leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                What Are <br />
+                <span className="italic">Success369 Journeys?</span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Most growth frameworks push you to go faster. We believe speed without alignment creates burnout, not breakthroughs.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                The Journeys are designed so that every step forward is rooted — in self-awareness, in values, in truth. When alignment comes first, momentum becomes natural.
-              </p>
+            </motion.div>
+              <div className="space-y-6 text-lg text-muted-foreground font-light leading-relaxed">
+                <p>
+                  Structured, guided growth experiences that support real decisions and real transitions — across life, career, leadership, and enterprise.
+                </p>
+                <div className="flex flex-col gap-4 pt-4">
+                  {["From uncertainty to clarity", "From misalignment to coherence", "From effort to meaningful momentum"].map((t, i) => (
+                    <div key={i} className="flex items-center gap-4 group">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shadow-[0_0_10px_rgba(197,160,89,0.5)]" />
+                      <span className="text-white/70 group-hover:text-white transition-colors text-base">{t}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="relative p-8 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30"
+              transition={{ duration: 1 }}
+              className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative"
             >
-              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-              <blockquote className="text-foreground/90 text-lg sm:text-xl font-display leading-relaxed italic">
-                "Don't chase success. Align with it — and watch it come to you."
-              </blockquote>
-              <p className="text-primary text-sm font-medium mt-4">— Success369 Principle</p>
+              <Quote size={50} className="text-primary/10 absolute -top-8 -left-8" />
+              <div className="space-y-6 relative z-10">
+                <p className="font-display text-2xl sm:text-3xl italic font-light leading-snug text-white/90">
+                  "These are not courses. They are journeys designed around readiness and responsibility."
+                </p>
+                <div className="flex items-center gap-4 pt-4">
+                  <div className="h-[1px] w-12 bg-primary/30" />
+                  <span className="text-primary text-[10px] font-bold uppercase tracking-widest opacity-60">The Success369 Methodology</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-primary/[0.01] rounded-[3rem] -z-10 blur-3xl" />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Who the Journeys are For */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-card/10" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">Who It's For</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold">
-              The Journeys meet you where you are
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {audiences.map((a, i) => (
-              <motion.div
-                key={a.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="group relative p-8 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_50px_-15px_hsl(var(--primary)/0.15)]"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <a.icon size={24} className="text-primary" />
-                </div>
-                <h3 className="font-display text-2xl font-bold mb-2">{a.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{a.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Journey Progression */}
-      <section className="relative py-20 sm:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-card/10 via-background to-card/10" />
-        <div className="absolute top-1/2 left-1/4 w-[400px] h-[300px] bg-primary/8 rounded-full blur-[150px] -translate-y-1/2" />
-
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">The Pathway</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
-              The Success369 Journey Progression
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Each Journey builds on the last. Begin wherever feels right — every starting point is valid.
-            </p>
-          </motion.div>
-
-          {/* Desktop horizontal timeline */}
-          <div className="hidden md:block">
-            <div className="relative">
-              <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-muted-foreground/20 via-primary/40 to-primary/20" />
-              <div className="grid grid-cols-4 gap-6">
-                {journeySteps.map((step, i) => (
-                  <motion.div
-                    key={step.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.12 }}
-                  >
-                    <Link to={step.href} className="group block text-center">
-                      <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center mb-4 group-hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)] transition-shadow duration-300`}>
-                        <span className="text-primary-foreground font-display font-bold text-sm">{i + 1}</span>
-                      </div>
-                      <h4 className="font-display font-bold text-lg mb-1 group-hover:text-primary transition-colors">{step.label}</h4>
-                      <p className="text-muted-foreground text-xs">{step.description}</p>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile vertical timeline */}
-          <div className="md:hidden space-y-6">
-            {journeySteps.map((step, i) => (
-              <motion.div
-                key={step.label}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <Link to={step.href} className="group flex items-center gap-4 p-4 rounded-2xl bg-card/30 border border-border/30 hover:border-primary/30 transition-colors">
-                  <div className={`w-12 h-12 shrink-0 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center`}>
-                    <span className="text-primary-foreground font-display font-bold text-sm">{i + 1}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-display font-bold group-hover:text-primary transition-colors">{step.label}</h4>
-                    <p className="text-muted-foreground text-xs">{step.description}</p>
-                  </div>
-                  <ChevronRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SHAKTI Callout */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-card/10 to-background" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+      {/* --- THE PATHWAY --- */}
+      <section className="relative py-24 sm:py-40 overflow-hidden bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative p-8 sm:p-12 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30 overflow-hidden"
+            className="text-center mb-24"
           >
-            <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-            <div className="absolute top-0 right-0 w-[300px] h-[200px] bg-primary/5 rounded-full blur-[100px]" />
-
-            <div className="relative grid md:grid-cols-[1fr_auto] gap-8 items-center">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Sun size={20} className="text-primary" />
-                  </div>
-                  <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">Supporting Layer</span>
-                </div>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4">
-                  SHAKTI — Activating Aligned Momentum
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  SHAKTI isn't a separate journey — it's the activation layer that runs alongside any programme. Modular, applied sessions that strengthen communication, leadership presence, and team alignment wherever you are in the ecosystem.
-                </p>
-              </div>
-              <CTAButton
-                to="/program-shakti"
-                size="md"
-                variant="outline"
-                icon={null as any}
-                className="whitespace-nowrap"
-              >
-                Explore SHAKTI
-              </CTAButton>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-primary/60" />
+              <p className="font-display text-xs uppercase tracking-[0.4em] text-primary font-bold">
+                The Architectural Flow
+              </p>
+              <span className="h-[1px] w-8 bg-primary/60" />
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Which Journey is Right for You */}
-      <section id="which-journey" className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-card/10" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">Your Path</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
-              Which Journey is right for you?
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Each programme serves a different depth. There's no wrong entry point — only the one that matches where you are right now.
+            <h2 className="font-display text-4xl sm:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6 leading-tight">The Success369 Pathway</h2>
+            <div className="h-[1px] w-32 bg-primary/30 mx-auto mb-8" />
+            <p className="text-primary/70 text-lg sm:text-xl font-light tracking-[0.2em] uppercase flex items-center justify-center gap-4 sm:gap-8 flex-wrap">
+              <span>Pause</span> 
+              <ChevronRight size={16} className="opacity-20" /> 
+              <span>Align</span> 
+              <ChevronRight size={16} className="opacity-20" /> 
+              <span>Build</span> 
+              <ChevronRight size={16} className="opacity-20" /> 
+              <span>Activate</span>
             </p>
           </motion.div>
 
+          <div className="grid md:grid-cols-4 gap-8">
+            {pathwaySteps.map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.8 }}
+                className="relative text-center group"
+              >
+                {/* Background Number Pattern */}
+                <span className="absolute top-0 left-12 font-display text-7xl font-black text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.07] group-hover:-translate-y-4">
+                  0{i + 1}
+                </span>
+
+                <div className="relative w-24 h-24 mx-auto rounded-3xl bg-white/[0.02] border border-white/5 flex items-center justify-center mb-8 group-hover:border-primary/40 group-hover:bg-primary/5 transition-all duration-500 z-10">
+                  <step.icon size={32} className="text-primary/60 group-hover:text-primary transition-all duration-500" />
+                </div>
+                <h3 className="font-display text-xl font-bold mb-2 text-white uppercase tracking-wider group-hover:text-primary transition-colors relative z-10">{step.label}</h3>
+                <p className="text-primary/40 text-[9px] font-bold tracking-[0.3em] uppercase group-hover:opacity-100 transition-opacity relative z-10">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- THE JOURNEYS CARDS --- */}
+      <section className="relative py-24 sm:py-40 bg-black/20 border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-20">
+             <h2 className="font-display text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">Explore the <span className="italic font-normal">Journeys</span></h2>
+             <div className="h-[1px] w-24 bg-primary/20 mx-auto" />
+          </div>
+          
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {programCards.map((card, i) => (
               <motion.div
@@ -387,22 +291,33 @@ const Programs = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+                className="h-full"
               >
                 <Link
                   to={card.href}
-                  className="group block h-full p-6 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_50px_-15px_hsl(var(--primary)/0.15)]"
+                  className="group flex flex-col h-full p-8 rounded-[2.5rem] bg-background border border-white/5 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl relative overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                    <card.icon size={20} className="text-primary" />
+                  <div className="flex justify-between items-start mb-8">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-500">
+                      <card.icon size={24} className="text-primary group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="text-[9px] font-bold text-primary/20 group-hover:text-primary transition-colors tracking-[0.3em] uppercase">{card.phase}</span>
                   </div>
-                  <h3 className="font-display text-xl font-bold mb-1">{card.title}</h3>
-                  <p className="text-primary text-xs font-medium mb-3">{card.subtitle}</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-5">{card.description}</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                    {card.cta}
-                    <ChevronRight size={14} />
-                  </span>
+                  
+                  <h3 className="font-display text-2xl font-bold mb-2 text-white tracking-tight">{card.title}</h3>
+                  <p className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-6 opacity-60">{card.subtitle}</p>
+                  
+                  <p className="text-muted-foreground/80 text-sm leading-relaxed mb-8 flex-grow font-light group-hover:text-white/80 transition-colors">{card.description}</p>
+                  
+                  <div className="pt-6 border-t border-white/5 mt-auto">
+                    <p className="text-white text-sm font-medium mb-10 leading-relaxed italic group-hover:text-primary transition-colors">"{card.outcome}"</p>
+                    
+                    <div className="flex items-center gap-3 text-xs font-bold text-white group-hover:text-primary transition-all duration-500">
+                      <span className="tracking-widest uppercase">{card.cta}</span>
+                      <ArrowRight size={14} className="text-primary group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
                 </Link>
               </motion.div>
             ))}
@@ -410,17 +325,71 @@ const Programs = () => {
         </div>
       </section>
 
+      {/* --- WHO IT'S FOR --- */}
+      <section className="py-24 sm:py-32 relative overflow-hidden bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-end mb-24">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+            >
+              <div className="inline-flex items-center gap-3 mb-6">
+                <span className="h-[1px] w-8 bg-primary/60" />
+                <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                  Ready for Relevance?
+                </p>
+                <span className="h-[1px] w-8 bg-primary/60" />
+              </div>
+              <h2 className="font-display text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent leading-tight">Who It’s <span className="italic font-normal">For</span></h2>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.1 }}
+            >
+               <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-lg">
+                 You don’t need everything figured out. The journey meets you exactly where you are.
+               </p>
+            </motion.div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { label: "Individuals", desc: "Seeking clarity and personal meaning.", icon: Heart },
+              { label: "Professionals & Leaders", desc: "Navigating growth and responsibility.", icon: Users },
+              { label: "Entrepreneurs", desc: "Building long-term value and legacy.", icon: Compass },
+              { label: "Organisations", desc: "Aligning purpose and performance.", icon: Building2 }
+            ].map((audience, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-[2rem] bg-white/[0.01] border border-white/5 hover:border-primary/20 hover:bg-white/[0.03] transition-all duration-500 group"
+              >
+                <audience.icon size={24} className="text-primary/30 group-hover:text-primary mb-6 transition-all duration-500 group-hover:scale-110" />
+                <h4 className="text-white text-lg font-bold mb-2 tracking-tight uppercase group-hover:text-primary transition-colors">{audience.label}</h4>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed group-hover:text-white/70 transition-colors">{audience.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- FINAL CONVERSION --- */}
       <GlobalCTA
         title={
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] mb-6 text-white uppercase tracking-wider">
-            Not sure where to start?
-            <br />
-            <span className="text-primary italic">Start with a free session.</span>
+          <h2 className="font-display text-4xl sm:text-6xl font-bold mb-10 leading-[1.1] text-white">
+            Begin Your <br /><span className="italic text-primary text-glow">Journey.</span>
           </h2>
         }
-        description="A free, no-pressure conversation to explore what's alive for you — and which Journey might be right."
+        description="If you’re unsure where to start, begin with a conversation. Understand your context. See your options clearly. Decide with confidence."
         ctaText="Take a Free Session"
-        ctaHref="/#newsletter"
+        ctaHref="/free-session"
         showPillars={false}
       />
 
