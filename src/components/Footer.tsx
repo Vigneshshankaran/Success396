@@ -1,23 +1,33 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Youtube, ArrowRight, Check } from "lucide-react";
 import logo from "@/assets/logo.png";
+import CTAButton from "@/components/CTAButton";
 
 const exploreLinks = [
-  "Home", "Success369 Journeys", "The Success369 Model",
-  "The Book", "Stories", "Events", "Blog",
+  { label: "Home", href: "/" },
+  { label: "Success369 Journeys", href: "/programs" },
+  { label: "The Success369 Model", href: "/#journey" },
+  { label: "The Book", href: "/book" },
+  { label: "Stories", href: "/#testimonials" },
+  { label: "Events", href: "/events" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const connectLinks = [
-  { label: "Take a Free session", href: "#" },
-  { label: "Stay connected", href: "#" },
+  { label: "Take a Free session", href: "/free-session" },
+  { label: "Stay connected", href: "/#newsletter" },
   { label: "Instagram", href: "#", icon: Instagram },
   { label: "LinkedIn", href: "#", icon: Linkedin },
   { label: "YouTube", href: "#", icon: Youtube },
 ];
 
 const policyLinks = [
-  "Privacy policy", "Terms & conditions", "Refund Policy", "Shipping Policy",
+  { label: "Privacy policy", href: "/privacy-policy" },
+  { label: "Terms & conditions", href: "/terms-conditions" },
+  { label: "Refund Policy", href: "/refund-policy" },
+  { label: "Shipping Policy", href: "/shipping-policy" },
 ];
 
 const Footer = () => {
@@ -75,13 +85,14 @@ const Footer = () => {
                       required
                       className="w-full bg-white/5 border border-white/10 rounded-lg pl-4 pr-32 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-all duration-300"
                     />
-                    <button
+                    <CTAButton
                       type="submit"
-                      className="absolute right-1 top-1 bottom-1 px-4 rounded-md bg-gradient-to-r from-primary to-accent text-primary-foreground text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                      variant="shimmer"
+                      size="sm"
+                      className="absolute right-1 top-1 bottom-1 px-4 rounded-md"
                     >
-                      <span>Subscribe</span>
-                      <ArrowRight size={14} />
-                    </button>
+                      Subscribe
+                    </CTAButton>
                   </motion.form>
                 ) : (
                   <motion.div
@@ -116,14 +127,24 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               {exploreLinks.map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 inline-block relative group"
-                  >
-                    {link}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
-                  </a>
+                <li key={link.label}>
+                  {link.href.startsWith("/#") ? (
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 inline-block relative group"
+                    >
+                      {link.label}
+                      <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 inline-block relative group"
+                    >
+                      {link.label}
+                      <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -142,13 +163,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {connectLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 inline-flex items-center gap-2 group"
-                  >
-                    {link.icon && <link.icon size={14} className="group-hover:scale-110 transition-transform" />}
-                    {link.label}
-                  </a>
+                  {link.href.startsWith("/") && !link.href.startsWith("/#") ? (
+                    <Link
+                      to={link.href}
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 inline-flex items-center gap-2 group"
+                    >
+                      {link.icon && <link.icon size={14} className="group-hover:scale-110 transition-transform" />}
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 inline-flex items-center gap-2 group"
+                    >
+                      {link.icon && <link.icon size={14} className="group-hover:scale-110 transition-transform" />}
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -181,13 +212,13 @@ const Footer = () => {
           </p>
           <div className="flex flex-wrap items-center gap-6">
             {policyLinks.map((link) => (
-              <a
-                key={link}
-                href="#"
+              <Link
+                key={link.label}
+                to={link.href}
                 className="text-muted-foreground/60 text-xs hover:text-primary underline underline-offset-2 transition-colors"
               >
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
           </div>
         </div>

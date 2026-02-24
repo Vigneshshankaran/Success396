@@ -5,7 +5,7 @@ import VideoCardsSection from "@/components/VideoCardsSection";
 import TrainersSection from "@/components/TrainersSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
-import NewsletterCTA from "@/components/NewsletterCTA";
+import GlobalCTA from "@/components/GlobalCTA";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -18,7 +18,7 @@ const Index = () => {
       <TrainersSection />
       <TestimonialsSection />
       <FAQSection />
-      <NewsletterCTA />
+      <GlobalCTA kind="form" />
       <Footer />
     </main>
   );

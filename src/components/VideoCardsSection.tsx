@@ -5,6 +5,7 @@ import gitaVideo from "../assets/gita.mp4";
 import mayaVideo from "../assets/maya.mp4";
 import sarvamVideo from "../assets/sarvam.mp4";
 import shaktiVideo from "../assets/shakti.mp4";
+import CTAButton from "./CTAButton";
 
 interface VideoCard {
   title: string;
@@ -130,13 +131,14 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h3 className="text-foreground mb-4">{activeCard.title}</h3>
-                <p className="text-muted-foreground text-xl leading-relaxed max-w-lg mb-8 font-light">
-                  {activeCard.description}
-                </p>
-                <button className="group flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-display text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all duration-300 hover:shadow-[var(--slider-glow)]">
+                <CTAButton 
+                  href="/#newsletter"
+                  size="md"
+                  variant="shimmer"
+                  className="mt-4"
+                >
                   {activeCard.cta}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
+                </CTAButton>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -241,10 +243,13 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4 font-light">
                     {activeCard.description}
                   </p>
-                  <button className="group flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 font-display text-xs font-semibold uppercase tracking-wider text-primary-foreground transition-all duration-300 hover:shadow-[var(--slider-glow)]">
+                  <CTAButton 
+                    href="/#newsletter"
+                    size="sm"
+                    variant="shimmer"
+                  >
                     {activeCard.cta}
-                    <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
+                  </CTAButton>
                 </motion.div>
               </AnimatePresence>
             </div>

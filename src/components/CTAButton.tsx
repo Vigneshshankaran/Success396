@@ -1,0 +1,87 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight, LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface CTAButtonProps {
+  to?: string;
+  href?: string;
+  children: React.ReactNode;
+  variant?: "primary" | "secondary" | "shimmer" | "outline";
+  size?: "sm" | "md" | "lg";
+  className?: string;
+  icon?: LucideIcon;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+}
+
+const CTAButton = ({
+  to,
+  href,
+  children,
+  variant = "shimmer",
+  size = "md",
+  className,
+  icon: Icon = ArrowRight,
+  onClick,
+  type = "button",
+  disabled,
+}: CTAButtonProps) => {
+  const sizeClasses = {
+    sm: "px-6 py-2.5 text-xs sm:text-sm",
+    md: "px-8 py-3.5 text-sm font-semibold",
+    lg: "px-10 py-4 text-base font-bold",
+  };
+
+  const variants = {
+    shimmer: "text-primary-foreground overflow-hidden group shadow-2xl shadow-primary/20",
+    primary: "text-primary-foreground bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-500 shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)]",
+    secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+    outline: "border border-foreground/20 text-foreground hover:border-primary hover:text-primary transition-colors duration-300",
+  };
+
+  const commonClasses = cn(
+    "relative inline-flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 whitespace-nowrap uppercase tracking-wider font-display",
+    sizeClasses[size],
+    variants[variant],
+    disabled && "opacity-50 cursor-not-allowed grayscale",
+    className
+  );
+
+  const Content = (
+    <>
+      {variant === "shimmer" && (
+        <span className="absolute inset-0 bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
+      )}
+      <span className="relative flex items-center gap-2">
+        {children}
+        {Icon && <Icon size={size === "lg" ? 20 : 16} className="group-hover:translate-x-1 transition-transform" />}
+      </span>
+    </>
+  );
+
+  if (to) {
+    return (
+      <Link to={to} className={commonClasses} onClick={onClick}>
+        {Content}
+      </Link>
+    );
+  }
+
+  if (href) {
+    return (
+      <a href={href} className={commonClasses} onClick={onClick}>
+        {Content}
+      </a>
+    );
+  }
+
+  return (
+    <button type={type} className={commonClasses} onClick={onClick} disabled={disabled}>
+      {Content}
+    </button>
+  );
+};
+
+export default CTAButton;

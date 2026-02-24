@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import model369 from "@/assets/Model 369.mp4";
 import journey from "@/assets/Journey op 1.mp4";
 import event from "@/assets/Events Video.mp4";
 import book from "@/assets/Book.mp4";
-
+import CTAButton from "./CTAButton";
 
 interface Slide {
   video: string;
@@ -26,7 +26,6 @@ const slides: Slide[] = [
     cta: "Take a Free Session",
     ctaSecondary: "Watch Trailer",
   },
-
   {
     video: journey,
     tag: "Programs",
@@ -52,7 +51,6 @@ const slides: Slide[] = [
     cta: "Join the Event",
     ctaSecondary: "View Gallery",
   },
-
 ];
 
 const SLIDE_DURATION = 6000;
@@ -173,10 +171,13 @@ const HeroSlider = () => {
                 transition={{ delay: 0.7, duration: 0.5 }}
                 className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
               >
-                <button className="group relative overflow-hidden rounded-lg bg-primary px-6 sm:px-8 py-3 sm:py-3.5 font-display text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all duration-300 hover:shadow-[var(--slider-glow)]">
-                  <span className="relative z-10">{slide.cta}</span>
-                  <div className="absolute inset-0 -translate-x-full bg-accent transition-transform duration-500 group-hover:translate-x-0" />
-                </button>
+                <CTAButton 
+                  href="/#newsletter"
+                  size="md"
+                  variant="shimmer"
+                >
+                  {slide.cta}
+                </CTAButton>
               </motion.div>
             </motion.div>
           </AnimatePresence>

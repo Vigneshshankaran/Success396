@@ -1,0 +1,344 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "sonner";
+import {
+  Mail, Phone, MapPin, Clock, Send, CheckCircle2,
+  Instagram, Linkedin, Youtube, ArrowRight,
+} from "lucide-react";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be under 100 characters"),
+  email: z.string().trim().email("Please enter a valid email").max(255, "Email must be under 255 characters"),
+  phone: z.string().trim().max(20, "Phone must be under 20 characters").optional().or(z.literal("")),
+  subject: z.string().min(1, "Please select a subject"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be under 1000 characters"),
+});
+
+type ContactFormValues = z.infer<typeof contactSchema>;
+
+const subjects = [
+  "General Inquiry",
+  "Book a Session",
+  "Corporate Training",
+  "Speaking Engagement",
+  "Partnership",
+  "Other",
+];
+
+const contactInfo = [
+  { icon: Mail, label: "Email", value: "hello@success369.com", href: "mailto:hello@success369.com" },
+  { icon: Phone, label: "Phone", value: "+44 20 7946 0958", href: "tel:+442079460958" },
+  { icon: MapPin, label: "Office", value: "London, United Kingdom" },
+  { icon: Clock, label: "Hours", value: "Mon – Fri, 9 AM – 6 PM GMT" },
+];
+
+const socialLinks = [
+  { icon: Instagram, label: "Instagram", href: "#" },
+  { icon: Linkedin, label: "LinkedIn", href: "#" },
+  { icon: Youtube, label: "YouTube", href: "#" },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
+const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: { name: "", email: "", phone: "", subject: "", message: "" },
+  });
+
+  const onSubmit = (data: ContactFormValues) => {
+    // Future: send to backend
+    setSubmitted(true);
+    toast.success("Message sent! We'll be in touch shortly.");
+  };
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+
+      {/* Hero */}
+      <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-primary/8 rounded-full blur-[140px]" />
+        <div className="relative max-w-4xl mx-auto text-center px-4">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-primary font-medium text-sm tracking-widest uppercase mb-4"
+          >
+            Let's Connect
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-4"
+          >
+            Get in{" "}
+            <span className="bg-gradient-to-r from-primary via-pink-400 to-primary bg-clip-text text-transparent">
+              Touch
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-muted-foreground text-lg max-w-xl mx-auto"
+          >
+            Ready to start your transformation? Reach out and let's explore how we can work together.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Main content */}
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16">
+          {/* Contact Form */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            custom={0}
+            variants={fadeUp}
+            className="relative rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm p-6 sm:p-8"
+          >
+            <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center py-16 text-center"
+              >
+                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6">
+                  <CheckCircle2 className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-display text-2xl font-bold mb-2">Message Sent!</h3>
+                <p className="text-muted-foreground mb-6 max-w-sm">
+                  Thank you for reaching out. We'll get back to you within 24 hours.
+                </p>
+                <Button
+                  variant="outline"
+                  onClick={() => { setSubmitted(false); form.reset(); }}
+                  className="rounded-full"
+                >
+                  Send Another Message
+                </Button>
+              </motion.div>
+            ) : (
+              <>
+                <h2 className="font-display text-xl font-semibold mb-6">Send a Message</h2>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Name *</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Your full name"
+                                className="bg-background/50 border-border/50 focus:border-primary/50"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email *</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="email"
+                                placeholder="you@example.com"
+                                className="bg-background/50 border-border/50 focus:border-primary/50"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="+44 ..."
+                                className="bg-background/50 border-border/50 focus:border-primary/50"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="subject"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Subject *</FormLabel>
+                            <FormControl>
+                              <select
+                                {...field}
+                                className="flex h-10 w-full rounded-md border border-border/50 bg-background/50 px-3 py-2 text-sm ring-offset-background focus:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                              >
+                                <option value="">Select a subject</option>
+                                {subjects.map((s) => (
+                                  <option key={s} value={s}>{s}</option>
+                                ))}
+                              </select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message *</FormLabel>
+                          <FormControl>
+                            <textarea
+                              rows={5}
+                              placeholder="Tell us how we can help..."
+                              className="flex w-full rounded-md border border-border/50 bg-background/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-none"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      <Button
+                        type="submit"
+                        className="w-full rounded-full h-12 text-sm font-semibold bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] hover:bg-right transition-all duration-500 text-primary-foreground"
+                      >
+                        <Send className="w-4 h-4 mr-2" />
+                        Send Message
+                      </Button>
+                    </motion.div>
+                  </form>
+                </Form>
+              </>
+            )}
+          </motion.div>
+
+          {/* Right column */}
+          <div className="space-y-6">
+            {/* Info cards */}
+            {contactInfo.map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                custom={i + 1}
+                variants={fadeUp}
+                className="group relative rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm p-5 flex items-start gap-4 hover:border-primary/30 transition-colors duration-300"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <item.icon className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{item.label}</p>
+                  {item.href ? (
+                    <a href={item.href} className="text-foreground font-medium hover:text-primary transition-colors">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-foreground font-medium">{item.value}</p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Social links */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              custom={5}
+              variants={fadeUp}
+              className="rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm p-5"
+            >
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-4">Follow Us</p>
+              <div className="flex gap-3">
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    aria-label={s.label}
+                    className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors group"
+                  >
+                    <s.icon className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Map placeholder */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              custom={6}
+              variants={fadeUp}
+              className="rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm overflow-hidden"
+            >
+              <div className="relative h-48 bg-gradient-to-br from-primary/5 via-card/60 to-pink-500/5 flex items-center justify-center">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.08),transparent_70%)]" />
+                <div className="text-center relative">
+                  <MapPin className="w-8 h-8 text-primary/40 mx-auto mb-2" />
+                  <p className="text-muted-foreground text-sm">London, United Kingdom</p>
+                  <p className="text-muted-foreground/50 text-xs mt-1">Map coming soon</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Contact;

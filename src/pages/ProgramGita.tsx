@@ -1,0 +1,288 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight, Eye, Sparkles, CheckCircle2, Clock, Globe, Users, Target, Building } from "lucide-react";
+import CTAButton from "@/components/CTAButton";
+import GlobalCTA from "@/components/GlobalCTA";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import gitaVideo from "@/assets/gita.mp4";
+import card1 from "@/assets/card-1.jpg";
+import card2 from "@/assets/card-2.jpg";
+import card3 from "@/assets/card-3.jpg";
+import card4 from "@/assets/card-4.jpg";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
+const ProgramGita = () => {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+
+      {/* --- HERO SECTION (High-Conversion Style) --- */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-60"
+          >
+            <source src={gitaVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md">
+              <Sparkles size={14} />
+              Success369 – GITA
+            </span>
+          </motion.div>
+
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight"
+          >
+            Some moments <br />
+            <span className="text-primary text-glow italic">don’t need speed.</span>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={2}
+            className="text-xl sm:text-2xl text-foreground/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
+          >
+            They need clarity. GITA is the essential entry point for those at a decision point, designed to reveal the direction that makes sense for your next move.
+          </motion.p>
+
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <CTAButton
+              to="/free-session"
+              size="lg"
+              variant="shimmer"
+            >
+              Book Your GITA Session
+            </CTAButton>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- FOUNDATION STYLE: WHO SHOULD BEGIN? --- */}
+      <section className="py-24 px-4 sm:px-6 bg-background relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none -translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] pointer-events-none translate-x-1/4 -translate-y-1/4" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-14 md:mb-20 max-w-4xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-primary/60" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                Clarity Before Action
+              </p>
+              <span className="h-[1px] w-8 bg-primary/60" />
+            </div>
+            <h2 className="mb-8 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Who is GITA For?
+            </h2>
+            <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+              GITA is for individuals at a decision point—students, professionals, leaders, or anyone feeling capable but unclear.
+            </p>
+          </motion.div>
+
+          {/* Cards following Home Page style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 items-start pb-20">
+            {[
+              {
+                image: card1,
+                title: "Professionals at a Crossroads",
+                description: "Career moves, leadership shifts, or moments of uncertainty—when acting without clarity can create years of confusion.",
+                step: "01",
+              },
+              {
+                image: card2,
+                title: "Capable but Unclear Leaders",
+                description: "You have the momentum, but you question the direction. GITA helps you pause and choose your next step with confidence.",
+                step: "02",
+              },
+            ].map((card, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                style={{ marginTop: (index % 2 === 1) ? "100px" : "0px" }}
+                className="group relative"
+              >
+                {/* Floating Background Number */}
+                <span className="absolute -top-16 -right-8 font-display text-[10rem] md:text-[14rem] font-black text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.07] group-hover:-translate-y-8 group-hover:-translate-x-4">
+                  {card.step}
+                </span>
+
+                <div className="relative rounded-[2.5rem] border border-border/40 bg-card/30 backdrop-blur-2xl overflow-hidden transition-all duration-700 hover:border-primary/40 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
+                  {/* Image Container */}
+                  <div className="relative h-64 sm:h-80 md:h-[400px] overflow-hidden">
+                    <motion.img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover grayscale brightness-75 transition-all duration-1000 ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/20 to-transparent" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-10 md:p-12">
+                    <motion.div className="w-16 h-1 bg-primary/20 mb-8 overflow-hidden rounded-full">
+                      <motion.div className="h-full bg-primary" initial={{ x: "-100%" }} whileInView={{ x: "0%" }} transition={{ duration: 1 }} />
+                    </motion.div>
+                    <h3 className="mb-4 text-2xl font-bold text-foreground tracking-tight">{card.title}</h3>
+                    <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">{card.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- WHAT IS GITA? (Process) --- */}
+      <section className="py-24 sm:py-32 relative bg-card/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The Experience</span>
+              <h2 className="font-display text-4xl sm:text-5xl font-bold mb-8 leading-[1.1]">
+                A space for <br />
+                <span className="text-primary italic">clear thinking.</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-xl">
+                GITA is a guided clarity session. It doesn't give quick advice. It creates space for you to understand who you are right now, what truly matters, and what direction makes sense.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {[
+                  { icon: Clock, label: "3-hour guided session" },
+                  { icon: Users, label: "1:1 or small group" },
+                  { icon: Globe, label: "Online or in person" },
+                  { icon: Target, label: "No quick advice" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <item.icon size={18} className="text-primary" />
+                    </div>
+                    <span className="text-foreground/90 font-medium text-sm">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200"
+                  alt="Clarity Session"
+                  className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+              </div>
+              {/* Floating Stat/Accent */}
+              <div className="absolute -bottom-8 -left-8 p-6 rounded-2xl bg-card border border-primary/20 backdrop-blur-xl shadow-xl max-w-[200px]">
+                <p className="text-primary font-display text-3xl font-bold mb-1">100%</p>
+                <p className="text-muted-foreground text-xs leading-tight font-medium">Focus on your personal transformation</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- WHAT YOU GAIN (Transformation) --- */}
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">What You Gain</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Clarity comes first. Action comes after."</p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Self-Understanding", desc: "Clear understanding of who you are right now.", icon: Users },
+              { title: "Direction Clarity", desc: "Knowing which path makes sense from here.", icon: Target },
+              { title: "Confident Decisions", desc: "Confidence in your next moves.", icon: Sparkles },
+              { title: "Grounded Path", desc: "A calm way forward from here.", icon: Building }
+            ].map((gain, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
+                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="font-display text-xl font-bold mb-3">{gain.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <GlobalCTA
+        title={
+          <h2 className="font-display text-4xl sm:text-6xl font-bold mb-8 leading-tight text-white">
+            Begin with <span className="text-primary italic">Clarity.</span>
+          </h2>
+        }
+        description="Book your GITA session and choose your next step with absolute confidence."
+        ctaText="Book Your GITA Session"
+        ctaHref="/free-session"
+        showPillars={false}
+      />
+
+      <Footer />
+    </div>
+  );
+};
+
+export default ProgramGita;
