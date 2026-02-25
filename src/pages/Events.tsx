@@ -54,21 +54,20 @@ const Events = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 pb-28 sm:pb-32">
+        <div className="relative z-20 container-custom w-full pb-28 sm:pb-32">
           <motion.div initial="hidden" animate="visible" className="max-w-3xl">
             <motion.div
               custom={0}
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-xl mb-6"
+              className="mb-3 sm:mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-white"
             >
-              <Sparkles size={14} className="text-primary" />
-              <span className="text-[10px] font-bold text-primary tracking-[0.3em] uppercase">Success369 Live Experiences</span>
+              Success369 Live Experiences
             </motion.div>
 
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6"
+              className="mb-4 sm:mb-6 text-glow"
             >
               Experience the magic of{" "}
               <span className="italic text-primary text-glow font-light">transformation</span>
@@ -77,7 +76,7 @@ const Events = () => {
             <motion.p
               custom={2}
               variants={fadeUp}
-              className="text-lg sm:text-xl leading-relaxed font-light text-muted-foreground/90 mb-10 max-w-2xl"
+              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-muted-foreground/90 font-light"
             >
               Some experiences don't just teach you — they rewire you. Join seekers, leaders, and visionaries who've discovered that the fastest path to growth isn't online. It's in the room.
             </motion.p>
@@ -97,8 +96,8 @@ const Events = () => {
       </section>
 
       {/* Stats Bar */}
-      <section className="relative border-y border-border/30 bg-card/30 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+      <section className="bg-card/20 border-y border-white/5">
+        <div className="container-custom section">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
             {stats.map((stat, i) => (
               <motion.div
@@ -109,10 +108,10 @@ const Events = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="font-display text-3xl sm:text-4xl font-bold text-primary mb-2">
+                <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">
                   {stat.value}
                 </div>
-                <div className="text-muted-foreground text-sm">{stat.label}</div>
+                <div className="text-muted-foreground text-sm sm:text-base uppercase tracking-wider">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -120,9 +119,9 @@ const Events = () => {
       </section>
 
       {/* Events Listing */}
-      <section id="events" className="relative py-20 sm:py-28">
+      <section id="events" className="relative section">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +129,7 @@ const Events = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="mb-4">
               Discover all events
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto mb-8">
@@ -243,7 +242,7 @@ const Events = () => {
       <GlobalCTA
         kind="form"
         title={
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4 uppercase tracking-wider">
+          <h2 className="text-white mb-4 uppercase tracking-wider">
             Don't miss <span className="text-primary italic">your moment</span>
           </h2>
         }

@@ -36,7 +36,7 @@ const CTAButton = ({
 
   const variants = {
     shimmer: "text-primary-foreground overflow-hidden group shadow-2xl shadow-primary/20",
-    primary: "text-primary-foreground bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-500 shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)]",
+    primary: "text-primary-foreground bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-500 shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)]",
     secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
     outline: "border border-foreground/20 text-foreground hover:border-primary hover:text-primary transition-colors duration-300",
   };
@@ -52,7 +52,7 @@ const CTAButton = ({
   const Content = (
     <>
       {variant === "shimmer" && (
-        <span className="absolute inset-0 bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
+        <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
       )}
       <span className="relative flex items-center gap-2">
         {children}

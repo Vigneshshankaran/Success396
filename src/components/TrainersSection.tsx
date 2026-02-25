@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Linkedin, Twitter, Award, Users, ArrowRight, BookOpen } from "lucide-react";
 import trainer1 from "@/assets/trainer-1.jpg";
 import trainer2 from "@/assets/trainer-2.jpg";
+import CTAButton from "./CTAButton";
 
 const trainers = [
   {
@@ -135,7 +136,7 @@ Success369 is guided by two stewards who believe success is cultivated with clar
                       {trainer.specialties.map((s) => (
                         <span
                           key={s}
-                          className="text-[11px] font-display font-medium uppercase tracking-wider px-3 py-1.5 rounded-full border border-primary/20 text-primary/80 bg-primary/5"
+                          className="text-[11px] font-display font-medium uppercase tracking-wider px-3 py-1.5 rounded-full border border-white/20 text-white bg-white/5"
                         >
                           {s}
                         </span>
@@ -154,10 +155,14 @@ Success369 is guided by two stewards who believe success is cultivated with clar
 
                     {/* Actions */}
                     <div className="flex items-center gap-4 pt-2">
-                      <button className="group flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-display text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all duration-300 hover:shadow-[var(--slider-glow)]">
+                      <CTAButton 
+                        href="/contact"
+                        size="sm"
+                        variant="primary"
+                        className="uppercase tracking-wider"
+                      >
                         Book a Session
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                      </button>
+                      </CTAButton>
                       <div className="flex gap-2">
                         <button className="h-9 w-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors duration-300">
                           <Linkedin className="h-4 w-4" />

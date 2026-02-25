@@ -70,7 +70,7 @@ const ProgramSarvam = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              to="/free-session"
+              href="/contact?subject=SARVAM"
               size="lg"
               variant="shimmer"
             >
@@ -89,11 +89,11 @@ const ProgramSarvam = () => {
       </section>
 
       {/* --- WHO IT'S FOR (Foundation Style) --- */}
-      <section className="py-24 px-4 sm:px-6 bg-background relative overflow-hidden">
+      <section className="section bg-background relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none -translate-x-1/2" />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] pointer-events-none translate-x-1/4 -translate-y-1/4" />
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ const ProgramSarvam = () => {
               </p>
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
-            <h2 className="mb-8 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Who is SARVAM For?
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
@@ -170,8 +170,8 @@ const ProgramSarvam = () => {
       </section>
 
       {/* --- WHAT IS SARVAM? (Process) --- */}
-      <section className="py-24 sm:py-32 relative bg-card/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="section relative bg-card/10">
+        <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -180,7 +180,7 @@ const ProgramSarvam = () => {
               transition={{ duration: 0.8 }}
             >
               <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The Living Architecture</span>
-              <h2 className="font-display text-4xl sm:text-5xl font-bold mb-8 leading-[1.1]">
+              <h2 className="mb-8">
                 Building success that <br />
                 <span className="text-primary italic">actually lasts.</span>
               </h2>
@@ -231,14 +231,14 @@ const ProgramSarvam = () => {
 
       {/* --- WHAT YOU GAIN --- */}
       <section className="py-24 sm:py-32 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">What You Gain</h2>
+            <h2 className="mb-6">What You Gain</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Success is a complete system — refined over time."</p>
           </motion.div>
 
@@ -260,7 +260,7 @@ const ProgramSarvam = () => {
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
                   <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="font-display text-xl font-bold mb-3">{gain.title}</h3>
+                <h3 className="mb-3">{gain.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
               </motion.div>
             ))}
@@ -270,13 +270,13 @@ const ProgramSarvam = () => {
 
       <GlobalCTA
         title={
-          <h2 className="font-display text-4xl sm:text-6xl font-bold mb-8 leading-tight text-white">
+          <h2 className="text-white">
             Build your <span className="text-primary italic">legacy architecture.</span>
           </h2>
         }
         description="SARVAM is by application only. Book a conversation to explore if this is the right time for your transformation."
         ctaText="Apply for SARVAM"
-        ctaHref="/free-session"
+        ctaHref="/contact?subject=SARVAM"
         showPillars={false}
       />
 

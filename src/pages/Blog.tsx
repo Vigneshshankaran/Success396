@@ -46,19 +46,22 @@ const Blog = () => {
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial="hidden" animate="visible">
-            <motion.span
+            <motion.div
               custom={0}
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6 text-xs font-medium text-primary tracking-wide uppercase"
+              className="inline-flex items-center gap-3 mb-6"
             >
-              <Sparkles size={14} />
-              Leadership & Thought Leadership
-            </motion.span>
+              <span className="h-[1px] w-8 bg-primary/60" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                Leadership & Thought Leadership
+              </p>
+              <span className="h-[1px] w-8 bg-primary/60" />
+            </motion.div>
 
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.08] mb-6"
+              className="mb-8"
             >
               Insights for{" "}
               <span className="text-primary text-glow">sustainable growth</span>
@@ -67,7 +70,7 @@ const Blog = () => {
             <motion.p
               custom={2}
               variants={fadeUp}
-              className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+              className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"
             >
               Explore perspectives on clarity, congruence, and catalysis — the three pillars of
               lasting transformation.
@@ -78,8 +81,8 @@ const Blog = () => {
 
       {/* Featured Post */}
       {featured && (
-        <section className="relative pb-16 sm:pb-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <section className="section bg-background/50 relative overflow-hidden">
+          <div className="container-custom">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +110,7 @@ const Blog = () => {
                     <span className="text-primary text-xs font-semibold tracking-wider uppercase mb-3">
                       {featured.category}
                     </span>
-                    <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300 leading-tight">
+                    <h2 className="group-hover:text-primary transition-colors duration-300 leading-tight">
                       {featured.title}
                     </h2>
                     <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">
@@ -134,9 +137,9 @@ const Blog = () => {
       )}
 
       {/* Filters + Search + Grid */}
-      <section className="relative py-12 sm:py-16">
+      <section className="section relative">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative container-custom">
           {/* Search + Filters */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -249,7 +252,7 @@ const Blog = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="mb-4">
               Stay in the loop
             </h2>
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">

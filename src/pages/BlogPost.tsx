@@ -137,19 +137,22 @@ const BlogPost = () => {
               <span className="text-foreground line-clamp-1">{post.title}</span>
             </motion.div>
 
-            <motion.span
+            <motion.div
               custom={1}
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6 text-xs font-medium text-primary tracking-wide uppercase"
+              className="inline-flex items-center gap-3 mb-6"
             >
-              <Sparkles size={14} />
-              {post.category}
-            </motion.span>
+              <span className="h-[1px] w-8 bg-primary/60" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                {post.category}
+              </p>
+              <span className="h-[1px] w-8 bg-primary/60" />
+            </motion.div>
 
             <motion.h1
               custom={2}
               variants={fadeUp}
-              className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] mb-6"
+              className="mb-6"
             >
               {post.title}
             </motion.h1>
@@ -174,7 +177,7 @@ const BlogPost = () => {
       {/* Content with Sidebar */}
       <section className="relative py-16 sm:py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative container-custom">
           <div className="grid lg:grid-cols-[280px_1fr] gap-10">
             {/* Sidebar - Mobile: normal flow, Desktop: sticky */}
             <aside className="lg:sticky lg:top-24 lg:self-start">
@@ -206,9 +209,9 @@ const BlogPost = () => {
 
       {/* Related Posts */}
       {related.length > 0 && (
-        <section className="relative py-16 sm:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
+        <section className="section relative">
+          <div className="container-custom">
+            <h2 className="mb-8 text-center">
               More in {post.category}
             </h2>
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -244,8 +247,8 @@ const BlogPost = () => {
       )}
 
       {/* Back */}
-      <section className="relative pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+      <section className="section relative bg-background/50">
+        <div className="container-custom text-center">
           <Link to="/blog" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary font-medium transition-colors">
             <ArrowLeft size={16} />
             Back to All Articles

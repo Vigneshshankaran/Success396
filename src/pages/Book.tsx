@@ -53,7 +53,7 @@ const bookFormats = [
   {
     id: "hardcover",
     title: "Hardcover Edition",
-    price: "$29.00",
+    price: "₹2000.00",
     description: "Premium cloth-bound edition for your library. Includes digital resources.",
     icon: BookOpen,
     priceId: import.meta.env.VITE_PRICE_ID_HARDCOVER || "price_placeholder_hardcover",
@@ -62,7 +62,7 @@ const bookFormats = [
   {
     id: "digital",
     title: "Digital Ecosystem",
-    price: "$19.00",
+    price: "₹2500.00",
     description: "Instant access to E-book, Audiobook, and Interactive Journal.",
     icon: FileText,
     priceId: import.meta.env.VITE_PRICE_ID_DIGITAL || "price_placeholder_digital",
@@ -114,21 +114,20 @@ const Book = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto w-full px-4 sm:px-6 pb-28 sm:pb-32 z-10">
+        <div className="relative container-custom w-full pb-28 sm:pb-32 z-10">
           <motion.div initial="hidden" animate="visible" className="max-w-3xl">
               <motion.div
                 custom={0}
                 variants={fadeUp}
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-xl mb-6"
+                className="mb-3 sm:mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-white"
               >
-                <Bookmark size={14} className="text-primary" />
-                <span className="text-[10px] font-bold text-primary tracking-[0.3em] uppercase">The Definitive Guide to Alignment</span>
+                The Definitive Guide to Alignment
               </motion.div>
 
               <motion.h1
                 custom={1}
                 variants={fadeUp}
-                className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-6"
+                className="mb-4 sm:mb-6 text-glow"
               >
                 The Blueprint for <br />
                 <span className="italic text-primary text-glow font-light">Sustainable Success</span>
@@ -137,7 +136,7 @@ const Book = () => {
               <motion.p
                 custom={2}
                 variants={fadeUp}
-                className="text-lg sm:text-xl leading-relaxed font-light text-muted-foreground/90 mb-10 max-w-xl"
+                className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-muted-foreground/90 font-light"
               >
                 Discover the three-pillar framework that's transforming how leaders and entrepreneurs build impact that lasts — without the burnout.
               </motion.p>
@@ -151,19 +150,13 @@ const Book = () => {
                 </CTAButton>
               </motion.div>
 
-              <motion.div custom={4} variants={fadeUp} className="flex items-center gap-6 pt-4 border-t border-white/5 max-w-sm">
-                <div className="flex -space-x-2">
-                  {[1,2,3,4,5].map(i => <Star key={i} size={16} className="text-primary fill-primary shadow-glow" />)}
-                </div>
-                <span className="text-sm font-light text-muted-foreground uppercase tracking-widest">Rated 4.9/5 by 2,400+ Readers</span>
-              </motion.div>
             </motion.div>
         </div>
       </section>
 
       {/* --- THE CORE PROMISE --- */}
-      <section className="py-24 sm:py-32 relative bg-black/40 border-y border-white/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <section className="section bg-card/10 relative overflow-hidden border-y border-white/5">
+        <div className="container-custom text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -177,7 +170,7 @@ const Book = () => {
                 </p>
                 <span className="h-[1px] w-8 bg-primary/60" />
               </div>
-              <h2 className="font-display text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-10 leading-[1.1]">
+              <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Success isn't about doing more. <br />
                 <span className="italic font-light">It's about becoming aligned.</span>
               </h2>
@@ -190,8 +183,8 @@ const Book = () => {
       </section>
 
       {/* --- THREE PILLARS --- */}
-      <section id="pillars" className="py-32 sm:py-48 relative overflow-hidden bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section id="pillars" className="section-lg relative overflow-hidden bg-background">
+        <div className="container-custom">
           <div className="text-center mb-28">
             <h2 className="font-display text-5xl sm:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">Three Pillars. <span className="italic font-normal">One Framework.</span></h2>
             <p className="text-muted-foreground text-xl font-light">The foundational architecture for modern transformation.</p>
@@ -215,7 +208,7 @@ const Book = () => {
                 <div className="relative w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-10 group-hover:bg-primary transition-all duration-700 z-10">
                   <pillar.icon size={28} className="text-primary group-hover:text-white" />
                 </div>
-                <h3 className="font-display text-3xl font-bold text-white mb-2 uppercase tracking-wide relative z-10">{pillar.title}</h3>
+                <h3 className="text-white mb-2 uppercase tracking-wide relative z-10">{pillar.title}</h3>
                 <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-8 opacity-60 relative z-10">{pillar.subtitle}</p>
                 <p className="text-muted-foreground/80 leading-relaxed text-lg font-light mb-12 relative z-10">{pillar.description}</p>
                 
@@ -235,11 +228,11 @@ const Book = () => {
       </section>
 
       {/* --- PRICING & BUY NOW --- */}
-      <section id="pricing" className="py-32 sm:py-48 relative bg-black/60 border-y border-white/10">
+      <section id="pricing" className="section-lg relative bg-black/60 border-y border-white/10">
          {/* Internal depth */}
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.05)_0%,transparent_70%)]" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+        <div className="container-custom relative z-10 text-center">
           <div className="mb-24">
             <div className="inline-flex items-center gap-3 mb-8 justify-center w-full">
               <span className="h-[1px] w-8 bg-primary/60" />
@@ -248,7 +241,7 @@ const Book = () => {
               </p>
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
-            <h2 className="font-display text-5xl sm:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-10">Secure Your <span className="italic font-normal">Blueprint.</span></h2>
+            <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Secure Your <span className="italic font-normal">Blueprint.</span></h2>
             <p className="text-muted-foreground text-xl font-light">Choose the format that fits your journey.</p>
           </div>
 
@@ -272,7 +265,7 @@ const Book = () => {
                   </div>
                 </div>
 
-                <h3 className="font-display text-3xl font-bold text-white mb-4 tracking-tight">{format.title}</h3>
+                <h3 className="text-white mb-4 tracking-tight">{format.title}</h3>
                 <p className="text-muted-foreground font-light mb-10 text-lg leading-relaxed">{format.description}</p>
 
                 <div className="space-y-4 mb-14 flex-grow">
@@ -287,7 +280,7 @@ const Book = () => {
                 <button
                   disabled={loading === format.priceId}
                   onClick={() => handleCheckout(format.priceId)}
-                  className="w-full py-6 rounded-2xl bg-primary text-white font-bold uppercase tracking-[0.2em] relative overflow-hidden group/btn hover:shadow-[0_0_40px_rgba(197,160,89,0.4)] transition-all flex items-center justify-center gap-4 disabled:opacity-50"
+                  className="w-full py-6 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] text-white font-bold uppercase tracking-[0.2em] relative overflow-hidden group/btn hover:shadow-[0_0_40px_rgba(197,160,89,0.4)] transition-all duration-500 flex items-center justify-center gap-4 disabled:opacity-50"
                 >
                   <div className="absolute inset-0 bg-white/20 translate-x-[-101%] group-hover/btn:translate-x-[101%] transition-transform duration-1000" />
                   {loading === format.priceId ? (
@@ -317,8 +310,8 @@ const Book = () => {
       </section>
 
       {/* Social Proof Voices */}
-      <section className="py-32 sm:py-48 relative overflow-hidden bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <section className="section bg-background overflow-hidden">
+        <div className="container-custom relative z-10">
            <div className="text-center mb-24">
               <div className="inline-flex items-center gap-3 mb-8 justify-center w-full">
                 <span className="h-[1px] w-8 bg-primary/60" />

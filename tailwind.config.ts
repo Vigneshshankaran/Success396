@@ -61,6 +61,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        pink: {
+          50: "#FFFAFC",
+          100: "#FFF0F7",
+          200: "#FFD6EB",
+          300: "#FFADD9",
+          400: "#FF75C0",
+          500: "#EC008C", // Brand Color
+          600: "#D1007A",
+          700: "#A80062",
+          800: "#80004B",
+          900: "#5C0036",
+          950: "#3D0024",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -7,20 +7,23 @@ import CTAButton from "@/components/CTAButton";
 
 const exploreLinks = [
   { label: "Home", href: "/" },
+  { label: "The Showcase", href: "/#showcase" },
   { label: "Success369 Journeys", href: "/programs" },
   { label: "The Success369 Model", href: "/#journey" },
+  { label: "The Humans", href: "/#trainers" },
   { label: "The Book", href: "/book" },
   { label: "Stories", href: "/#testimonials" },
   { label: "Events", href: "/events" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Blog", href: "/blog" },
 ];
 
 const connectLinks = [
   { label: "Take a Free session", href: "/free-session" },
   { label: "Stay connected", href: "/#newsletter" },
-  { label: "Instagram", href: "#", icon: Instagram },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
-  { label: "YouTube", href: "#", icon: Youtube },
+  { label: "Instagram", href: "https://instagram.com/success369", icon: Instagram, external: true },
+  { label: "LinkedIn", href: "https://linkedin.com/company/success369", icon: Linkedin, external: true },
+  { label: "YouTube", href: "https://youtube.com/@success369", icon: Youtube, external: true },
 ];
 
 const policyLinks = [
@@ -48,7 +51,7 @@ const Footer = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(300_15%_10%)] to-[hsl(300_20%_8%)]" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[120px]" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-8">
+      <div className="relative container-custom pt-20 pb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 sm:gap-10 lg:gap-12 mb-12 sm:mb-16">
           {/* Brand */}
           <motion.div
@@ -58,11 +61,11 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
             className="sm:col-span-2 lg:col-span-1"
           >
-            <a href="#" className="flex items-center gap-2 group mb-6">
+            <Link to="/" className="flex items-center gap-2 group mb-6">
               <div className="h-[80px] w-auto flex items-center justify-center transition-all duration-300">
                 <img src={logo} alt="Success369" className="h-full w-auto object-contain" />
               </div>
-            </a>
+            </Link>
             <p className="text-muted-foreground text-base mb-6">
               Build sustainable success with clarity and alignment.
             </p>
@@ -174,6 +177,7 @@ const Footer = () => {
                   ) : (
                     <a
                       href={link.href}
+                      {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 inline-flex items-center gap-2 group"
                     >
                       {link.icon && <link.icon size={14} className="group-hover:scale-110 transition-transform" />}

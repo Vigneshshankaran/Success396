@@ -52,13 +52,15 @@ const RefundPolicy = () => {
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-primary/8 rounded-full blur-[140px]" />
         <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6">
           <motion.div initial="hidden" animate="visible">
-            <motion.span custom={0} variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8 text-xs font-medium text-primary tracking-wide uppercase">
-              <RotateCcw size={14} /> Legal
-            </motion.span>
-            <motion.h1 custom={1} variants={fadeUp} className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6">
+            <motion.div custom={0} variants={fadeUp} className="inline-flex items-center gap-3 mb-6">
+              <span className="h-[1px] w-8 bg-primary/60" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">Legal</p>
+              <span className="h-[1px] w-8 bg-primary/60" />
+            </motion.div>
+            <motion.h1 custom={1} variants={fadeUp} className="mb-8">
               Refund <span className="text-glow text-primary">Policy</span>
             </motion.h1>
-            <motion.p custom={2} variants={fadeUp} className="text-muted-foreground text-lg max-w-xl mx-auto">
+            <motion.p custom={2} variants={fadeUp} className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto">
               Our commitment to fairness and transparency in all transactions.
             </motion.p>
           </motion.div>
@@ -78,7 +80,7 @@ const RefundPolicy = () => {
               className="relative p-8 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30"
             >
               <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-              <h3 className="font-display text-xl font-bold mb-3">{section.title}</h3>
+              <h3 className="mb-3">{section.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{section.content}</p>
             </motion.div>
           ))}

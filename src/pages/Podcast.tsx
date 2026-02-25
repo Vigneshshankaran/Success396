@@ -28,10 +28,10 @@ const podcasts = [
     longDescription:
       "Join us every week as we unpack transformational frameworks, share real stories of aligned growth, and challenge the conventional narratives around success. This podcast is your weekly companion for building a life of clarity, congruence, and catalysis.",
     platforms: [
-      { label: "Apple Podcasts", href: "#" },
-      { label: "Spotify", href: "#" },
-      { label: "Google Podcasts", href: "#" },
-      { label: "YouTube", href: "#" },
+      { label: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/success369" },
+      { label: "Spotify", href: "https://open.spotify.com/show/success369" },
+      { label: "Google Podcasts", href: "https://podcasts.google.com/feed/success369" },
+      { label: "YouTube", href: "https://youtube.com/@success369" },
     ],
   },
   {
@@ -43,9 +43,9 @@ const podcasts = [
     longDescription:
       "Aligned Leaders explores how organisations and teams can create cultures of sustainable growth. Each episode features deep conversations with founders, executives, and coaches who lead with clarity and purpose.",
     platforms: [
-      { label: "Apple Podcasts", href: "#" },
-      { label: "Spotify", href: "#" },
-      { label: "YouTube", href: "#" },
+      { label: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/aligned-leaders" },
+      { label: "Spotify", href: "https://open.spotify.com/show/aligned-leaders" },
+      { label: "YouTube", href: "https://youtube.com/@success369" },
     ],
   },
 ];
@@ -109,21 +109,20 @@ const Podcast = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 pb-28 sm:pb-32">
+        <div className="relative z-20 container-custom w-full pb-28 sm:pb-32">
           <motion.div initial="hidden" animate="visible" className="max-w-3xl">
             <motion.div
               custom={0}
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-xl mb-6"
+              className="mb-3 sm:mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-white"
             >
-              <Headphones size={14} className="text-primary" />
-              <span className="text-[10px] font-bold text-primary tracking-[0.3em] uppercase">Success369 Podcast Network</span>
+              Success369 Podcast Network
             </motion.div>
 
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6"
+              className="mb-4 sm:mb-6 text-glow"
             >
               Personal Growth At <br />
               <span className="italic text-primary text-glow font-light">Your Fingertips</span>
@@ -132,7 +131,7 @@ const Podcast = () => {
             <motion.p
               custom={2}
               variants={fadeUp}
-              className="text-lg sm:text-xl leading-relaxed font-light text-muted-foreground/90 mb-10 max-w-2xl"
+              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-muted-foreground/90 font-light"
             >
               Use Success369 Podcasts to gain clarity, build alignment, and elevate your personal and professional growth in every area of life.
             </motion.p>
@@ -150,9 +149,9 @@ const Podcast = () => {
       </section>
 
       {/* --- NEW: YOUTUBE FEATURED SECTION --- */}
-      <section id="watch" className="py-24 sm:py-32 relative overflow-hidden">
+      <section id="watch" className="section relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/[0.02]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative container-custom">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-6 justify-center w-full">
               <span className="h-[1px] w-8 bg-primary/60" />
@@ -161,7 +160,7 @@ const Podcast = () => {
               </p>
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
-            <h2 className="font-display text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">Visual <span className="italic font-normal">Transformation.</span></h2>
+            <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Visual <span className="italic font-normal">Transformation.</span></h2>
           </div>
 
           <motion.div 
@@ -175,7 +174,7 @@ const Podcast = () => {
             <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-black">
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&rel=0" 
+                src="https://www.youtube.com/embed/?listType=user_uploads&list=success369" 
                 title="Success369 Featured Episode"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -189,7 +188,7 @@ const Podcast = () => {
 
           <div className="mt-12 text-center">
              <a 
-              href="https://youtube.com" 
+              href="https://youtube.com/@success369" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-primary font-bold tracking-[0.2em] uppercase text-xs group"
@@ -201,8 +200,8 @@ const Podcast = () => {
       </section>
 
       {/* Podcast Shows */}
-      <section id="shows" className="py-16 sm:py-32 relative bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-32">
+      <section id="shows" className="section relative overflow-hidden bg-background">
+        <div className="container-custom relative z-10">
           {podcasts.map((podcast, idx) => (
             <motion.div
               key={podcast.title}
@@ -222,7 +221,7 @@ const Podcast = () => {
               {/* Cover */}
               <div className="w-full max-w-[320px] shrink-0">
                 <div className="relative group">
-                  <div className="absolute -inset-3 bg-gradient-to-br from-primary/30 to-pink-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute -inset-3 bg-gradient-to-br from-primary/30 to-pink-400/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img
                     src={podcast.image}
                     alt={podcast.title}
@@ -234,7 +233,7 @@ const Podcast = () => {
               {/* Info */}
               <div className="relative flex-1 space-y-8 z-10">
                 <div>
-                  <h2 className="font-display text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2 uppercase tracking-tight">
+                  <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-tight">
                     {podcast.title}
                   </h2>
                   <p className="text-primary text-xs font-bold uppercase tracking-[0.3em] opacity-60 italic">{podcast.host}</p>
@@ -271,10 +270,10 @@ const Podcast = () => {
       </section>
 
       {/* Featured Episodes */}
-      <section className="py-16 sm:py-24 relative">
+      <section className="section relative">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background" />
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="relative container-custom">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -283,7 +282,7 @@ const Podcast = () => {
             custom={0}
             className="text-center mb-12"
           >
-            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="mb-4">
               Featured Episodes
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
@@ -325,9 +324,9 @@ const Podcast = () => {
       </section>
 
       {/* --- JOIN AS A GUEST --- */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="section relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -z-10" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="container-custom">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -338,7 +337,7 @@ const Podcast = () => {
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-8">
                 <Mic size={32} className="text-primary" />
               </div>
-              <h2 className="font-display text-4xl font-bold text-white mb-6">Have a story worth <span className="italic text-primary">sharing?</span></h2>
+              <h2 className="text-white mb-6">Have a story worth <span className="italic text-primary">sharing?</span></h2>
               <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
                 We're always looking for aligned leaders and visionaries to join our conversations. If you're building something that matters, we want to hear from you.
               </p>

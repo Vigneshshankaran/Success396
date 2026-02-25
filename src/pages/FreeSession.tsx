@@ -75,19 +75,22 @@ const FreeSession = () => {
 
         <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6">
           <motion.div initial="hidden" animate="visible">
-            <motion.span
+            <motion.div
               custom={0}
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8 text-xs font-medium text-primary tracking-wide uppercase"
+              className="inline-flex items-center gap-3 mb-6"
             >
-              <Sparkles size={14} />
-              First Contact
-            </motion.span>
+              <span className="h-[1px] w-8 bg-primary/60" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                First Contact
+              </p>
+              <span className="h-[1px] w-8 bg-primary/60" />
+            </motion.div>
 
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6"
+              className="mb-8"
             >
               Take a
               <br />
@@ -97,7 +100,7 @@ const FreeSession = () => {
             <motion.p
               custom={2}
               variants={fadeUp}
-              className="text-muted-foreground text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto"
+              className="text-muted-foreground text-lg md:text-xl mb-12 max-w-2xl mx-auto"
             >
               No pitch. No pressure. Just a warm, honest conversation to explore what's alive for you — and whether a Success369 Journey is the right next step.
             </motion.p>
@@ -105,7 +108,7 @@ const FreeSession = () => {
             <motion.div custom={3} variants={fadeUp}>
               <a
                 href="#booking"
-                className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-500 shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)]"
+                className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-500 shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)]"
               >
                 Book a Free Session
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -116,9 +119,9 @@ const FreeSession = () => {
       </section>
 
       {/* Info sections */}
-      <section className="relative py-20 sm:py-28">
+      <section className="section bg-card/10 relative overflow-hidden border-y border-white/5">
         <div className="absolute inset-0 bg-gradient-to-b from-background to-card/10" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 space-y-16">
+        <div className="container-custom space-y-16">
           {infoSections.map((section, i) => (
             <motion.div
               key={section.title}
@@ -142,11 +145,11 @@ const FreeSession = () => {
       </section>
 
       {/* Booking Form */}
-      <section id="booking" className="relative py-20 sm:py-28">
+      <section id="booking" className="section relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-card/10 to-background" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] bg-primary/5 rounded-full blur-[150px]" />
 
-        <div className="relative max-w-2xl mx-auto px-4 sm:px-6">
+        <div className="relative container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -154,7 +157,7 @@ const FreeSession = () => {
             className="text-center mb-12"
           >
             <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">Book Your Session</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold">
+            <h2 className="mb-4">
               Ready to begin?
             </h2>
           </motion.div>
@@ -177,7 +180,7 @@ const FreeSession = () => {
                 <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6">
                   <CheckCircle2 className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="font-display text-2xl font-bold mb-2">Request Received!</h3>
+                <h3 className="mb-2">Request Received!</h3>
                 <p className="text-muted-foreground mb-6 max-w-sm">
                   Thank you for reaching out. We'll get back to you within 24 hours to schedule your free session.
                 </p>
@@ -191,7 +194,7 @@ const FreeSession = () => {
               </motion.div>
             ) : (
               <>
-                <h3 className="font-display text-xl font-semibold mb-6">Book a Free Session</h3>
+                <h3 className="mb-6">Book a Free Session</h3>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-5">
@@ -272,7 +275,7 @@ const FreeSession = () => {
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                       <Button
                         type="submit"
-                        className="w-full rounded-full h-12 text-sm font-semibold bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] hover:bg-right transition-all duration-500 text-primary-foreground"
+                        className="w-full rounded-full h-12 text-sm font-semibold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-right transition-all duration-500 text-primary-foreground"
                       >
                         <Send className="w-4 h-4 mr-2" />
                         Book a Free Session

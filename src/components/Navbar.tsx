@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown, Book, Users, Star, Newspaper, Shield, Target, Globe, Eye, Layers, Zap, Sun } from "lucide-react";
 import logo from "@/assets/logo.png";
 import CTAButton from "@/components/CTAButton";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,23 +27,24 @@ const foundationSections = [
   {
     title: "The Philosophy",
     links: [
-      { label: "Success 369", description: "Our Core Architecture", icon: Target, href: "#hero" },
-      { label: "Who is this for?", description: "Redefining Modern Success", icon: Shield, href: "#journey" },
+      { label: "Success 369", description: "Our Core Architecture", icon: Target, href: "/#hero" },
+      { label: "The Showcase", description: "Experience the Methodology", icon: Eye, href: "/#showcase" },
+      { label: "Who is this for?", description: "Redefining Modern Success", icon: Shield, href: "/#journey" },
       { label: "The Success369 Programs", description: "Our Footprint & Purpose", icon: Globe, href: "/programs" },
     ],
   },
   {
     title: "The Humans",
     links: [
-      { label: "Our Stewards", description: "The Founders' Vision", icon: Star, href: "#trainers" },
+      { label: "Our Stewards", description: "The Founders' Vision", icon: Star, href: "/#trainers" },
     ],
   },
   {
     title: "The Library",
     links: [
-      { label: "Testimonials", description: "Voices of Transformation", icon: Globe, href: "#testimonials" },
-      { label: "FAQ", description: "Deep Methodological Shifts", icon: Newspaper, href: "#faq" },
-      { label: "Subscribe", description: "Press Kits & Brand Guides", icon: Star, href: "#newsletter" },
+      { label: "Testimonials", description: "Voices of Transformation", icon: Globe, href: "/#testimonials" },
+      { label: "FAQ", description: "Deep Methodological Shifts", icon: Newspaper, href: "/#faq" },
+      { label: "Subscribe", description: "Press Kits & Brand Guides", icon: Star, href: "/#newsletter" },
     ],
   },
 ];
@@ -66,6 +68,7 @@ const Navbar = () => {
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -91,10 +94,31 @@ const Navbar = () => {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href === "#") return;
     e.preventDefault();
-    const id = href.replace("#", "");
+
+    // Handle cross-page hash links like "/#journey"
+    const isAbsoluteHash = href.startsWith("/#");
+    const id = href.replace(/^\/?#/, "");
+
+    if (isAbsoluteHash && location.pathname !== "/") {
+      // Navigate to home page first, then scroll after mount
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const offset = 80;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
+        }
+      }, 300);
+      setMobileOpen(false);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Height of fixed navbar
+      const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -170,7 +194,7 @@ const Navbar = () => {
                                 key={subLink.label} 
                                 className="px-0 py-2 focus:bg-transparent group cursor-pointer"
                               >
-                                {subLink.href.startsWith('/') ? (
+                                {subLink.href.startsWith('/') && !subLink.href.includes('#') ? (
                                   <Link 
                                     to={subLink.href}
                                     className="flex items-start gap-3 w-full"
@@ -198,6 +222,7 @@ const Navbar = () => {
                                     </div>
                                   </a>
                                 )}
+
                               </DropdownMenuItem>
                             ))}
                           </div>
@@ -292,11 +317,11 @@ const Navbar = () => {
               );
             })}
           </nav>
-
-
+          
           <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             <CTAButton
-              href="/#newsletter"
+              href="/contact"
               size="sm"
               variant="shimmer"
             >
@@ -313,12 +338,15 @@ const Navbar = () => {
           </div>
 
           {/* Mobile toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-foreground p-2"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="text-foreground p-2"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -472,7 +500,7 @@ const Navbar = () => {
             </nav>
             <div className="flex flex-col gap-3 pb-12">
               <CTAButton
-                href="/#newsletter"
+                href="/contact"
                 size="md"
                 variant="shimmer"
                 className="w-full"

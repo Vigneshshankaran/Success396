@@ -12,6 +12,7 @@ interface VideoCard {
   description: string;
   cta: string;
   videoUrl: string;
+  href: string;
 }
 
 const videoCards: VideoCard[] = [
@@ -19,15 +20,17 @@ const videoCards: VideoCard[] = [
     title: "GITA-Clarity Before Action",
     description:
       "For moments when decisions matter and clarity is essential.",
-    cta: "Begin with GITA ",
+    cta: "Apply for GITA",
     videoUrl: gitaVideo,
+    href: "/contact?subject=GITA",
   },
   {
     title: "MAYA-Realigning Unseen Patterns",
     description:
       "For those who are capable and progressing, yet feel misaligned.",
-    cta: "Explore Maya",
+    cta: "Apply for Maya",
     videoUrl: mayaVideo,
+    href: "/contact?subject=MAYA",
   },
   {
     title: "SARVAM-The Architecture for Sustainable Success",
@@ -35,13 +38,15 @@ const videoCards: VideoCard[] = [
       "For those ready to commit to long-term, holistic success.",
     cta: "Apply for SARVAM",
     videoUrl: sarvamVideo,
+    href: "/contact?subject=SARVAM",
   },
   {
     title: "SHAKTI-Activating Aligned Momentum",
     description:
       "For situations where clarity and alignment already exist, but momentum is lacking.",
-    cta: "Explore SHAKTI",
+    cta: "Apply for SHAKTI",
     videoUrl: shaktiVideo,
+    href: "/contact?subject=SHAKTI",
   },
 ];
 
@@ -77,7 +82,7 @@ const VideoCardsSection = () => {
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-[1px] w-8 bg-primary/60" />
             <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
-              Immersive
+              Programs
             </p>
             <span className="h-[1px] w-8 bg-primary/60" />
           </div>
@@ -132,7 +137,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
               >
                 <h3 className="text-foreground mb-4">{activeCard.title}</h3>
                 <CTAButton 
-                  href="/#newsletter"
+                  href={activeCard.href}
                   size="md"
                   variant="shimmer"
                   className="mt-4"
@@ -244,7 +249,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                     {activeCard.description}
                   </p>
                   <CTAButton 
-                    href="/#newsletter"
+                    href={activeCard.href}
                     size="sm"
                     variant="shimmer"
                   >

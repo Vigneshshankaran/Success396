@@ -72,7 +72,7 @@ const EventDetail = () => {
 
         <div className="absolute bottom-0 left-1/4 w-[400px] h-[250px] bg-primary/10 rounded-full blur-[120px]" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 pt-32 w-full">
+        <div className="relative z-10 container-custom pb-16 sm:pb-24 pt-32 w-full">
           <motion.div initial="hidden" animate="visible" className="max-w-2xl">
             {/* Breadcrumb */}
             <motion.div custom={0} variants={fadeUp} className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
@@ -84,10 +84,13 @@ const EventDetail = () => {
             </motion.div>
 
             <motion.div custom={1} variants={fadeUp} className="flex flex-wrap items-center gap-2 mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm text-xs font-medium text-primary tracking-wide uppercase">
-                <Sparkles size={14} />
-                {event.tag}
-              </span>
+              <div className="inline-flex items-center gap-3">
+                <span className="h-[1px] w-8 bg-primary/60" />
+                <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                  {event.tag}
+                </p>
+                <span className="h-[1px] w-8 bg-primary/60" />
+              </div>
               {isUpcoming ? (
                 <span className="px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 bg-emerald-500/15 border border-emerald-500/20">
                   Upcoming
@@ -106,7 +109,7 @@ const EventDetail = () => {
             <motion.h1
               custom={2}
               variants={fadeUp}
-              className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] mb-4"
+              className="mb-4"
             >
               {event.title}
             </motion.h1>
@@ -154,12 +157,12 @@ const EventDetail = () => {
             {isUpcoming && (
               <motion.div custom={6} variants={fadeUp} className="flex flex-wrap gap-4">
                 <motion.a
-                  href="#register"
+                  href="/contact"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   className="relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
                 >
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
                   <span className="relative flex items-center gap-2">
                     Register Now
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -174,7 +177,7 @@ const EventDetail = () => {
       {/* Long Description & Highlights */}
       <section className="relative py-20 sm:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative container-custom">
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16">
             {/* Left — About */}
             <motion.div
@@ -183,7 +186,7 @@ const EventDetail = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-6">
+              <h2 className="mb-6">
                 {isUpcoming ? "About This Event" : "Event Recap"}
               </h2>
               <div className="text-muted-foreground leading-relaxed space-y-4">
@@ -249,12 +252,12 @@ const EventDetail = () => {
                         {event.spots || "Limited availability"}
                       </p>
                       <motion.a
-                        href="#register"
+                        href="/contact"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         className="relative w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
                       >
-                        <span className="absolute inset-0 bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
+                        <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
                         <span className="relative flex items-center gap-2">
                           Register Now
                           <ArrowRight size={16} />
@@ -281,8 +284,8 @@ const EventDetail = () => {
       </section>
 
       {/* Back to Events */}
-      <section className="relative pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+      <section className="section relative bg-background">
+        <div className="relative container-custom text-center">
           <Link
             to="/events"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary font-medium transition-colors"

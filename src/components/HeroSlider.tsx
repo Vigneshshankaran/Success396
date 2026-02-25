@@ -14,6 +14,7 @@ interface Slide {
   subtitle: string;
   cta: string;
   ctaSecondary: string;
+  ctaHref: string;
 }
 
 const slides: Slide[] = [
@@ -25,6 +26,7 @@ const slides: Slide[] = [
       "Align who you are, what you believe, and how you act—so progress feels steady, coherent, and deeply fulfilling.",
     cta: "Take a Free Session",
     ctaSecondary: "Watch Trailer",
+    ctaHref: "/free-session",
   },
   {
     video: journey,
@@ -34,6 +36,7 @@ const slides: Slide[] = [
       "You don’t need to follow a fixed path. You choose the journey that fits your current need, not someone else’s timeline.",
     cta: "Explore Programs",
     ctaSecondary: "Learn More",
+    ctaHref: "/programs",
   },
   {
     video: book,
@@ -42,6 +45,7 @@ const slides: Slide[] = [
     subtitle: "You don't attend to follow the crowd. You show up for the conversation that meets you where you are.",
     cta: "Buy the Book",
     ctaSecondary: "See Details",
+    ctaHref: "/book",
   },
   {
     video: event,
@@ -50,6 +54,7 @@ const slides: Slide[] = [
     subtitle: "You don’t attend to follow the crowd. You show up for the conversation that meets you where you are.",
     cta: "Join the Event",
     ctaSecondary: "View Gallery",
+    ctaHref: "/events",
   },
 ];
 
@@ -139,7 +144,7 @@ const HeroSlider = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="mb-3 sm:mb-4 inline-block rounded-full border border-yellow-400/30 bg-yellow-400/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-yellow-400"
+                className="mb-3 sm:mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-white"
               >
                 {slide.tag}
               </motion.span>
@@ -172,7 +177,7 @@ const HeroSlider = () => {
                 className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
               >
                 <CTAButton 
-                  href="/#newsletter"
+                  href={slide.ctaHref}
                   size="md"
                   variant="shimmer"
                 >

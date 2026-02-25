@@ -47,7 +47,7 @@ const GlobalCTA = ({
   };
 
   return (
-    <section id={id} className={cn("relative py-20 px-4 sm:px-6 overflow-hidden", className)}>
+    <section id={id} className={cn("relative section overflow-hidden", className)}>
       {/* Background video */}
       <div className="absolute inset-0">
         <video
@@ -87,7 +87,7 @@ const GlobalCTA = ({
         ))}
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-10 container-custom">
         {/* Pillar icons */}
         {showPillars && (
           <motion.div

@@ -6,6 +6,105 @@
 
 @layer base {
   :root {
+    --background: 0 0% 98%;
+    --foreground: 220 20% 6%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 6%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 6%;
+
+    --primary: 324 100% 46%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 92%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 10% 90%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 11 97% 72%;
+    --accent-foreground: 220 20% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 10% 85%;
+    --input: 220 10% 85%;
+    --ring: 324 100% 46%;
+
+    --radius: 0.75rem;
+
+    /* 8pt Spacing Scale */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 32px;
+    --space-6: 48px;
+    --space-7: 64px;
+    --space-8: 96px;
+    --space-9: 120px;
+    --space-10: 160px;
+
+    /* Fluid Typography */
+    --fs-h1: clamp(40px, 5vw, 64px);
+    --fs-h2: clamp(28px, 3.5vw, 44px);
+    --fs-h3: 28px;
+    --fs-h4: 22px;
+    --fs-body-lg: 20px;
+    --fs-body: 17px;
+    --fs-small: 14px;
+
+    /* Line Heights */
+    --lh-tight: 1.15;
+    --lh-heading: 1.25;
+    --lh-body: 1.7;
+    --lh-small: 1.5;
+
+    /* Font Weights */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-extrabold: 800;
+
+    /* Layout */
+    --container-width: 1200px;
+    --content-width: 65ch;
+
+    /* Radius */
+    --radius-sm: 12px;
+    --radius-md: 20px;
+
+    /* Shadow */
+    --shadow-soft: 0 20px 60px rgba(0,0,0,0.05);
+
+    --hero-overlay: linear-gradient(
+      to top,
+      hsl(0 0% 98% / 0.95) 0%,
+      hsl(0 0% 98% / 0.6) 40%,
+      hsl(0 0% 98% / 0.2) 70%,
+      hsl(0 0% 98% / 0.05) 100%
+    );
+
+    --slider-glow: 0 0 60px 10px hsl(324 100% 46% / 0.1);
+
+    --sidebar-background: 0 0% 95%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 324 100% 46%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 220 20% 90%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 220 10% 85%;
+    --sidebar-ring: 324 100% 46%;
+
+    --font-display: "Nunito", sans-serif;
+    --font-body: "Nunito", sans-serif;
+  }
+
+  .dark {
     --background: 220 20% 6%;
     --foreground: 0 0% 96%;
 
@@ -34,8 +133,6 @@
     --input: 220 14% 18%;
     --ring: 324 100% 46%;
 
-    --radius: 0.75rem;
-
     --hero-overlay: linear-gradient(
       to top,
       hsl(220 20% 6% / 0.95) 0%,
@@ -54,44 +151,157 @@
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 220 14% 18%;
     --sidebar-ring: 32 95% 55%;
-
-    --font-display: "Nunito", sans-serif;
-    --font-body: "Nunito", sans-serif;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-foreground;
     font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    font-weight: var(--fw-regular);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    line-height: 1.6;
-    letter-spacing: -0.01em;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight text-foreground;
+    font-family: var(--font-display);
+    letter-spacing: -0.5px;
+  }
+
+  h1 {
+    font-size: var(--fs-h1);
+    line-height: var(--lh-tight);
+    font-weight: var(--fw-extrabold);
+    margin-bottom: var(--space-6);
+  }
+
+  h2 {
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-5);
+  }
+
+  h3 {
+    font-size: var(--fs-h3);
+    line-height: var(--lh-heading);
+    font-weight: var(--fw-semibold);
+    margin-bottom: var(--space-4);
+  }
+
+  h4 {
+    font-size: var(--fs-h4);
+    font-weight: var(--fw-semibold);
+    margin-bottom: var(--space-3);
   }
 
   p {
-    @apply leading-relaxed;
-    font-weight: 300;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    font-weight: var(--fw-regular);
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-display);
-    @apply font-bold tracking-tight text-foreground;
-    line-height: 1.1;
+  /* Limit reading width */
+  .prose {
+    max-width: var(--content-width);
   }
 
-  h1 { @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl; }
-  h2 { @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl; }
-  h3 { @apply text-xl sm:text-2xl md:text-3xl; }
+  /* ================= LAYOUT ================= */
+
+  .container-custom {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .section {
+    padding: var(--space-9) 0;
+  }
+
+  .section-lg {
+    padding: var(--space-10) 0;
+  }
+
+  .hero-section {
+    padding: var(--space-10) 0 var(--space-9);
+  }
+
+  /* Grid */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-7);
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+  }
+
+  /* ================= BUTTON SYSTEM ================= */
+
+  .btn-custom {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: var(--fw-bold);
+    padding: 18px 36px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-custom:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-full {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-lg {
+    padding: 22px 44px;
+    font-size: 18px;
+  }
+
+  /* ================= CARD SYSTEM ================= */
+
+  .card-custom {
+    padding: 40px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-compact {
+    padding: var(--space-5);
+  }
+
+  /* ================= TESTIMONIAL ================= */
+
+  .testimonial-custom {
+    max-width: 60ch;
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-body);
+  }
+
+  .testimonial-author {
+    margin-top: var(--space-4);
+    font-weight: var(--fw-semibold);
+  }
 }
 
 @layer utilities {

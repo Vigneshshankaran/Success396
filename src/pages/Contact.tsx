@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,13 +20,21 @@ const contactSchema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255, "Email must be under 255 characters"),
   phone: z.string().trim().max(20, "Phone must be under 20 characters").optional().or(z.literal("")),
   subject: z.string().min(1, "Please select a subject"),
-  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be under 1000 characters"),
+  profession: z.string().trim().min(1, "Work/Profession is required"),
+  country: z.string().trim().min(1, "Country is required"),
+  experience: z.string().trim().min(1, "Experience is required"),
+  leadingTeam: z.enum(["Yes", "No", ""], { required_error: "Please select an option" }).refine(val => val !== "", "Please select an option"),
+  message: z.string().trim().max(1000, "Message must be under 1000 characters").optional().or(z.literal("")),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 const subjects = [
   "General Inquiry",
+  "Program - GITA",
+  "Program - MAYA",
+  "Program - SARVAM",
+  "Program - SHAKTI",
   "Book a Session",
   "Corporate Training",
   "Speaking Engagement",
@@ -41,9 +50,9 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Youtube, label: "YouTube", href: "#" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com/success369" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/success369" },
+  { icon: Youtube, label: "YouTube", href: "https://youtube.com/@success369" },
 ];
 
 const fadeUp = {
@@ -57,11 +66,39 @@ const fadeUp = {
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [searchParams] = useSearchParams();
+  const subjectParam = searchParams.get("subject");
+
+  const getInitialSubject = () => {
+    if (!subjectParam) return "";
+    const matched = subjects.find(s => 
+      s.toLowerCase().includes(subjectParam.toLowerCase())
+    );
+    return matched || "";
+  };
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", email: "", phone: "", subject: "", message: "" },
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      subject: getInitialSubject(),
+      profession: "",
+      country: "",
+      experience: "",
+      leadingTeam: "" as any,
+      message: "",
+    },
   });
+
+  // Also update if params change while component is mounted
+  useEffect(() => {
+    const newSubject = getInitialSubject();
+    if (newSubject) {
+      form.setValue("subject", newSubject);
+    }
+  }, [subjectParam, form]);
 
   const onSubmit = (data: ContactFormValues) => {
     // Future: send to backend
@@ -74,23 +111,27 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 sm:pt-44 sm:pb-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-primary/8 rounded-full blur-[140px]" />
-        <div className="relative max-w-4xl mx-auto text-center px-4">
-          <motion.p
+        <div className="relative container-custom text-center">
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-primary font-medium text-sm tracking-widest uppercase mb-4"
+            className="inline-flex items-center gap-3 mb-6"
           >
-            Let's Connect
-          </motion.p>
+            <span className="h-[1px] w-8 bg-primary/60" />
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+              Let's Connect
+            </p>
+            <span className="h-[1px] w-8 bg-primary/60" />
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-4"
+            className="mb-8"
           >
             Get in{" "}
             <span className="bg-gradient-to-r from-primary via-pink-400 to-primary bg-clip-text text-transparent">
@@ -101,16 +142,16 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-muted-foreground text-lg max-w-xl mx-auto"
+            className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"
           >
-            Ready to start your transformation? Reach out and let's explore how we can work together.
+            Thank you for the interest, before our team reaches you and discuss, please help us to understand you better.
           </motion.p>
         </div>
       </section>
 
       {/* Main content */}
-      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 pb-20">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16">
+      <section className="relative section pb-20">
+        <div className="container-custom grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16">
           {/* Contact Form */}
           <motion.div
             initial="hidden"
@@ -131,7 +172,7 @@ const Contact = () => {
                 <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6">
                   <CheckCircle2 className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="font-display text-2xl font-bold mb-2">Message Sent!</h3>
+                <h3 className="mb-2">Message Sent!</h3>
                 <p className="text-muted-foreground mb-6 max-w-sm">
                   Thank you for reaching out. We'll get back to you within 24 hours.
                 </p>
@@ -189,13 +230,13 @@ const Contact = () => {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <FormField
                         control={form.control}
-                        name="phone"
+                        name="profession"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Phone</FormLabel>
+                            <FormLabel>Work/Profession *</FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="+44 ..."
+                                placeholder="Your profession"
                                 className="bg-background/50 border-border/50 focus:border-primary/50"
                                 {...field}
                               />
@@ -206,19 +247,55 @@ const Contact = () => {
                       />
                       <FormField
                         control={form.control}
-                        name="subject"
+                        name="country"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Subject *</FormLabel>
+                            <FormLabel>Country you work *</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Your country"
+                                className="bg-background/50 border-border/50 focus:border-primary/50"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <FormField
+                        control={form.control}
+                        name="experience"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Experience in years *</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="e.g. 5"
+                                className="bg-background/50 border-border/50 focus:border-primary/50"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="leadingTeam"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Are you leading a team? *</FormLabel>
                             <FormControl>
                               <select
                                 {...field}
                                 className="flex h-10 w-full rounded-md border border-border/50 bg-background/50 px-3 py-2 text-sm ring-offset-background focus:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                               >
-                                <option value="">Select a subject</option>
-                                {subjects.map((s) => (
-                                  <option key={s} value={s}>{s}</option>
-                                ))}
+                                <option value="">Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
                               </select>
                             </FormControl>
                             <FormMessage />
@@ -229,14 +306,36 @@ const Contact = () => {
 
                     <FormField
                       control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Subject *</FormLabel>
+                          <FormControl>
+                            <select
+                              {...field}
+                              className="flex h-10 w-full rounded-md border border-border/50 bg-background/50 px-3 py-2 text-sm ring-offset-background focus:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            >
+                              <option value="">Select a subject</option>
+                              {subjects.map((s) => (
+                                <option key={s} value={s}>{s}</option>
+                              ))}
+                            </select>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Message *</FormLabel>
+                          <FormLabel>Any specific challenge you currently face that you want to share with us?</FormLabel>
                           <FormControl>
                             <textarea
                               rows={5}
-                              placeholder="Tell us how we can help..."
+                              placeholder="Tell us about your challenges..."
                               className="flex w-full rounded-md border border-border/50 bg-background/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-none"
                               {...field}
                             />
@@ -249,7 +348,7 @@ const Contact = () => {
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                       <Button
                         type="submit"
-                        className="w-full rounded-full h-12 text-sm font-semibold bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] hover:bg-right transition-all duration-500 text-primary-foreground"
+                        className="w-full rounded-full h-12 text-sm font-semibold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-right transition-all duration-500 text-primary-foreground"
                       >
                         <Send className="w-4 h-4 mr-2" />
                         Send Message
@@ -305,6 +404,8 @@ const Contact = () => {
                   <a
                     key={s.label}
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={s.label}
                     className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors group"
                   >
