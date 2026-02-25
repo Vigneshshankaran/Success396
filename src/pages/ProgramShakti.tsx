@@ -68,7 +68,7 @@ const ProgramShakti = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              href="/contact?subject=SHAKTI"
+              to="/contact?subject=SHAKTI"
               size="lg"
               variant="shimmer"
             >

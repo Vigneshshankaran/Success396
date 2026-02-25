@@ -70,7 +70,7 @@ const ProgramMaya = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              href="/contact?subject=MAYA"
+              to="/contact?subject=MAYA"
               size="lg"
               variant="shimmer"
             >

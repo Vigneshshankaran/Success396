@@ -70,7 +70,7 @@ const ProgramSarvam = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              href="/contact?subject=SARVAM"
+              to="/contact?subject=SARVAM"
               size="lg"
               variant="shimmer"
             >

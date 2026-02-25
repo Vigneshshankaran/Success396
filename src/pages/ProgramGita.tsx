@@ -72,7 +72,7 @@ const ProgramGita = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              href="/contact?subject=GITA"
+              to="/contact?subject=GITA"
               size="lg"
               variant="shimmer"
             >

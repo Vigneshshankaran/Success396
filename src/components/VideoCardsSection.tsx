@@ -137,7 +137,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
               >
                 <h3 className="text-foreground mb-4">{activeCard.title}</h3>
                 <CTAButton 
-                  href={activeCard.href}
+                  to={activeCard.href}
                   size="md"
                   variant="shimmer"
                   className="mt-4"
@@ -249,7 +249,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                     {activeCard.description}
                   </p>
                   <CTAButton 
-                    href={activeCard.href}
+                    to={activeCard.href}
                     size="sm"
                     variant="shimmer"
                   >
