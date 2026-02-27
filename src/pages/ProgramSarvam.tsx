@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowRight, Zap, Sparkles, Shield, Search, Route, Users, Target, Clock, Globe } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
@@ -8,19 +9,19 @@ import Footer from "@/components/Footer";
 import sarvamVideo from "@/assets/sarvam.mp4";
 import card1 from "@/assets/card-1.jpg";
 import card2 from "@/assets/card-2.jpg";
+import { fadeUp } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
+
+
 
 const ProgramSarvam = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>SARVAM — Architecting Sustainable Success | Success369</title>
+        <meta name="description" content="SARVAM is for leaders ready to build long-term value. Integrate identity, work, and legacy into a stable success architecture that endures." />
+      </Helmet>
       <Navbar />
 
       {/* --- HERO SECTION --- */}
@@ -36,7 +37,7 @@ const ProgramSarvam = () => {
           >
             <source src={sarvamVideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/95" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
@@ -52,7 +53,7 @@ const ProgramSarvam = () => {
             initial="hidden"
             animate="visible"
             custom={1}
-            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight"
+            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight text-white"
           >
             The Architecture for <br />
             <span className="text-primary text-glow italic">Sustainable Success</span>
@@ -63,7 +64,7 @@ const ProgramSarvam = () => {
             initial="hidden"
             animate="visible"
             custom={2}
-            className="text-xl sm:text-2xl text-foreground/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-xl sm:text-2xl text-white/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
           >
             Some seek clarity. Some seek realignment. SARVAM is for those ready to build integrated, stable, and enduring success across time and responsibility.
           </motion.p>
@@ -77,10 +78,11 @@ const ProgramSarvam = () => {
               Apply for SARVAM
             </CTAButton>
             <CTAButton
-              href="/#newsletter"
+              to="/#newsletter"
               size="lg"
               variant="outline"
               icon={null as any}
+              className="text-white hover:text-white border-white/20 hover:border-primary/50"
             >
               Speak with Us
             </CTAButton>

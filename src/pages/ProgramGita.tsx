@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowRight, Eye, Sparkles, CheckCircle2, Clock, Globe, Users, Target, Building } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
@@ -10,19 +11,17 @@ import card1 from "@/assets/card-1.jpg";
 import card2 from "@/assets/card-2.jpg";
 import card3 from "@/assets/card-3.jpg";
 import card4 from "@/assets/card-4.jpg";
+import { fadeUp } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
 
 const ProgramGita = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>GITA — Clarity Before Action | Success369</title>
+        <meta name="description" content="GITA is the essential first phase of Success369. A guided clarity session for those at a decision point, designed to reveal your next direction with confidence." />
+      </Helmet>
       <Navbar />
 
       {/* --- HERO SECTION (High-Conversion Style) --- */}
@@ -38,7 +37,7 @@ const ProgramGita = () => {
           >
             <source src={gitaVideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/95" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
@@ -54,7 +53,7 @@ const ProgramGita = () => {
             initial="hidden"
             animate="visible"
             custom={1}
-            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight"
+            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight text-white"
           >
             Some moments <br />
             <span className="text-primary text-glow italic">don’t need speed.</span>
@@ -65,7 +64,7 @@ const ProgramGita = () => {
             initial="hidden"
             animate="visible"
             custom={2}
-            className="text-xl sm:text-2xl text-foreground/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-xl sm:text-2xl text-white/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
           >
             They need clarity. GITA is the essential entry point for those at a decision point, designed to reveal the direction that makes sense for your next move.
           </motion.p>

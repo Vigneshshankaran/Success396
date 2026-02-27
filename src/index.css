@@ -83,10 +83,10 @@
 
     --hero-overlay: linear-gradient(
       to top,
-      hsl(0 0% 98% / 0.95) 0%,
-      hsl(0 0% 98% / 0.6) 40%,
-      hsl(0 0% 98% / 0.2) 70%,
-      hsl(0 0% 98% / 0.05) 100%
+      hsl(220 20% 6% / 0.95) 0%,
+      hsl(220 20% 6% / 0.6) 40%,
+      hsl(220 20% 6% / 0.2) 70%,
+      hsl(220 20% 6% / 0.05) 100%
     );
 
     --slider-glow: 0 0 60px 10px hsl(324 100% 46% / 0.1);
@@ -121,7 +121,7 @@
     --secondary-foreground: 0 0% 90%;
 
     --muted: 220 14% 14%;
-    --muted-foreground: 220 10% 55%;
+    --muted-foreground: 220 10% 80%;
 
     --accent: 11 97% 72%;
     --accent-foreground: 220 20% 6%;
@@ -160,6 +160,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -310,6 +314,10 @@
   }
 
   .text-glow {
+    text-shadow: none;
+  }
+
+  .dark .text-glow {
     text-shadow:
       0 0 40px hsl(324 100% 46% / 0.3),
       0 0 80px hsl(11 97% 72% / 0.1);

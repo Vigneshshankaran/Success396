@@ -156,18 +156,18 @@ const EventDetail = () => {
             {/* CTA */}
             {isUpcoming && (
               <motion.div custom={6} variants={fadeUp} className="flex flex-wrap gap-4">
-                <motion.a
-                  href="/contact"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
-                  <span className="relative flex items-center gap-2">
-                    Register Now
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </motion.a>
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    to="/contact"
+                    className="relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
+                    <span className="relative flex items-center gap-2">
+                      Register Now
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                </motion.div>
               </motion.div>
             )}
           </motion.div>
@@ -251,18 +251,18 @@ const EventDetail = () => {
                       <p className="text-muted-foreground text-sm mb-4">
                         {event.spots || "Limited availability"}
                       </p>
-                      <motion.a
-                        href="/contact"
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        className="relative w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
-                      >
-                        <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
-                        <span className="relative flex items-center gap-2">
-                          Register Now
-                          <ArrowRight size={16} />
-                        </span>
-                      </motion.a>
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                        <Link
+                          to="/contact"
+                          className="relative w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
+                        >
+                          <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
+                          <span className="relative flex items-center gap-2">
+                            Register Now
+                            <ArrowRight size={16} />
+                          </span>
+                        </Link>
+                      </motion.div>
                     </div>
                   )}
                 </div>

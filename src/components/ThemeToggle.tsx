@@ -3,7 +3,11 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 
-export function ThemeToggle() {
+interface ThemeToggleProps {
+  className?: string;
+}
+
+export function ThemeToggle({ className = "" }: ThemeToggleProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -29,7 +33,7 @@ export function ThemeToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={toggleTheme}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground transition-colors hover:bg-secondary z-[60]"
+      className={`relative flex h-10 w-10 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground transition-colors hover:bg-secondary z-[60] ${className}`}
       aria-label="Toggle theme"
     >
       <AnimatePresence mode="wait">

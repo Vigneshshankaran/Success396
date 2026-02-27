@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowRight, Layers, Sparkles, Search, Route, Users, Target, Zap, Clock, Globe } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
@@ -8,19 +9,19 @@ import Footer from "@/components/Footer";
 import mayaVideo from "@/assets/maya.mp4";
 import card3 from "@/assets/card-3.jpg";
 import card4 from "@/assets/card-4.jpg";
+import { fadeUp } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
+
+
 
 const ProgramMaya = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>MAYA — Realigning Unseen Patterns | Success369</title>
+        <meta name="description" content="MAYA is for those progressing outwardly but feeling inner friction. Dissolve invisible cycles and realign for coherent, sustainable momentum." />
+      </Helmet>
       <Navbar />
 
       {/* --- HERO SECTION --- */}
@@ -36,7 +37,7 @@ const ProgramMaya = () => {
           >
             <source src={mayaVideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/95" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
@@ -52,7 +53,7 @@ const ProgramMaya = () => {
             initial="hidden"
             animate="visible"
             custom={1}
-            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight"
+            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight text-white"
           >
             Realigning <br />
             <span className="text-primary text-glow italic">Unseen Patterns</span>
@@ -63,7 +64,7 @@ const ProgramMaya = () => {
             initial="hidden"
             animate="visible"
             custom={2}
-            className="text-xl sm:text-2xl text-foreground/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-xl sm:text-2xl text-white/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
           >
             Some people are not unclear. They are misaligned. MAYA is designed to help you realign the unseen patterns shaping your decisions, behaviour, and momentum.
           </motion.p>

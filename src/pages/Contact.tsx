@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -23,7 +24,7 @@ const contactSchema = z.object({
   profession: z.string().trim().min(1, "Work/Profession is required"),
   country: z.string().trim().min(1, "Country is required"),
   experience: z.string().trim().min(1, "Experience is required"),
-  leadingTeam: z.enum(["Yes", "No", ""], { required_error: "Please select an option" }).refine(val => val !== "", "Please select an option"),
+  leadingTeam: z.string().min(1, "Please select an option"),
   message: z.string().trim().max(1000, "Message must be under 1000 characters").optional().or(z.literal("")),
 });
 
@@ -31,8 +32,8 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 const subjects = [
   "General Inquiry",
-  "Program - GITA",
   "Program - MAYA",
+  "Program - GITA",
   "Program - SARVAM",
   "Program - SHAKTI",
   "Book a Session",
@@ -87,7 +88,7 @@ const Contact = () => {
       profession: "",
       country: "",
       experience: "",
-      leadingTeam: "" as any,
+      leadingTeam: "" as ContactFormValues["leadingTeam"],
       message: "",
     },
   });
@@ -108,6 +109,10 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Contact Us — Get in Touch | Success369</title>
+        <meta name="description" content="Reach out to the Success369 team. Whether it's about our programs, book, events, or partnerships — we'd love to hear from you." />
+      </Helmet>
       <Navbar />
 
       {/* Hero */}
@@ -226,6 +231,24 @@ const Contact = () => {
                         )}
                       />
                     </div>
+
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="+91 ..."
+                              className="bg-background/50 border-border/50 focus:border-primary/50"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
                     <div className="grid sm:grid-cols-2 gap-5">
                       <FormField

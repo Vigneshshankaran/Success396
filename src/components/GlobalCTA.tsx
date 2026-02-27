@@ -47,7 +47,7 @@ const GlobalCTA = ({
   };
 
   return (
-    <section id={id} className={cn("relative section overflow-hidden", className)}>
+    <section id={id} className={cn("relative section overflow-hidden bg-black", className)}>
       {/* Background video */}
       <div className="absolute inset-0">
         <video
@@ -58,7 +58,7 @@ const GlobalCTA = ({
           playsInline
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/95" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10" />
       </div>
 
@@ -132,7 +132,7 @@ const GlobalCTA = ({
             ) : title}
           </div>
           {description && (
-            <p className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto">
+            <p className="text-white/80 text-lg md:text-xl max-w-xl mx-auto">
               {description}
             </p>
           )}
@@ -164,7 +164,7 @@ const GlobalCTA = ({
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
-                      className="flex-1 bg-card/50 backdrop-blur-md border border-border/60 rounded-xl px-5 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 focus:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300"
+                      className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-primary/60 focus:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300"
                     />
                     <CTAButton
                       type="submit"
@@ -181,11 +181,11 @@ const GlobalCTA = ({
                       id="terms" 
                       checked={agreed}
                       onCheckedChange={(checked) => setAgreed(checked as boolean)}
-                      className="border-muted-foreground/40 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                      className="border-white/40 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                     />
                     <Label 
                       htmlFor="terms" 
-                      className="text-muted-foreground/70 text-[11px] sm:text-xs font-normal cursor-pointer hover:text-muted-foreground transition-colors"
+                      className="text-white/70 text-[11px] sm:text-xs font-normal cursor-pointer hover:text-white transition-colors"
                     >
                       I agree to receive communication and accept Terms & Privacy Policy.
                     </Label>
@@ -197,7 +197,7 @@ const GlobalCTA = ({
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-center rounded-2xl bg-card/50 backdrop-blur-md border border-primary/30 p-8"
+                  className="text-center rounded-2xl bg-black/50 backdrop-blur-md border border-primary/30 p-8"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -207,10 +207,10 @@ const GlobalCTA = ({
                   >
                     <Check className="h-7 w-7 text-primary" />
                   </motion.div>
-                  <h3 className="mb-2 uppercase tracking-wider text-xl">
+                  <h3 className="mb-2 uppercase tracking-wider text-xl text-white">
                     Welcome to the Journey
                   </h3>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-white/70 text-sm">
                     Check your inbox — your first insight is on its way.
                   </p>
                 </motion.div>

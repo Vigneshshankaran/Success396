@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import {
@@ -12,34 +13,18 @@ import GlobalCTA from "@/components/GlobalCTA";
 import JourneySection from "@/components/JourneySection";
 import VideoCardsSection from "@/components/VideoCardsSection";
 import journeyVideo from "@/assets/Journey op 1.mp4";
+import { fadeUp } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
 
 const pathwaySteps = [
-  { icon: Pause, label: "Pause", description: "Phase 1: GITA", color: "bg-primary/20" },
-  { icon: Target, label: "Align", description: "Phase 2: MAYA", color: "bg-primary/20" },
+  { icon: Target, label: "Align", description: "Phase 1: MAYA", color: "bg-primary/20" },
+  { icon: Pause, label: "Pause", description: "Phase 2: GITA", color: "bg-primary/20" },
   { icon: Building2, label: "Build", description: "Phase 3: SARVAM", color: "bg-primary/20" },
   { icon: Zap, label: "Activate", description: "Phase 4: SHAKTI", color: "bg-primary/20" },
 ];
 
 const programCards = [
-  {
-    icon: Eye,
-    title: "GITA",
-    subtitle: "Clarity Before Action",
-    description: "For decision points where perspective matters. Witness your direction before moving forward.",
-    href: "/program-gita",
-    outcome: "Clear direction and confident next steps.",
-    cta: "Begin Your Clarity",
-    phase: "Phase 1"
-  },
   {
     icon: Layers,
     title: "MAYA",
@@ -48,6 +33,16 @@ const programCards = [
     href: "/program-maya",
     outcome: "Coherence, focus, and grounded momentum.",
     cta: "Explore the Unseen",
+    phase: "Phase 1"
+  },
+  {
+    icon: Eye,
+    title: "GITA",
+    subtitle: "Clarity Before Action",
+    description: "For decision points where perspective matters. Witness your direction before moving forward.",
+    href: "/program-gita",
+    outcome: "Clear direction and confident next steps.",
+    cta: "Begin Your Clarity",
     phase: "Phase 2"
   },
   {
@@ -83,6 +78,10 @@ const Programs = () => {
 
   return (
     <div ref={containerRef} className="min-h-screen bg-background text-foreground/90 selection:bg-primary/30 overflow-x-hidden">
+      <Helmet>
+        <title>Programs — Success369 Journeys</title>
+        <meta name="description" content="Explore the four phases of Success369 Journeys: MAYA, GITA, SARVAM, and SHAKTI — structured growth experiences for real decisions and transitions." />
+      </Helmet>
       <Navbar />
 
       {/* --- HERO SECTION --- */}
@@ -98,7 +97,7 @@ const Programs = () => {
             className="h-full w-full object-cover"
           />
           {/* Hero Overlay System (matched to home page) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20 z-10" />
         </div>
 
         <motion.div 
@@ -117,19 +116,19 @@ const Programs = () => {
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="mb-4 sm:mb-6 text-glow"
+              className="mb-4 sm:mb-6 text-glow text-white"
             >
               Build Success <br />
               <span className="italic text-primary text-glow">That Is Aligned.</span>
             </motion.h1>
 
             <motion.div custom={2} variants={fadeUp} className="max-w-2xl mb-12 space-y-6 text-left">
-              <p className="text-lg sm:text-xl text-muted-foreground/90 font-light">
+              <p className="text-lg sm:text-xl text-white/90 font-light">
                 In a world driven by speed and performance, many people are <span className="text-white font-medium">successful — but not fulfilled.</span>
                 <br />
                 Others are <span className="text-white font-medium">capable — but unclear.</span>
               </p>
-              <p className="text-base sm:text-lg leading-relaxed font-light text-muted-foreground/70 italic">
+              <p className="text-base sm:text-lg leading-relaxed font-light text-white/70 italic">
                 Success369 Journeys are designed to align who you are, what you value, and how you act — so success grows with clarity, confidence, and meaning.
               </p>
             </motion.div>
@@ -138,7 +137,7 @@ const Programs = () => {
               <CTAButton href="#journeys-intro" size="lg" variant="shimmer" className="px-10">
                 Begin Your Journey
               </CTAButton>
-              <CTAButton to="/free-session" size="lg" variant="outline" icon={null as any} className="px-10 border-white/10 hover:border-primary/50">
+              <CTAButton to="/free-session" size="lg" variant="outline" icon={null as any} className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
                 Take a Free Session
               </CTAButton>
             </motion.div>
@@ -156,7 +155,7 @@ const Programs = () => {
       </section>
 
       {/* --- WHAT ARE SUCCESS369 JOURNEYS? --- */}
-      <section id="journeys-intro" className="section overflow-hidden bg-black/40 border-y border-white/5">
+      <section id="journeys-intro" className="section overflow-hidden bg-card/60 backdrop-blur-md border-y border-border/30">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -165,25 +164,19 @@ const Programs = () => {
               viewport={{ once: true }}
               transition={{ duration: 1 }}
             >
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="text-center mb-12"
-            >
-              <div className="inline-flex items-center gap-3 mb-6">
-                <span className="h-[1px] w-8 bg-primary/60" />
-                <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
-                  Ready to Transition?
-                </p>
-                <span className="h-[1px] w-8 bg-primary/60" />
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-3 mb-6">
+                  <span className="h-[1px] w-8 bg-primary/60" />
+                  <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
+                    Ready to Transition?
+                  </p>
+                  <span className="h-[1px] w-8 bg-primary/60" />
+                </div>
+                <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  What Are <br />
+                  <span className="italic">Success369 Journeys?</span>
+                </h2>
               </div>
-              <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                What Are <br />
-                <span className="italic">Success369 Journeys?</span>
-              </h2>
-            </motion.div>
               <div className="space-y-6 text-lg text-muted-foreground font-light leading-relaxed">
                 <p>
                   Structured, guided growth experiences that support real decisions and real transitions — across life, career, leadership, and enterprise.
@@ -191,8 +184,8 @@ const Programs = () => {
                 <div className="flex flex-col gap-4 pt-4">
                   {["From uncertainty to clarity", "From misalignment to coherence", "From effort to meaningful momentum"].map((t, i) => (
                     <div key={i} className="flex items-center gap-4 group">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shadow-[0_0_10px_rgba(197,160,89,0.5)]" />
-                      <span className="text-white/70 group-hover:text-white transition-colors text-base">{t}</span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
+                      <span className="text-foreground/70 group-hover:text-foreground transition-colors text-base">{t}</span>
                     </div>
                   ))}
                 </div>
@@ -204,11 +197,11 @@ const Programs = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative"
+              className="p-10 rounded-[3rem] bg-secondary/30 border border-border/50 backdrop-blur-xl relative"
             >
               <Quote size={50} className="text-primary/10 absolute -top-8 -left-8" />
               <div className="space-y-6 relative z-10">
-                <p className="font-display text-2xl sm:text-3xl italic font-light leading-snug text-white/90">
+                <p className="font-display text-2xl sm:text-3xl italic font-light leading-snug text-foreground/90">
                   "These are not courses. They are journeys designed around readiness and responsibility."
                 </p>
                 <div className="flex items-center gap-4 pt-4">
@@ -257,11 +250,11 @@ const Programs = () => {
                   0{i + 1}
                 </span>
 
-                <div className="relative w-24 h-24 mx-auto rounded-3xl bg-white/[0.02] border border-white/5 flex items-center justify-center mb-8 group-hover:border-primary/40 group-hover:bg-primary/5 transition-all duration-500 z-10">
+                <div className="relative w-24 h-24 mx-auto rounded-3xl bg-secondary/30 border border-border/50 flex items-center justify-center mb-8 group-hover:border-primary/40 group-hover:bg-primary/5 transition-all duration-500 z-10">
                   <step.icon size={32} className="text-primary/60 group-hover:text-primary transition-all duration-500" />
                 </div>
-                <h3 className="font-display text-xl font-bold mb-2 text-white uppercase tracking-wider group-hover:text-primary transition-colors relative z-10">{step.label}</h3>
-                <p className="text-primary/40 text-[9px] font-bold tracking-[0.3em] uppercase group-hover:opacity-100 transition-opacity relative z-10">{step.description}</p>
+                <h3 className="font-display text-xl font-bold mb-2 text-foreground uppercase tracking-wider group-hover:text-primary transition-colors relative z-10">{step.label}</h3>
+                <p className="text-muted-foreground text-[9px] font-bold tracking-[0.3em] uppercase transition-opacity relative z-10">{step.description}</p>
               </motion.div>
             ))}
           </div>

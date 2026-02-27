@@ -1,22 +1,19 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Headphones, Mic, Play, ExternalLink, Youtube, Sparkles, Star, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
 import model369Video from "@/assets/Model 369.mp4";
+import { fadeUp } from "@/lib/animations";
 const podcastCover1 = "https://images.unsplash.com/photo-1478737270239-2fccd27ee086?auto=format&fit=crop&q=80&w=800";
 const podcastCover2 = "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
 
 const podcasts = [
   {
@@ -90,8 +87,26 @@ const featuredEpisodes = [
 ];
 
 const Podcast = () => {
+  const [showGuestForm, setShowGuestForm] = useState(false);
+  const [guestForm, setGuestForm] = useState({ name: "", email: "", linkedin: "", story: "" });
+
+  const handleGuestSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!guestForm.name || !guestForm.email || !guestForm.story) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+    toast.success("Application submitted! Our team will reach out soon.");
+    setShowGuestForm(false);
+    setGuestForm({ name: "", email: "", linkedin: "", story: "" });
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Podcast — Success369 Audio Experiences</title>
+        <meta name="description" content="Tune into the Success369 Podcast network for insights on personal growth, clarity, and sustainable success from leaders and visionaries." />
+      </Helmet>
       <Navbar />
 
       {/* Hero */}
@@ -106,7 +121,7 @@ const Podcast = () => {
             className="w-full h-full object-cover"
           />
           {/* Hero Overlay System */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20 z-10" />
         </div>
 
         <div className="relative z-20 container-custom w-full pb-28 sm:pb-32">
@@ -122,7 +137,7 @@ const Podcast = () => {
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="mb-4 sm:mb-6 text-glow"
+              className="mb-4 sm:mb-6 text-glow text-white"
             >
               Personal Growth At <br />
               <span className="italic text-primary text-glow font-light">Your Fingertips</span>
@@ -131,7 +146,7 @@ const Podcast = () => {
             <motion.p
               custom={2}
               variants={fadeUp}
-              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-muted-foreground/90 font-light"
+              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-white/90 font-light"
             >
               Use Success369 Podcasts to gain clarity, build alignment, and elevate your personal and professional growth in every area of life.
             </motion.p>
@@ -140,7 +155,7 @@ const Podcast = () => {
               <CTAButton href="#shows" size="lg" variant="shimmer" className="px-10">
                 Explore Shows
               </CTAButton>
-              <CTAButton href="#watch" size="lg" variant="outline" className="px-10 border-white/10 hover:border-primary/50">
+              <CTAButton href="#watch" size="lg" variant="outline" className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
                 Watch on YouTube
               </CTAButton>
             </motion.div>
@@ -174,9 +189,10 @@ const Podcast = () => {
             <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-black">
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/?listType=user_uploads&list=success369" 
+                src="https://www.youtube.com/embed/5lwI2eoGN6E"
                 title="Success369 Featured Episode"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               ></iframe>
             </div>
@@ -331,19 +347,22 @@ const Podcast = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-card/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-12 text-center relative overflow-hidden"
+            className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-[2.5rem] p-12 text-center relative overflow-hidden"
           >
             <div className="relative z-10">
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-8">
                 <Mic size={32} className="text-primary" />
               </div>
-              <h2 className="text-white mb-6">Have a story worth <span className="italic text-primary">sharing?</span></h2>
+              <h2 className="text-foreground mb-6">Have a story worth <span className="italic text-primary">sharing?</span></h2>
               <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
                 We're always looking for aligned leaders and visionaries to join our conversations. If you're building something that matters, we want to hear from you.
               </p>
-              <CTAButton href="mailto:podcast@success369.com" variant="shimmer" size="lg" className="px-12">
+              <button 
+                onClick={() => setShowGuestForm(true)}
+                className="inline-block font-body text-[16px] font-bold px-[44px] py-[22px] rounded-[12px] no-underline cursor-pointer relative overflow-hidden group bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] text-white uppercase tracking-[0.2em] transition-all duration-500 hover:shadow-[0_0_40px_rgba(197,160,89,0.4)]"
+              >
                 Apply to be a Guest
-              </CTAButton>
+              </button>
             </div>
             
             {/* Background Decoration */}
@@ -359,10 +378,90 @@ const Podcast = () => {
           </h2>
         }
         description="Subscribe to our podcasts and get weekly insights on clarity, alignment, and sustainable success delivered straight to your ears."
-        ctaText="Take a Free Session"
-        ctaHref="/free-session"
+        ctaText="Subscribe on YouTube"
+        ctaHref="https://youtube.com/@success369"
         showPillars={false}
       />
+
+      {/* --- GUEST APPLICATION MODAL --- */}
+      <AnimatePresence>
+        {showGuestForm && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setShowGuestForm(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-background border border-border/50 rounded-3xl p-8 shadow-2xl"
+            >
+              <button
+                onClick={() => setShowGuestForm(false)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground text-2xl leading-none"
+              >
+                ×
+              </button>
+
+              <div className="mb-6">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-2">Guest Application</p>
+                <h3 className="text-foreground text-xl font-bold">Share Your Story</h3>
+                <p className="text-muted-foreground text-sm">Join us on the podcast to discuss clarity, alignment, and sustainable success.</p>
+              </div>
+
+              <form onSubmit={handleGuestSubmit} className="space-y-4">
+                <div>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 block">Full Name *</label>
+                  <input
+                    type="text"
+                    value={guestForm.name}
+                    onChange={(e) => setGuestForm({...guestForm, name: e.target.value})}
+                    placeholder="Jane Doe"
+                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 block">Email Address *</label>
+                  <input
+                    type="email"
+                    value={guestForm.email}
+                    onChange={(e) => setGuestForm({...guestForm, email: e.target.value})}
+                    placeholder="jane@example.com"
+                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 block">LinkedIn Profile URL</label>
+                  <input
+                    type="url"
+                    value={guestForm.linkedin}
+                    onChange={(e) => setGuestForm({...guestForm, linkedin: e.target.value})}
+                    placeholder="https://linkedin.com/in/janedoe"
+                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 block">Why would you be a great guest? *</label>
+                  <textarea
+                    value={guestForm.story}
+                    onChange={(e) => setGuestForm({...guestForm, story: e.target.value})}
+                    placeholder="Tell us about your journey to aligned success..."
+                    rows={4}
+                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full mt-6 py-4 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-[0.2em] transition-all duration-300"
+                >
+                  Submit Application
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </div>

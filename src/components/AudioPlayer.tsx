@@ -2,29 +2,52 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const AUTO_PLAY_DELAY = 5000;   // Start playing after 5 seconds on page
+const AUTO_STOP_AFTER = 15000;  // Stop after 15 seconds of playing
+
 const AudioPlayer = () => {
   const [isMuted, setIsMuted] = useState(true);
+  const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Auto-play after 5 seconds on page
   useEffect(() => {
-    console.log("AudioPlayer mounted");
-  }, []);
+    const autoPlayTimer = setTimeout(() => {
+      if (audioRef.current && !hasAutoPlayed) {
+        setIsMuted(false);
+        setHasAutoPlayed(true);
+      }
+    }, AUTO_PLAY_DELAY);
 
+    return () => clearTimeout(autoPlayTimer);
+  }, [hasAutoPlayed]);
+
+  // Auto-stop after 15 seconds of playing
   useEffect(() => {
-    // Load mute preference from localStorage
-    const savedMutePreference = localStorage.getItem('isMuted');
-    if (savedMutePreference !== null) {
-      setIsMuted(savedMutePreference === 'true');
+    if (!isMuted && hasAutoPlayed) {
+      // Clear any existing stop timer
+      if (stopTimerRef.current) clearTimeout(stopTimerRef.current);
+
+      stopTimerRef.current = setTimeout(() => {
+        setIsMuted(true);
+      }, AUTO_STOP_AFTER);
     }
-  }, []);
 
+    return () => {
+      if (stopTimerRef.current) clearTimeout(stopTimerRef.current);
+    };
+  }, [isMuted, hasAutoPlayed]);
+
+  // Handle audio play/pause based on mute state
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.muted = isMuted;
-      if (audioRef.current) {
-        audioRef.current.volume = 0.4;
+      audioRef.current.volume = 0.4;
+      if (isMuted) {
+        audioRef.current.pause();
+      } else {
         audioRef.current.play().catch(error => {
-          console.log("Autoplay prevented or audio error:", error);
+          console.log("Autoplay prevented:", error);
         });
       }
     }
@@ -33,6 +56,11 @@ const AudioPlayer = () => {
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
+    // If user manually toggles, clear the auto-stop timer
+    if (stopTimerRef.current) {
+      clearTimeout(stopTimerRef.current);
+      stopTimerRef.current = null;
+    }
   };
 
   return (

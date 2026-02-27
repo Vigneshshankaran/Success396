@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Calendar, MapPin, Clock, Users, ArrowRight, Sparkles, Globe, Building } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -8,15 +9,9 @@ import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
 import { allEvents, stats } from "@/data/events-list";
 import eventVideo from "@/assets/Events Video.mp4";
+import { fadeUp } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
 
 type FilterType = "all" | "upcoming" | "past";
 
@@ -37,6 +32,10 @@ const Events = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Events — Live Transformation Experiences | Success369</title>
+        <meta name="description" content="Join Success369 live events — from free virtual masterclasses to life-changing in-person experiences that rewire how you grow." />
+      </Helmet>
       <Navbar />
 
       {/* Hero Section */}
@@ -51,7 +50,7 @@ const Events = () => {
             className="w-full h-full object-cover"
           />
           {/* Hero Overlay System (matched to home page) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20 z-10" />
         </div>
 
         <div className="relative z-20 container-custom w-full pb-28 sm:pb-32">
@@ -67,7 +66,7 @@ const Events = () => {
             <motion.h1
               custom={1}
               variants={fadeUp}
-              className="mb-4 sm:mb-6 text-glow"
+              className="mb-4 sm:mb-6 text-glow text-white"
             >
               Experience the magic of{" "}
               <span className="italic text-primary text-glow font-light">transformation</span>
@@ -76,7 +75,7 @@ const Events = () => {
             <motion.p
               custom={2}
               variants={fadeUp}
-              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-muted-foreground/90 font-light"
+              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-white/90 font-light"
             >
               Some experiences don't just teach you — they rewire you. Join seekers, leaders, and visionaries who've discovered that the fastest path to growth isn't online. It's in the room.
             </motion.p>

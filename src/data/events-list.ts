@@ -19,6 +19,8 @@ export interface Event {
   speakers?: { name: string; role: string }[];
 }
 
+import eventSummitImg from "@/assets/event-summit.jpg";
+
 export const allEvents: Event[] = [
   {
     slug: "master-your-momentum",
@@ -32,7 +34,7 @@ export const allEvents: Event[] = [
     date: "May 12-14, 2024",
     time: "9:00 AM - 6:00 PM",
     location: "London, UK",
-    image: "https://images.unsplash.com/photo-1540575861501-7ad0582371f3?auto=format&fit=crop&q=80&w=800",
+    image: eventSummitImg,
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-businessmen-and-businesswomen-in-a-meeting-room-4840-large.mp4",
     spots: "50 spots remaining",
     highlights: [

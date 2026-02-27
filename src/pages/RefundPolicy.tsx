@@ -22,7 +22,7 @@ const sections = [
   },
   {
     title: "Programme & Session Refunds",
-    content: "For GITA, MAYA, SARVAM, and SHAKTI programmes: cancellations made more than 7 days before the scheduled start date are eligible for a full refund. Cancellations made within 7 days of the start date may receive a 50% refund or a credit toward a future programme, at our discretion. Once a programme has begun, no refunds will be issued.",
+    content: "For MAYA, GITA, SARVAM, and SHAKTI programmes: cancellations made more than 7 days before the scheduled start date are eligible for a full refund. Cancellations made within 7 days of the start date may receive a 50% refund or a credit toward a future programme, at our discretion. Once a programme has begun, no refunds will be issued.",
   },
   {
     title: "Free Sessions",

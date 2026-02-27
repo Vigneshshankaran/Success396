@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -10,14 +11,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { fadeUp } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
 
 const sessionSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be under 100 characters"),
@@ -47,7 +43,7 @@ const infoSections = [
   {
     icon: Compass,
     title: "How It Helps You Choose",
-    content: "By the end of the session, you'll have a clearer sense of whether GITA, MAYA, SARVAM, or SHAKTI matches your current needs. Or you might realise it's not the right time — and that's equally valuable. The session exists to serve your clarity, not our pipeline.",
+    content: "By the end of the session, you'll have a clearer sense of whether MAYA, GITA, SARVAM, or SHAKTI matches your current needs. Or you might realise it's not the right time — and that's equally valuable. The session exists to serve your clarity, not our pipeline.",
   },
 ];
 
@@ -66,6 +62,10 @@ const FreeSession = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Free Session — Your First Step | Success369</title>
+        <meta name="description" content="Book a free 30-minute session with Success369. No pitch, no pressure — just a warm conversation to explore what's next for your journey." />
+      </Helmet>
       <Navbar />
 
       {/* Hero */}

@@ -136,7 +136,7 @@ Success369 is guided by two stewards who believe success is cultivated with clar
                       {trainer.specialties.map((s) => (
                         <span
                           key={s}
-                          className="text-[11px] font-display font-medium uppercase tracking-wider px-3 py-1.5 rounded-full border border-white/20 text-white bg-white/5"
+                          className="text-[11px] font-display font-medium uppercase tracking-wider px-3 py-1.5 rounded-full border border-border text-foreground bg-secondary/50"
                         >
                           {s}
                         </span>
@@ -156,7 +156,7 @@ Success369 is guided by two stewards who believe success is cultivated with clar
                     {/* Actions */}
                     <div className="flex items-center gap-4 pt-2">
                       <CTAButton 
-                        href="/contact"
+                        to="/contact"
                         size="sm"
                         variant="primary"
                         className="uppercase tracking-wider"
@@ -178,6 +178,32 @@ Success369 is guided by two stewards who believe success is cultivated with clar
             );
           })}
         </div>
+
+        {/* --- JOIN AS MENTOR CTA --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-20 md:mt-32 text-center bg-card/40 backdrop-blur-xl border border-border/30 rounded-[2.5rem] p-12 relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-primary/5 -z-10" />
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-8">
+              <Users size={32} className="text-primary" />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 text-foreground">Join as a <span className="italic text-primary">Mentor</span></h3>
+            <p className="text-muted-foreground text-lg mb-8">
+              Are you an experienced leader or coach aligned with our philosophy? Join our team of stewards to guide others toward clarity and sustainable success.
+            </p>
+            <CTAButton to="/contact?subject=Mentor+Application" variant="shimmer" size="lg" className="px-12">
+              Apply to Join
+            </CTAButton>
+          </div>
+          {/* Background Decoration */}
+          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+        </motion.div>
+
       </div>
     </section>
   );

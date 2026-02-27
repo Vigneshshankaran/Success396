@@ -201,7 +201,7 @@ const TestimonialsSection = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5, duration: 0.5 }}
-                    className="group relative rounded-2xl p-5 sm:p-6 mb-8 border border-white/5 bg-white/5 overflow-hidden transition-all duration-700 hover:border-primary/20"
+                    className="group relative rounded-2xl p-5 sm:p-6 mb-8 border border-border/50 bg-secondary/50 overflow-hidden transition-all duration-700 hover:border-primary/20"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     <p className="relative z-10 text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-2 flex items-center gap-2">

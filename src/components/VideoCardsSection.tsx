@@ -17,20 +17,20 @@ interface VideoCard {
 
 const videoCards: VideoCard[] = [
   {
-    title: "GITA-Clarity Before Action",
-    description:
-      "For moments when decisions matter and clarity is essential.",
-    cta: "Apply for GITA",
-    videoUrl: gitaVideo,
-    href: "/contact?subject=GITA",
-  },
-  {
     title: "MAYA-Realigning Unseen Patterns",
     description:
       "For those who are capable and progressing, yet feel misaligned.",
     cta: "Apply for Maya",
     videoUrl: mayaVideo,
     href: "/contact?subject=MAYA",
+  },
+  {
+    title: "GITA-Clarity Before Action",
+    description:
+      "For moments when decisions matter and clarity is essential.",
+    cta: "Apply for GITA",
+    videoUrl: gitaVideo,
+    href: "/contact?subject=GITA",
   },
   {
     title: "SARVAM-The Architecture for Sustainable Success",
@@ -123,7 +123,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
           </AnimatePresence>
 
           {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
           {/* Text content — bottom left */}
           <div className="absolute bottom-32 left-0 p-10 z-10">
@@ -135,7 +135,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
-                <h3 className="text-foreground mb-4">{activeCard.title}</h3>
+                <h3 className="text-white mb-4">{activeCard.title}</h3>
                 <CTAButton 
                   to={activeCard.href}
                   size="md"
@@ -161,8 +161,8 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                   onMouseEnter={() => handleCardHover(index)}
                   className={`group relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 backdrop-blur-md ${
                     activeIndex === index
-                      ? "border-2 border-primary/70 shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] bg-background/40"
-                      : "border border-foreground/10 bg-background/20 hover:border-primary/30 hover:bg-background/30"
+                      ? "border-2 border-primary/70 shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] bg-black/40"
+                      : "border border-white/10 bg-black/20 hover:border-primary/30 hover:bg-black/30"
                   }`}
                 >
                   <div className="flex items-center gap-3 p-3">
@@ -177,11 +177,11 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                       <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
                         activeIndex === index ? "opacity-0" : "opacity-80"
                       }`}>
-                        <Play className="h-3 w-3 text-foreground/90 ml-0.5" />
+                        <Play className="h-3 w-3 text-white/90 ml-0.5" />
                       </div>
                     </div>
                     <p className={`font-display text-xs font-semibold leading-tight line-clamp-2 transition-colors duration-300 ${
-                      activeIndex === index ? "text-primary" : "text-foreground/80"
+                      activeIndex === index ? "text-primary" : "text-white/80"
                     }`}>
                       {card.title}
                     </p>
@@ -230,7 +230,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
             </AnimatePresence>
 
             {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
             {/* Text content */}
             <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
@@ -242,10 +242,10 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <h3 className="text-foreground text-xl font-bold mb-2 leading-snug">
+                  <h3 className="text-white text-xl font-bold mb-2 leading-snug">
                     {activeCard.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 font-light">
+                  <p className="text-white/70 text-sm leading-relaxed mb-4 font-light">
                     {activeCard.description}
                   </p>
                   <CTAButton 
@@ -272,8 +272,8 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                 onClick={() => setActiveIndex(index)}
                 className={`group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 ${
                   activeIndex === index
-                    ? "border-2 border-primary/70 shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] bg-background/60"
-                    : "border border-foreground/10 bg-background/30"
+                    ? "border-2 border-primary/70 shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] bg-black/60"
+                    : "border border-white/10 bg-black/30"
                 }`}
               >
                 {/* Thumbnail strip */}
@@ -285,11 +285,11 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                     preload="metadata"
                     className="h-full w-full object-cover"
                   />
-                  <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-background/30 ${
+                  <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black/30 ${
                     activeIndex === index ? "opacity-0" : "opacity-100"
                   }`}>
-                    <div className="rounded-full bg-background/60 p-2 backdrop-blur-sm">
-                      <Play className="h-4 w-4 text-foreground/90 ml-0.5" />
+                    <div className="rounded-full bg-black/60 p-2 backdrop-blur-sm">
+                      <Play className="h-4 w-4 text-white/90 ml-0.5" />
                     </div>
                   </div>
                 </div>
@@ -297,7 +297,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                 {/* Card text */}
                 <div className="p-3">
                   <p className={`font-display text-xs font-semibold leading-snug line-clamp-2 transition-colors duration-300 ${
-                    activeIndex === index ? "text-primary" : "text-foreground/80"
+                    activeIndex === index ? "text-primary" : "text-white/80"
                   }`}>
                     {card.title}
                   </p>

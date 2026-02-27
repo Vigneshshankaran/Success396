@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sun, Sparkles, Zap, Search, Route, Users, Target, Clock, Globe, Shield } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
@@ -6,19 +7,19 @@ import GlobalCTA from "@/components/GlobalCTA";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import shaktiVideo from "@/assets/shakti.mp4";
+import { fadeUp } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
+
+
 
 const ProgramShakti = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>SHAKTI — Activating Aligned Momentum | Success369</title>
+        <meta name="description" content="SHAKTI is for leaders and teams ready to execute. Translate alignment into real-world strength with focused activation." />
+      </Helmet>
       <Navbar />
 
       {/* --- HERO SECTION --- */}
@@ -34,7 +35,7 @@ const ProgramShakti = () => {
           >
             <source src={shaktiVideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/60 to-black/95" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
@@ -50,7 +51,7 @@ const ProgramShakti = () => {
             initial="hidden"
             animate="visible"
             custom={1}
-            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight"
+            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight text-white"
           >
             Activating <br />
             <span className="text-primary text-glow italic">Aligned Momentum</span>
@@ -61,7 +62,7 @@ const ProgramShakti = () => {
             initial="hidden"
             animate="visible"
             custom={2}
-            className="text-xl sm:text-2xl text-foreground/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-xl sm:text-2xl text-white/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
           >
             Clarity without movement creates frustration. Alignment without activation creates delay. SHAKTI exists to turn alignment into impact.
           </motion.p>
@@ -117,7 +118,7 @@ const ProgramShakti = () => {
               {
                 image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
                 title: "Journey Integration",
-                description: "Individuals and organisations emerging from GITA, MAYA, or SARVAM who need to translate their insights into real-world capability.",
+                description: "Individuals and organisations emerging from MAYA, GITA, or SARVAM who need to translate their insights into real-world capability.",
                 step: "02",
               },
             ].map((card, index) => (

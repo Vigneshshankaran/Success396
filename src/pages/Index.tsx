@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSlider from "@/components/HeroSlider";
 import JourneySection from "@/components/JourneySection";
@@ -11,6 +12,10 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
+      <Helmet>
+        <title>Success369 — Build Success That Is Aligned</title>
+        <meta name="description" content="Success369 helps individuals, leaders, and organisations build sustainable success through clarity, congruence, and catalysis." />
+      </Helmet>
       <Navbar />
       <HeroSlider />
       <JourneySection />

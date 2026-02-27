@@ -99,7 +99,7 @@ const HeroSlider = () => {
   return (
     <section
       id="hero"
-      className="relative h-screen w-full overflow-hidden bg-background"
+      className="relative h-screen w-full overflow-hidden bg-black"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -154,7 +154,7 @@ const HeroSlider = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-4 sm:mb-6 text-glow"
+                className="mb-4 sm:mb-6 text-glow text-white"
               >
                 {slide.title}
               </motion.h1>
@@ -164,7 +164,7 @@ const HeroSlider = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.6 }}
-                className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-muted-foreground/90 font-light"
+                className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-white/90 font-light"
               >
                 {slide.subtitle}
               </motion.p>
@@ -193,13 +193,13 @@ const HeroSlider = () => {
       <div className="absolute right-4 sm:right-6 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-2 sm:gap-3">
         <button
           onClick={prev}
-          className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-foreground/15 bg-background/20 text-foreground/70 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+          className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/15 bg-black/20 text-white/70 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-primary/20 hover:text-primary"
         >
           <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
         <button
           onClick={next}
-          className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-foreground/15 bg-background/20 text-foreground/70 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+          className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/15 bg-black/20 text-white/70 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-primary/20 hover:text-primary"
         >
           <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
@@ -220,7 +220,7 @@ const HeroSlider = () => {
                   transition={{ duration: 0.05, ease: "linear" }}
                 />
               </div>
-              <span className="mt-2 hidden sm:block text-xs font-medium text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="mt-2 hidden sm:block text-xs font-medium text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {slides[index].tag}
               </span>
             </button>
@@ -230,8 +230,8 @@ const HeroSlider = () => {
 
       {/* Slide counter */}
       <div className="absolute bottom-10 sm:bottom-12 right-4 sm:right-6 z-20">
-        <span className="font-display text-xs sm:text-sm tabular-nums text-muted-foreground">
-          <span className="text-foreground">{String(current + 1).padStart(2, "0")}</span>
+        <span className="font-display text-xs sm:text-sm tabular-nums text-white/70">
+          <span className="text-white">{String(current + 1).padStart(2, "0")}</span>
           {" / "}
           {String(slides.length).padStart(2, "0")}
         </span>

@@ -18,7 +18,7 @@ const sections = [
   },
   {
     title: "Services Offered",
-    content: "Success369 provides transformation journeys (GITA, MAYA, SARVAM, SHAKTI), free introductory sessions, events, workshops, and published materials including the Success369 book. All services are subject to availability and may be modified at our discretion.",
+    content: "Success369 provides transformation journeys (MAYA, GITA, SARVAM, SHAKTI), free introductory sessions, events, workshops, and published materials including the Success369 book. All services are subject to availability and may be modified at our discretion.",
   },
   {
     title: "Booking & Payment",

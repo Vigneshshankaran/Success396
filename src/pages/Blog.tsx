@@ -1,25 +1,35 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Clock, Search } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { ArrowRight, Sparkles, Clock, Search, Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { blogPosts, categories, type BlogCategory } from "@/data/blog";
+import { fadeUp } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+// fadeUp imported from @/lib/animations
 
 type FilterType = "All" | BlogCategory;
 
 const Blog = () => {
   const [filter, setFilter] = useState<FilterType>("All");
   const [search, setSearch] = useState("");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes("@")) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    // Future: send to backend/email service
+    setNewsletterSubmitted(true);
+    toast.success("Welcome aboard! You'll receive our next insight soon.");
+    setNewsletterEmail("");
+  };
 
   const featured = blogPosts.find((p) => p.featured);
 
@@ -36,6 +46,10 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Blog — Insights for Sustainable Growth | Success369</title>
+        <meta name="description" content="Explore perspectives on clarity, congruence, and catalysis — the three pillars of lasting transformation." />
+      </Helmet>
       <Navbar />
 
       {/* Hero */}
@@ -180,8 +194,21 @@ const Blog = () => {
 
           {/* Grid */}
           {filtered.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-muted-foreground">No articles found matching your criteria.</p>
+            <div className="text-center py-20 flex flex-col items-center justify-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <Search size={24} className="text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">No articles found</h3>
+              <p className="text-muted-foreground mb-6">We couldn't find any articles matching "{search}".</p>
+              <button
+                onClick={() => {
+                  setSearch("");
+                  setFilter("All");
+                }}
+                className="px-6 py-2.5 rounded-full bg-card border border-border/50 hover:border-primary/50 text-sm font-medium transition-colors"
+              >
+                Clear Filters
+              </button>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -258,21 +285,36 @@ const Blog = () => {
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
               Get weekly insights on leadership, clarity, and sustainable success delivered to your inbox.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-5 py-3 rounded-full bg-card/60 border border-border/40 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
-              />
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="relative px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
+            {newsletterSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex items-center justify-center gap-3 text-primary font-semibold"
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
-                <span className="relative">Subscribe</span>
-              </motion.button>
-            </div>
+                <Check size={20} />
+                <span>You're subscribed! Check your inbox soon.</span>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  aria-label="Email address for newsletter"
+                  className="flex-1 px-5 py-3 rounded-full bg-card/60 border border-border/40 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                />
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="relative px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
+                  <span className="relative">Subscribe</span>
+                </motion.button>
+              </form>
+            )}
           </motion.div>
         </div>
       </section>
