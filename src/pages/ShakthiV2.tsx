@@ -5,12 +5,13 @@ import { BookOpen, Target, Dna, Calendar, User, BookOpenCheck, Users, Check, Arr
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeUp } from "@/lib/animations";
-import { ShakthiRegisterPopup, useShakthiRegister } from "@/components/ShakthiRegisterPopup";
+import img3448 from "@/assets/IMG_3448.webp";
+import img3450 from "@/assets/IMG_3450.webp";
 
 const hooks = [
-  { title: "Brilliant in your head.", em: "Forgettable out loud.", sub: <>Your thinking is sharp. The way it is landing is not. <strong>The Unfiltered Voice</strong> is a focused <strong>6-hour programme</strong> that closes the gap between what you think and how you are heard — through <strong>personality-aligned communication.</strong></> },
-  { title: "The idea was yours.", em: "Someone else got the credit.", sub: <>Not because your idea was weaker. Because it did not land the way it deserved to. <strong>The Unfiltered Voice</strong> teaches you to communicate with the precision and presence your thinking already deserves. <strong>Harvard ManageMentor content included.</strong></> },
-  { title: "You know what you want to say.", em: "But it never comes out the way you meant it.", sub: <><strong>The Unfiltered Voice</strong> is a focused <strong>6-hour communication programme</strong> that teaches you to communicate as yourself. Louder. Polished. <strong>And precisely you.</strong></> },
+  { image: img3448, title: "Brilliant in your head.", em: "Forgettable out loud.", sub: <>Your thinking is sharp. The way it is landing is not. <strong>The Unfiltered Voice</strong> is a focused <strong>6-hour programme</strong> that closes the gap between what you think and how you are heard — through <strong>personality-aligned communication.</strong></> },
+  { image: img3450, title: "The idea was yours.", em: "Someone else got the credit.", sub: <>Not because your idea was weaker. Because it did not land the way it deserved to. <strong>The Unfiltered Voice</strong> teaches you to communicate with the precision and presence your thinking already deserves. <strong>Harvard ManageMentor content included.</strong></> },
+  { image: null, title: "You know what you want to say.", em: "But it never comes out the way you meant it.", sub: <><strong>The Unfiltered Voice</strong> is a focused <strong>6-hour communication programme</strong> that teaches you to communicate as yourself. Louder. Polished. <strong>And precisely you.</strong></> },
 ];
 
 const curriculum = [
@@ -40,7 +41,6 @@ const pillars = [
 const ShakthiV2 = () => {
   const [currentHook, setCurrentHook] = useState(0);
   const switchHook = useCallback((i: number) => setCurrentHook(i), []);
-  const { formData, updateField, popupOpen, setPopupOpen, handleSubmit } = useShakthiRegister();
   useEffect(() => {
     const t = setInterval(() => setCurrentHook(p => (p + 1) % 3), 5000);
     return () => clearInterval(t);
@@ -55,9 +55,40 @@ const ShakthiV2 = () => {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-screen w-full bg-black flex flex-col pt-20">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 80% 40%, hsl(324 100% 46% / 0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, hsl(324 100% 46% / 0.08) 0%, transparent 60%)" }} />
-        <div className="absolute inset-0 hero-overlay" />
+      <section 
+        className="relative min-h-screen w-full bg-black flex flex-col"
+        style={{ paddingTop: 'var(--total-header-height)' }}
+      >
+        {/* BACKGROUND SLIDER */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black" />
+          {hooks.map((hook, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: i === currentHook ? (hook.image ? 1 : 0) : 0 }}
+              transition={{ duration: 1.2 }}
+              className="absolute inset-0"
+            >
+              {hook.image && (
+                <img 
+                  src={hook.image} 
+                  alt="" 
+                  className="w-full h-full object-cover grayscale brightness-50"
+                />
+              )}
+            </motion.div>
+          ))}
+          
+          {/* DEFAULT GRADIENT (Always visible if no image or as a base) */}
+          <motion.div 
+            animate={{ opacity: hooks[currentHook].image ? 0.3 : 1 }}
+            className="absolute inset-0 pointer-events-none" 
+            style={{ background: "radial-gradient(ellipse 60% 50% at 80% 40%, hsl(324 100% 46% / 0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, hsl(324 100% 46% / 0.08) 0%, transparent 60%)" }} 
+          />
+        </div>
+
+        <div className="absolute inset-0 hero-overlay z-[1]" />
 
         <div className="relative flex-1 flex items-center z-10 py-12 md:py-20">
           <div className="max-w-7xl mx-auto w-full px-5 sm:px-6">
@@ -67,11 +98,14 @@ const ShakthiV2 = () => {
               </span>
             </motion.div>
 
-            <div className="max-w-2xl">
-              <div className="relative min-h-[200px]">
+            <div className="max-w-4xl">
+              <div className="relative min-h-[220px] sm:min-h-[260px] md:min-h-[280px] w-full">
                 {hooks.map((hook, i) => (
                   <motion.div key={i} initial={{ opacity: 0, y: 24 }} animate={{ opacity: i === currentHook ? 1 : 0, y: i === currentHook ? 0 : 24 }} transition={{ duration: 0.5 }} className={`${i === currentHook ? "block" : "hidden"}`}>
-                    <h1 className="mb-4 sm:mb-6 text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white text-glow leading-[1.2] sm:leading-[1.1]">{hook.title}<span className="block italic text-white/50">{hook.em}</span></h1>
+                    <h1 className="mb-4 sm:mb-6 text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white text-glow leading-[1.2] sm:leading-[1.1]">
+                      {hook.title}
+                      <span className={`${i === 2 ? "ml-3" : "block"} italic text-white/50`}>{hook.em}</span>
+                    </h1>
                     <p className="mb-8 sm:mb-10 max-w-lg text-base sm:text-xl text-white/90 font-light">{hook.sub}</p>
                   </motion.div>
                 ))}
@@ -84,13 +118,13 @@ const ShakthiV2 = () => {
               </div>
 
               <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                <a href="#register" className="inline-block bg-primary text-white px-9 py-4 text-sm font-semibold uppercase tracking-wider rounded-lg border-2 border-primary hover:bg-primary/80 transition-all hover:-translate-y-0.5">Register Now — ₹3,000</a>
-                <a href="#free-session" className="inline-block text-white/85 px-9 py-4 text-sm font-medium uppercase tracking-wider rounded-lg border border-white/30 hover:border-white/70 hover:text-white transition-all hover:-translate-y-0.5">Take a Free Session</a>
+                <a href="https://pages.razorpay.com/shakti-unfiltered-voice" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-white px-9 py-4 text-sm font-semibold uppercase tracking-wider rounded-lg border-2 border-primary hover:bg-primary/80 transition-all hover:-translate-y-0.5">Register Now — ₹3,000</a>
+                <a href="https://calendly.com/admin-success369/shakthi-the-unfiltered-voice-free-session" target="_blank" rel="noopener noreferrer" className="inline-block text-white/85 px-9 py-4 text-sm font-medium uppercase tracking-wider rounded-lg border border-white/30 hover:border-white/70 hover:text-white transition-all hover:-translate-y-0.5">Take a Free Session</a>
               </motion.div>
 
               <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={4} className="mt-10 pt-8 border-t border-white/10 flex gap-4 md:gap-6 flex-wrap items-center">
                 <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-primary border border-primary/30 bg-primary/10 px-3 py-1.5 rounded">★ Harvard ManageMentor Content Included</span>
-                {["Cohort of 15–25", "2 Hours × 3 Sessions", "In-Person & Online"].map(t => (
+                {["Cohort of 15–25", "3 Hours × 2 Sessions", "In-Person & Online"].map(t => (
                   <span key={t} className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-white/45 flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary" />{t}</span>
                 ))}
               </motion.div>
@@ -138,7 +172,7 @@ const ShakthiV2 = () => {
           </motion.div>
           <div className="flex gap-4 flex-wrap mb-12">
             {[
-              { icon: Calendar, label: "2 Hours × 3 Sessions" },
+              { icon: Calendar, label: "3 Hours × 2 Sessions" },
               { icon: User, label: "Facilitated by Coach — 4 Hours" },
               { icon: BookOpenCheck, label: "Harvard ManageMentor — 2 Hours" },
               { icon: Users, label: "Cohort of 15–25" },
@@ -166,13 +200,12 @@ const ShakthiV2 = () => {
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
             <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">How It Runs</span>
-            <h2>2 hours. 3 sessions.<br />One complete skill.</h2>
+            <h2>3 hours. 2 sessions.<br />One complete skill.</h2>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { session: "Session 1", title: "Communication Brand + Body Language", desc: "Identify your natural communication identity. Understand your strengths and the specific adjustments that will make them sharper.", badge: "2 Hours" },
-              { session: "Session 2", title: "Public Speaking + Listening", desc: "Build presence for groups and 1-on-1. Develop listening as a deliberate skill that transforms how people engage with you.", badge: "2 Hours" },
-              { session: "Session 3", title: "Harvard ManageMentor + Commitment", desc: "Apply Harvard ManageMentor frameworks to your specific communication gaps. Leave with a personal commitment you will actually keep.", badge: "2 Hours · HMM Content" },
+              { session: "Session 1", title: "Communication Brand + Body Language", desc: "Identify your natural communication identity. Understand your strengths and the specific adjustments that will make them sharper.", badge: "3 Hours" },
+              { session: "Session 2", title: "Public Speaking, Listening + HMM", desc: "Build presence, develop intentional listening, and apply Harvard ManageMentor frameworks to your specific communication gaps.", badge: "3 Hours · HMM Content" },
             ].map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 rounded-3xl bg-primary/5 border border-primary/20 text-center">
                 <p className="text-3xl font-bold text-primary mb-2">{s.session}</p>
@@ -182,7 +215,7 @@ const ShakthiV2 = () => {
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-muted-foreground text-sm italic mt-10 p-6 rounded-xl border border-border/20">Sessions are held on consecutive weeks. You attend all three. Each one builds directly on the last. Small cohort — maximum 25 participants.</p>
+          <p className="text-center text-muted-foreground text-sm italic mt-10 p-6 rounded-xl border border-border/20">Sessions are held on consecutive weeks. You attend both. Each one builds directly on the last. Small cohort — maximum 25 participants.</p>
         </div>
       </section>
 
@@ -231,7 +264,7 @@ const ShakthiV2 = () => {
             ))}
           </div>
           <div className="text-center">
-            <a href="#" className="inline-flex items-center gap-2 bg-foreground text-background px-10 py-4 text-sm font-semibold uppercase tracking-wider rounded-lg hover:-translate-y-0.5 transition-all">Book Your Free Session <ArrowRight size={16} /></a>
+            <a href="https://calendly.com/admin-success369/shakthi-the-unfiltered-voice-free-session" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-foreground text-background px-10 py-4 text-sm font-semibold uppercase tracking-wider rounded-lg hover:-translate-y-0.5 transition-all">Book Your Free Session <ArrowRight size={16} /></a>
           </div>
         </div>
       </section>
@@ -239,44 +272,35 @@ const ShakthiV2 = () => {
       {/* REGISTER */}
       <section className="py-24 bg-card" id="register">
         <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }} 
+            className="mb-14 text-center"
+          >
             <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Secure Your Spot</span>
-            <h2>Ready to close the gap?</h2>
+            <h2 className="mx-auto">Ready to close the gap?</h2>
           </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="p-8 rounded-3xl bg-background/50 border border-border/30">
-              <h3 className="text-xl font-bold mb-6 pb-5 border-b border-border/20">Shakthi — The Unfiltered Voice</h3>
-              {[
-                ["Format", "2 Hours × 3 Sessions"],
-                ["Total Duration", "6 Hours"],
-                ["Cohort Size", "Max 25 Participants"],
-                ["Delivery", "In-Person & Online"],
-                ["Content", "Success369 + Harvard ManageMentor"],
-              ].map(([label, value]) => (
-                <div key={label} className="flex justify-between items-center py-3.5 border-b border-border/10">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</span>
-                  <span className="text-sm font-medium">{value}</span>
-                </div>
-              ))}
-              <div className="flex justify-between items-center py-3.5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Investment</span>
-                <span className="text-2xl font-bold text-primary">₹3,000</span>
-              </div>
-              <p className="text-xs text-muted-foreground mt-6 leading-relaxed">Small cohort. Limited spots. Once full, registration closes until the next batch opens.</p>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold mb-6 px-1">Register — Secure Your Spot</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                <div className="px-1"><label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">First Name *</label><input type="text" placeholder="Your first name" value={formData.firstName} onChange={e => updateField("firstName", e.target.value)} className="w-full px-4 py-3.5 rounded-xl bg-background border border-border/30 text-foreground text-sm outline-none focus:border-primary transition-colors" /></div>
-                <div className="px-1"><label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Last Name *</label><input type="text" placeholder="Your last name" value={formData.lastName} onChange={e => updateField("lastName", e.target.value)} className="w-full px-4 py-3.5 rounded-xl bg-background border border-border/30 text-foreground text-sm outline-none focus:border-primary transition-colors" /></div>
-              </div>
-              <div className="mb-4 px-1"><label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Email Address *</label><input type="email" placeholder="your@email.com" value={formData.email} onChange={e => updateField("email", e.target.value)} className="w-full px-4 py-3.5 rounded-xl bg-background border border-border/30 text-foreground text-sm outline-none focus:border-primary transition-colors" /></div>
-              <div className="mb-4 px-1"><label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Phone Number *</label><input type="tel" placeholder="+91 XXXXX XXXXX" value={formData.phone} onChange={e => updateField("phone", e.target.value)} className="w-full px-4 py-3.5 rounded-xl bg-background border border-border/30 text-foreground text-sm outline-none focus:border-primary transition-colors" /></div>
-              <div className="mb-4 px-1"><label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Organisation / Company</label><input type="text" placeholder="Where do you work? (optional)" value={formData.organisation} onChange={e => updateField("organisation", e.target.value)} className="w-full px-4 py-3.5 rounded-xl bg-background border border-border/30 text-foreground text-sm outline-none focus:border-primary transition-colors" /></div>
-              <div className="mb-6 px-1"><label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">How did you hear about Shakthi?</label><select value={formData.heardFrom} onChange={e => updateField("heardFrom", e.target.value)} className="w-full px-4 py-3.5 rounded-xl bg-background border border-border/30 text-foreground text-sm outline-none focus:border-primary transition-colors"><option value="">Select an option</option><option>Instagram</option><option>Friend or Colleague</option><option>Success369 Community</option><option>LinkedIn</option><option>Other</option></select></div>
-              <div className="px-1"><button onClick={handleSubmit} className="w-full bg-primary text-white py-4 text-sm font-bold uppercase tracking-wider rounded-xl hover:bg-primary/80 transition-all hover:-translate-y-0.5">Register Now — Pay ₹3,000</button></div>
-              <p className="text-xs text-muted-foreground text-center mt-3 leading-relaxed px-1">Your registration details will be sent via email. Your spot is confirmed after payment.</p>
-            </div>
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="w-full max-w-md"
+            >
+              <a 
+                href="https://pages.razorpay.com/shakti-unfiltered-voice"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block w-full bg-primary text-white py-6 text-center text-base font-bold uppercase tracking-wider rounded-2xl hover:bg-primary/90 transition-all hover:-translate-y-1 shadow-xl shadow-primary/20"
+              >
+                Register Now — Pay ₹3,000
+              </a>
+              <p className="text-xs text-muted-foreground text-center mt-6 leading-relaxed">
+                Small cohort. Limited spots. Once full, registration closes until the next batch opens. 
+                Your spot is confirmed after payment.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -301,7 +325,6 @@ const ShakthiV2 = () => {
         </div>
       </section>
 
-      <ShakthiRegisterPopup open={popupOpen} onOpenChange={setPopupOpen} formData={formData} />
       <Footer />
     </div>
   );

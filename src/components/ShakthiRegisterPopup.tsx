@@ -81,12 +81,27 @@ export const ShakthiRegisterPopup = ({ open, onOpenChange, formData }: Props) =>
         </div>
 
         <a
-          href={mailtoLink}
+          href="https://pages.razorpay.com/shakti-unfiltered-voice"
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-4 flex items-center justify-center gap-2 w-full rounded-xl bg-primary py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-primary/80 hover:-translate-y-0.5"
+        >
+          Proceed to Payment — ₹3,000
+          <ArrowRight size={14} />
+        </a>
+
+        <div className="flex items-center gap-4 my-2">
+          <div className="h-[1px] flex-1 bg-border/30"></div>
+          <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">OR</span>
+          <div className="h-[1px] flex-1 bg-border/30"></div>
+        </div>
+
+        <a
+          href={mailtoLink}
+          className="flex items-center justify-center gap-2 w-full rounded-xl border border-primary/30 py-3 text-sm font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary/5"
         >
           <Mail size={16} />
           Send Registration Email
-          <ArrowRight size={14} />
         </a>
 
         <p className="text-center text-xs text-muted-foreground mt-1">

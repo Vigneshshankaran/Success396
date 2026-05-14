@@ -43,6 +43,7 @@ const AcceptableUsePolicy = lazy(() => import("./pages/AcceptableUsePolicy"));
 const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const Disclaimer = lazy(() => import("./pages/Disclaimer"));
 const ShakthiV2 = lazy(() => import("./pages/ShakthiV2"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Basic loading fallback
@@ -98,6 +99,7 @@ const App = () => (
             <Route path="/acceptable-use" element={<AcceptableUsePolicy />} />
             <Route path="/legal-notice" element={<LegalNotice />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

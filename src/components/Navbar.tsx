@@ -24,6 +24,7 @@ import CTAButton from "@/components/CTAButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
 import { trackLead } from "@/lib/pixel";
+import AnnouncementBar from "./AnnouncementBar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -106,11 +107,29 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [showAnnouncement, setShowAnnouncement] = useState(true);
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const location = useLocation();
 
+  const [navbarRef, setNavbarRef] = useState<HTMLDivElement | null>(null);
+
   useEffect(() => setMounted(true), []);
+
+  /* Measure Navbar height */
+  useEffect(() => {
+    if (!navbarRef) return;
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        document.documentElement.style.setProperty(
+          "--navbar-height",
+          `${entry.contentRect.height}px`
+        );
+      }
+    });
+    observer.observe(navbarRef);
+    return () => observer.disconnect();
+  }, [navbarRef]);
 
   /* Scroll listener */
   useEffect(() => {
@@ -182,11 +201,17 @@ const Navbar = () => {
 
   return (
     <>
-      {/* ── HEADER BAR ─────────────────────────────────── */}
+      <AnimatePresence>
+        {showAnnouncement && (
+          <AnnouncementBar onClose={() => setShowAnnouncement(false)} />
+        )}
+      </AnimatePresence>
       <header
+        ref={setNavbarRef}
+        style={{ top: showAnnouncement ? 'var(--announcement-height, 0px)' : '0px' }}
         className={`
-          fixed top-0 inset-x-0 z-50
-          transition-[background,box-shadow,border-color] duration-400
+          fixed inset-x-0 z-50
+          transition-[background,box-shadow,border-color,top] duration-500 ease-in-out
           ${
             scrolled
               ? "bg-background/95 backdrop-blur-md dark:backdrop-blur-2xl border-b border-border/50 shadow-sm"

@@ -102,6 +102,10 @@
 
     --font-display: "Nunito", sans-serif;
     --font-body: "Nunito", sans-serif;
+
+    --announcement-height: 0px;
+    --navbar-height: 72px;
+    --total-header-height: calc(var(--announcement-height) + var(--navbar-height));
   }
 
   .dark {
@@ -342,6 +346,10 @@
   100% {
     background-position: -200% 0;
   }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
 }
 
 @keyframes ken-burns {
