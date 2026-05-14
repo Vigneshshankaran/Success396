@@ -112,7 +112,7 @@ const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const location = useLocation();
 
-  const [navbarRef, setNavbarRef] = useState<HTMLDivElement | null>(null);
+  const [navbarRef, setNavbarRef] = useState<HTMLElement | null>(null);
 
   useEffect(() => setMounted(true), []);
 
@@ -169,7 +169,7 @@ const Navbar = () => {
   const isDarkHeroPage = [
     "/", "/programs", "/book", "/events", "/podcast", "/round-tables",
     "/program-maya", "/program-gita", "/program-sarvam", "/program-shakti",
-    "/shakti-unfiltered-voice",
+    "/shakti-unfiltered-voice", "/thank-you-shakthi",
   ].includes(location.pathname);
 
   // Condition to show the light mode logo (has dark text and colorful circle)
@@ -351,7 +351,8 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 z-40 overflow-y-auto bg-background/95 px-5 pt-[88px] backdrop-blur-xl sm:px-6 lg:hidden"
+            style={{ paddingTop: 'var(--total-header-height)' }}
+            className="fixed inset-0 z-40 overflow-y-auto bg-background/95 px-5 backdrop-blur-xl sm:px-6 lg:hidden"
           >
             <nav className="flex flex-col gap-1 pb-6">
               {navLinks.map((link, i) => {

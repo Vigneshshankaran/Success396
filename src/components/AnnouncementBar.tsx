@@ -42,11 +42,11 @@ export const AnnouncementBar = ({ onClose }: AnnouncementBarProps) => {
       <div id="announcement-bar-inner" className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" style={{ backgroundSize: '200% 100%' }}></div>
       
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 sm:px-6 lg:px-8">
-        <div className="flex-1 flex items-center justify-center gap-3 text-center">
+        <div className="flex-1 flex items-center justify-center gap-2 sm:gap-3 text-center">
           <div className="hidden sm:flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
             <Sparkles size={12} className="text-white animate-pulse" />
           </div>
-          <p className="text-[13px] font-medium tracking-wide text-white/95 sm:text-sm">
+          <p className="text-[11px] font-medium tracking-wide text-white/95 sm:text-sm">
             <span className="font-bold">SHAKTHI:</span> First Cohort Begins May 30th. Limited seats available.
             <Link
               to="/shakti-unfiltered-voice"
