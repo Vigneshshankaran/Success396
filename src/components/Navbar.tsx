@@ -169,6 +169,7 @@ const Navbar = () => {
   const isDarkHeroPage = [
     "/", "/programs", "/book", "/events", "/podcast", "/round-tables",
     "/program-maya", "/program-gita", "/program-sarvam", "/program-shakti",
+    "/shakti-unfiltered-voice",
   ].includes(location.pathname);
 
   // Condition to show the light mode logo (has dark text and colorful circle)
