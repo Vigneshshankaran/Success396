@@ -5,6 +5,7 @@ import { hasConsent } from "@/lib/pixel";
 declare global {
   interface Window {
     fbq: any;
+    dataLayer: any[];
   }
 }
 
@@ -31,8 +32,20 @@ const PixelTracker = () => {
       return;
     }
     
-    if (hasConsent() && typeof window.fbq === "function") {
-      window.fbq("track", "PageView");
+    if (hasConsent()) {
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "PageView");
+      }
+      
+      // Manual GA4 Page View push for SPA compatibility
+      if (typeof window.dataLayer !== "undefined") {
+        window.dataLayer.push({
+          event: "page_view",
+          page_path: location.pathname,
+          page_title: document.title,
+          page_location: window.location.href
+        });
+      }
     }
 
     // Reset scroll tracking for the new page
