@@ -52,7 +52,7 @@ export const AnnouncementBar = ({ onClose }: AnnouncementBarProps) => {
               to="/shakti-unfiltered-voice"
               className="ml-2 inline-flex items-center gap-1 font-bold text-white underline underline-offset-4 decoration-white/40 transition-all hover:decoration-white"
             >
-              Register now or book a free session
+              Register now
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </p>

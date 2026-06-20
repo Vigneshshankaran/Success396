@@ -119,7 +119,6 @@ const ShakthiV2 = () => {
 
               <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <a href="https://pages.razorpay.com/shakti-unfiltered-voice" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-white px-9 py-4 text-sm font-semibold uppercase tracking-wider rounded-lg border-2 border-primary hover:bg-primary/80 transition-all hover:-translate-y-0.5">Register Now — ₹3,000</a>
-                <a href="https://calendly.com/admin-success369/shakthi-the-unfiltered-voice-free-session" target="_blank" rel="noopener noreferrer" className="inline-block text-white/85 px-9 py-4 text-sm font-medium uppercase tracking-wider rounded-lg border border-white/30 hover:border-white/70 hover:text-white transition-all hover:-translate-y-0.5">Take a Free Session</a>
               </motion.div>
 
               <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={4} className="mt-10 pt-8 border-t border-white/10 flex gap-4 md:gap-6 flex-wrap items-center">
@@ -242,32 +241,7 @@ const ShakthiV2 = () => {
         </div>
       </section>
 
-      {/* FREE SESSION */}
-      <section className="py-24 bg-card/50" id="free-session">
-        <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-            <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Try Before You Commit</span>
-            <h2>Not sure yet?<br />Start with a free session.</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mt-2">Before you register, experience it. Our free 45-minute taster session gives you a direct feel for the Shakthi approach.</p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {[
-              { day: "Every Wednesday", time: "7:00 PM IST" },
-              { day: "Every Sunday", time: "11:30 AM IST" },
-            ].map((slot, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 rounded-3xl bg-card border border-border/30 border-t-4 border-t-primary hover:-translate-y-1 hover:shadow-xl transition-all">
-                <p className="text-2xl font-bold mb-1">{slot.day}</p>
-                <p className="text-xl font-semibold text-primary mb-3">{slot.time}</p>
-                <p className="text-muted-foreground text-sm">45 minutes · Online</p>
-                <p className="text-muted-foreground text-sm">Free · No commitment required</p>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center">
-            <a href="https://calendly.com/admin-success369/shakthi-the-unfiltered-voice-free-session" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-foreground text-background px-10 py-4 text-sm font-semibold uppercase tracking-wider rounded-lg hover:-translate-y-0.5 transition-all">Book Your Free Session <ArrowRight size={16} /></a>
-          </div>
-        </div>
-      </section>
+      {/* FREE SESSION - HIDDEN */}
 
       {/* REGISTER */}
       <section className="py-24 bg-card" id="register">
