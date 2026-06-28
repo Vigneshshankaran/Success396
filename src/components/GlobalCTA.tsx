@@ -26,6 +26,7 @@ interface GlobalCTAProps {
   className?: string;
   id?: string;
   icon?: LucideIcon;
+  onCtaClick?: () => void;
 }
 
 const GlobalCTA = ({
@@ -39,6 +40,7 @@ const GlobalCTA = ({
   className,
   id = "newsletter",
   icon: Icon = ArrowRight,
+  onCtaClick,
 }: GlobalCTAProps) => {
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
@@ -266,6 +268,7 @@ const GlobalCTA = ({
                 size="md"
                 className="px-8"
                 icon={Icon}
+                onClick={onCtaClick}
               >
                 {ctaText}
               </CTAButton>
