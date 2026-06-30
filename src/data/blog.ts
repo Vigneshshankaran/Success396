@@ -15,7 +15,7 @@ export interface BlogPost {
   image: string;
   category: BlogCategory;
   featured: boolean;
-  headings: { index: number; label: string }[];
+  headings: { index: number; label: string; link?: string }[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -72,7 +72,7 @@ export const blogPosts: BlogPost[] = [
       "There aren't many books which have been more influential when it comes to rethinking ideas of suffering, freedom and character in moments of difficulty.",
       "The author of this book, Viktor Frankl, is a psychiatrist who experienced the horrors of a concentration camp during the Nazi regime firsthand. But it is from his experiences of those times that he has learned the idea that a person is able to bear anything as long as he has something to live for. According to Frankl, the ultimate freedom of man is the freedom to choose one's attitude to circumstances. And this is not some motivational stuff. It's something deeper, you should experience it and feel the difference yourself.",
       "Unlike other self-help books that give you steps to take, this book constructs a framework on who to become and gives you 369 days to transform yourself.",
-      "Co-written by Dr. Ajayya Kumar, a leading thinker in management science in today's world, and Praveen Parameswar, the CEO of Lifology who is a TEDx speaker and holder of a Guinness World Record, \"Success 369\" revolves around the 369 Theory, comprising three fundamental questions, six alignment laws, and nine transformational pillars. There are three stages of transformation in this book:",
+      "Co-written by Dr. Ajayya Kumar, a leading thinker in management science in today's world, and Praveen Parameswar, the CEO of Lifology who is a TEDx speaker and holder of a Guinness World Record, <a href=\"https://success369.org\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary underline hover:text-primary/80 transition-colors\">\"Success 369\"</a> revolves around the 369 Theory, comprising three fundamental questions, six alignment laws, and nine transformational pillars. There are three stages of transformation in this book:",
       "• Clarity - know yourself, what you do, and where you do it\n• Congruence - be aligned in terms of how you perceive yourself and how the world perceives you\n• Catalysis - make an impactful difference through this alignment",
       "The distinguishing feature of this book amongst others is its structure. This is not a book that will only motivate you but will make you accountable week after week through self-reflections and activities. According to reviews, this book is known as \"workbook for actual transformation\" and as a matter of fact, according to one review, \"This book is not about motivation. It's about discipline.\"",
       "Rarely do self-help books apply to all age groups equally. But it is the book which has relevance irrespective of whether you are a student who is figuring out what you really want to do in life or a professional who is in a rut or a leader who wishes to lead an authentic life.",
@@ -86,11 +86,31 @@ export const blogPosts: BlogPost[] = [
     category: "Leadership",
     featured: false,
     headings: [
-      { index: 2, label: "1. The 7 Habits of Highly Effective People - Stephen R. Covey" },
-      { index: 4, label: "2. Atomic Habits - James Clear" },
-      { index: 7, label: "3. Grit: The Power of Passion and Perseverance - Angela Duckworth" },
-      { index: 9, label: "4. Man's Search for Meaning — Viktor Frankl" },
-      { index: 11, label: "5. Success 369 — Dr. Ajayya Kumar & Praveen Parameswar" },
+      { 
+        index: 2, 
+        label: "1. The 7 Habits of Highly Effective People - Stephen R. Covey",
+        link: "https://www.amazon.in/dp/1471131823?ref_=cm_sw_r_ffobk_cp_ud_dp_bzr_4YEEN4MF418HPSEX52K0&bestFormat=true"
+      },
+      { 
+        index: 4, 
+        label: "2. Atomic Habits - James Clear",
+        link: "https://jamesclear.com/atomic-habits"
+      },
+      { 
+        index: 7, 
+        label: "3. Grit: The Power of Passion and Perseverance - Angela Duckworth",
+        link: "https://www.amazon.in/dp/1501111108?ref_=cm_sw_r_ffobk_cp_ud_dp_40YTDTGDY4N3EFDEPQNS&bestFormat=true"
+      },
+      { 
+        index: 9, 
+        label: "4. Man's Search for Meaning — Viktor Frankl",
+        link: "https://www.amazon.in/dp/1846041244?ref_=cm_sw_r_ffobk_cp_ud_dp_bzr_QT06FFHJH4TCH1V3CM0G&bestFormat=true"
+      },
+      { 
+        index: 11, 
+        label: "5. Success 369 — Dr. Ajayya Kumar & Praveen Parameswar",
+        link: "https://success369.org/book"
+      },
       { index: 16, label: "Where to Start Actually?" }
     ]
   }

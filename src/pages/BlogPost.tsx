@@ -112,6 +112,7 @@ const BlogPost = () => {
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href={`https://success369.org/blog/${post.slug}`} />
       </Helmet>
       <Navbar />
 
@@ -196,15 +197,25 @@ const BlogPost = () => {
                         id={`heading-${i}`}
                         className="text-2xl sm:text-3xl font-bold font-display text-foreground mt-12 mb-6 text-glow scroll-mt-28"
                       >
-                        {heading.label}
+                        {heading.link ? (
+                          <a
+                            href={heading.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-primary transition-colors duration-300 underline"
+                          >
+                            {heading.label}
+                          </a>
+                        ) : (
+                          heading.label
+                        )}
                       </h2>
                     )}
                     <p
                       id={`paragraph-${i}`}
                       className="text-foreground/85 text-base sm:text-lg leading-relaxed scroll-mt-28"
-                    >
-                      {paragraph}
-                    </p>
+                      dangerouslySetInnerHTML={{ __html: paragraph }}
+                    />
                   </div>
                 );
               })}

@@ -34,6 +34,7 @@ const Blog = () => {
       <Helmet>
         <title>Blog — Insights for Sustainable Growth | Success369</title>
         <meta name="description" content="Explore perspectives on clarity, congruence, and catalysis — the three pillars of lasting transformation." />
+        <link rel="canonical" href="https://success369.org/blog" />
       </Helmet>
       <Navbar />
 
