@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, ArrowRight, Clock, Calendar, Sparkles, BookOpen } from "lucide-react";
+import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { blogPosts } from "@/data/blog";
@@ -16,37 +16,35 @@ const fadeUp = {
   }),
 };
 
-const ctaItems = [
-  { label: "Read the Book", description: "Dive deeper into the Success369 framework", href: "#", icon: BookOpen },
-  { label: "Explore Journeys", description: "Find your transformational path", href: "#", icon: Sparkles },
-  { label: "Take a Session", description: "Experience Success369 coaching firsthand", href: "#", icon: ArrowRight },
-];
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = blogPosts.find((p) => p.slug === slug);
   const [activeIndex, setActiveIndex] = useState(0);
-  const paragraphRefs = useRef<(HTMLParagraphElement | null)[]>([]);
-
-  const setRef = useCallback((el: HTMLParagraphElement | null, i: number) => {
-    paragraphRefs.current[i] = el;
-  }, []);
 
   useEffect(() => {
     if (!post) return;
-    const observers: IntersectionObserver[] = [];
-    paragraphRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveIndex(i);
-        },
-        { rootMargin: "-20% 0px -60% 0px" }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
-    return () => observers.forEach((o) => o.disconnect());
+
+    const handleScroll = () => {
+      let currentActiveIndex = 0;
+      for (const h of post.headings) {
+        const el = document.getElementById(`heading-${h.index}`);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // If the heading is above or near the top of the viewport (with a 160px buffer for the navbar)
+          if (rect.top <= 160) {
+            currentActiveIndex = h.index;
+          }
+        }
+      }
+      setActiveIndex(currentActiveIndex);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Run once initially to capture initial position
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [post]);
 
   if (!post) {
@@ -69,13 +67,17 @@ const BlogPost = () => {
   const related = blogPosts.filter((p) => p.category === post.category && p.slug !== post.slug).slice(0, 2);
 
   const handleTocClick = (index: number) => {
-    const el = paragraphRefs.current[index];
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    const el = document.getElementById(`heading-${index}`) || document.getElementById(`paragraph-${index}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const Sidebar = () => (
-    <>
-      {/* Table of Contents */}
+  const Sidebar = () => {
+    // Find the active heading index in the Table of Contents
+    const activeHeading = post.headings
+      .filter((h) => h.index <= activeIndex)
+      .reduce((prev, curr) => (curr.index > prev.index ? curr : prev), { index: -1 });
+
+    return (
       <nav className="mb-8">
         <h3 className="font-display text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
           Table of Contents
@@ -86,7 +88,7 @@ const BlogPost = () => {
               <button
                 onClick={() => handleTocClick(h.index)}
                 className={`text-left w-full text-sm py-1.5 px-3 rounded-lg transition-all duration-300 ${
-                  activeIndex === h.index
+                  activeHeading.index === h.index
                     ? "text-primary bg-primary/10 font-medium"
                     : "text-muted-foreground hover:text-foreground hover:bg-card/60"
                 }`}
@@ -97,33 +99,16 @@ const BlogPost = () => {
           ))}
         </ul>
       </nav>
-
-      {/* CTA Cards */}
-      <div className="space-y-3">
-        {ctaItems.map((cta) => (
-          <a
-            key={cta.label}
-            href={cta.href}
-            className="group block p-4 rounded-2xl bg-card/40 backdrop-blur-sm border border-border/30 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_30px_-10px_hsl(var(--primary)/0.15)]"
-          >
-            <cta.icon size={18} className="text-primary mb-2" />
-            <h4 className="font-display font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
-              {cta.label}
-            </h4>
-            <p className="text-muted-foreground text-xs leading-relaxed">{cta.description}</p>
-          </a>
-        ))}
-      </div>
-    </>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{post.title} — Success369 Insights</title>
-        <meta name="description" content={post.excerpt || post.content[0]?.slice(0, 160)} />
-        <meta property="og:title" content={`${post.title} | Success369`} />
-        <meta property="og:description" content={post.excerpt || post.content[0]?.slice(0, 160)} />
+        <title>{post.metaTitle || `${post.title} — Success369 Insights`}</title>
+        <meta name="description" content={post.metaDescription || post.excerpt || post.content[0]?.slice(0, 160)} />
+        <meta property="og:title" content={post.metaTitle || `${post.title} | Success369`} />
+        <meta property="og:description" content={post.metaDescription || post.excerpt || post.content[0]?.slice(0, 160)} />
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -202,16 +187,27 @@ const BlogPost = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl space-y-6"
             >
-              {post.content.map((paragraph, i) => (
-                <p
-                  key={i}
-                  ref={(el) => setRef(el, i)}
-                  id={`section-${i}`}
-                  className="text-foreground/85 text-base sm:text-lg leading-relaxed"
-                >
-                  {paragraph}
-                </p>
-              ))}
+              {post.content.map((paragraph, i) => {
+                const heading = post.headings.find((h) => h.index === i);
+                return (
+                  <div key={i} className="flex flex-col">
+                    {heading && (
+                      <h2
+                        id={`heading-${i}`}
+                        className="text-2xl sm:text-3xl font-bold font-display text-foreground mt-12 mb-6 text-glow scroll-mt-28"
+                      >
+                        {heading.label}
+                      </h2>
+                    )}
+                    <p
+                      id={`paragraph-${i}`}
+                      className="text-foreground/85 text-base sm:text-lg leading-relaxed scroll-mt-28"
+                    >
+                      {paragraph}
+                    </p>
+                  </div>
+                );
+              })}
             </motion.div>
           </div>
         </div>
