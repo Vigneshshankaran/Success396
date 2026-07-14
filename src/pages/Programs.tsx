@@ -29,13 +29,13 @@ const pathwaySteps = [
 const programCards = [
   {
     icon: Layers,
-    title: "MAYA",
-    subtitle: "Realigning Unseen Patterns",
-    description: "For those progressing outwardly but feeling inner friction. Dissolve invisible cycles.",
-    href: "/program-maya",
-    outcome: "Coherence, focus, and grounded momentum.",
-    cta: "Begin the MAYA Journey",
-    pixelName: "MAYA Program",
+    title: "MAAYA RETREAT",
+    subtitle: "5-Day Destination Retreat",
+    description: "For accomplished people ready for an honest mirror. A structured five-day destination alignment experience.",
+    href: "/maaya",
+    outcome: "A hardbound Blueprint, clarity, and a 369-day roadmap.",
+    cta: "Explore the MAAYA Retreat",
+    pixelName: "MAAYA Retreat",
   },
   {
     icon: Eye,
@@ -107,8 +107,8 @@ const Programs = () => {
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "MAYA — Realigning Unseen Patterns",
-                "url": "https://success369.org/program-maya"
+                "name": "MAAYA — 5-Day Destination Retreat",
+                "url": "https://success369.org/maaya"
               },
               {
                 "@type": "ListItem",

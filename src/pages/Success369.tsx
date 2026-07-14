@@ -21,6 +21,7 @@ import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FAQSection";
 import { fadeUp, fadeIn, scaleUp } from "@/lib/animations";
 
 // Asset imports
@@ -56,10 +57,10 @@ const catalysts = [
 
 const journeys = [
   {
-    name: "MAYA",
+    name: "MAAYA RETREAT",
     tagline: "Congruence",
     image: congruenceImg,
-    href: "/program-maya",
+    href: "/maaya",
     color: "from-accent/20 to-transparent",
   },
   {
@@ -96,6 +97,29 @@ const distinctions = [
     points: ["Alignment before acceleration", "Identity as foundation", "Sustainable coherence", "Architecture, not tactics"],
     muted: false,
   },
+];
+
+const faqItems = [
+  {
+    question: "What is the Success 369 method, and does the 369 method work?",
+    answer: "Success 369 refers to a personal development technique which focuses on three processes: Clarity, Congruence, and Catalysis. Through success 369, one gets to know what he really wants, make his actions and beliefs in alignment with his goal, and develop momentum. With genuine commitment and consistent alignment, the Success369 method becomes a system that compounds over time. Not a shortcut, but a structured path to lasting change."
+  },
+  {
+    question: "How is success 369 different from other methods?",
+    answer: "Unlike other self-help programs which rely on motivation or productivity techniques, Success 369 relies on correcting the inner misalignment that causes the problem to begin with, that is, the disparity between what an individual desires and their beliefs and actions—before incorporating any action plan."
+  },
+  {
+    question: "Do I need any prior experience to start success 369?",
+    answer: "This program is designed for anyone at a starting point. No technique has to be perfected nor a definite goal set beforehand. It is precisely the process of going through a pathway that will provide you with all that."
+  },
+  {
+    question: "What are the three pillars of Success 369?",
+    answer: "The three principles are - clarity, congruence, and catalysis. Clarity involves being truthful about our goals and why we have them. Congruence consists of ensuring our actions each day and thoughts match our goal. Catalysis is the flow that happens naturally after the previous two principles are achieved."
+  },
+  {
+    question: "Is the success 369 concept related to numerology?",
+    answer: "No. Although the numbers 3, 6, and 9 have been used within numerology and manifestation, in the Success 369 model, the number is used to represent the process of three transformations that need to take place, which include clarity, congruence, and catalysis."
+  }
 ];
 
 /* ─────────────────────────────────────────────
@@ -204,8 +228,10 @@ const Success369Page = () => {
               custom={1}
               className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]"
             >
-              Success<span className="text-primary text-glow">369</span>{" "}—{" "}
-              Clarity. Congruence. Catalysis.
+              What is the Success <span className="text-primary text-glow">369</span> Method?{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent italic font-bold">
+                A Simple Path Back to Yourself
+              </span>
             </motion.h1>
 
             <motion.p
@@ -213,9 +239,9 @@ const Success369Page = () => {
               initial="hidden"
               animate="visible"
               custom={2}
-              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-white/90 font-light"
+              className="mb-8 sm:mb-10 max-w-2xl text-lg sm:text-xl text-white/90 font-light"
             >
-              Sustainable success is not a strategy. It is an architecture — built on three pillars, six alignments, nine catalytic forces.
+              What is the Success369 method? It is not a cheat code; it's an approach to life. It's about being clear-minded and doing whatever you need to do to align your beliefs and actions while moving forward without any effort, only because you've been pointed in the same direction. If you've been asking this question, you're already closer than you think.
             </motion.p>
 
             <motion.div
@@ -272,19 +298,19 @@ const Success369Page = () => {
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
 
-            <h2 className="mb-8">
-              Why{" "}
+            <h2 className="mb-8 text-3xl sm:text-4xl">
+              Why is Success 369 built on the{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                3–6–9?
+                concept of 3-6-9?
               </span>
             </h2>
 
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
-              In a world of noise, speed, and constant performance pressure, most people are not struggling because of lack of effort.
+              The number 369 had varying meanings over time, from patterns, energy to rhythm. We have not constructed this program based on the principles of numerology or mysticism but rather from a more fundamental truth that appears in all stories of transformation.
             </p>
-            <p className="text-2xl md:text-3xl font-display font-bold text-foreground leading-snug">
-              They are struggling because of{" "}
-              <span className="text-primary italic">misalignment.</span>
+            <p className="text-xl md:text-2xl font-display font-bold text-foreground leading-snug">
+              That is, transformation does not occur by chance but follows a sequence.{" "}
+              <span className="text-primary italic">Clarity, congruence, catalysis</span>, that’s what we focus on and aim for.
             </p>
 
             <div className="mt-12 grid grid-cols-3 gap-6 sm:gap-10">
@@ -357,8 +383,12 @@ const Success369Page = () => {
                 Pillar 1
               </span>
 
-              <h2 className="mb-2">
-                Clarity
+              <h2 className="mb-2 text-2xl sm:text-3xl leading-tight">
+                Clarity:{" "}
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent italic font-bold">
+                  Seeing what's Actually There
+                </span>{" "}
+                – First Step to Zero to Success in 369 days
               </h2>
               <p className="text-primary italic text-lg mb-6">Knowing Who You Are and What Matters</p>
 
@@ -416,7 +446,13 @@ const Success369Page = () => {
                 <Heart size={12} />
                 Pillar 2
               </span>
-              <h2 className="mb-2">Congruence</h2>
+              <h2 className="mb-2 text-2xl sm:text-3xl leading-tight">
+                Congruence:{" "}
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent italic font-bold">
+                  Alignment-Based Success
+                </span>{" "}
+                – Matching Actions to Truth
+              </h2>
               <p className="text-primary italic text-lg mb-6">Aligning Intention with Behaviour</p>
               <p className="text-muted-foreground text-base leading-relaxed mb-6">
                 Knowing what matters is not enough. You must live it. Congruence strengthens six critical alignments that determine whether your internal world matches how you show up externally.
@@ -551,7 +587,12 @@ const Success369Page = () => {
                 <Target size={12} />
                 Pillar 3
               </span>
-              <h2 className="mb-2">Catalysis</h2>
+              <h2 className="mb-2 text-2xl sm:text-3xl leading-tight">
+                Catalysis:{" "}
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent italic font-bold">
+                  What Makes Success 369 Work in Real Life?
+                </span>
+              </h2>
               <p className="text-primary italic text-lg mb-6">Turning Alignment into Real-World Momentum</p>
               <p className="text-muted-foreground text-base leading-relaxed mb-6">
                 Clarity and congruence prepare the ground. Catalysis activates movement. Nine catalytic forces determine whether alignment translates into visible, lasting impact.
@@ -648,9 +689,9 @@ const Success369Page = () => {
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
             <h2>
-              Alignment before{" "}
+              Why Does the Success369 Method Work? –{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent italic">
-                acceleration.
+                We Fix the Gap That Most Programs Never Touch
               </span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
@@ -715,9 +756,9 @@ const Success369Page = () => {
               transition={{ delay: 0.1 }}
               className="p-8 rounded-3xl bg-card/30 border border-border/30"
             >
-              <h3 className="mb-4">Why It Is Relevant Today</h3>
+              <h3 className="mb-4">Why is it relevant today?</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-                We live in a performance-driven era of hyper-visibility, rapid scaling, and continuous comparison. The modern challenge is not ambition — it is integration.
+                We are living in a time where there is more information, that too in an easily accessible form which includes classes, tips for productivity, five-step formulas for rapid transformation and much more. And yet, people seem more stressed and burdened with the overload than ever before. This is no accident. Most of the available material only serves to increase noise in an already noisy brain. Success 369 is effective because it follows a unique path. It creates room for you to listen to yourself and then equip you to follow through with the alignment. This requirement for clarity of thought, alignment of life with one's values and momentum is timeless.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Clarity in complexity", "Congruence in visibility", "Catalysis without burnout"].map((tag) => (
@@ -731,6 +772,14 @@ const Success369Page = () => {
         </div>
       </section>
 
+      {/* ══════════════════════════════════════
+          FAQ SECTION
+      ══════════════════════════════════════ */}
+      <FAQSection 
+        title="Frequently Asked Questions About the Success369 Method"
+        description="Learn more about the fundamentals of the Success369 approach."
+        items={faqItems}
+      />
 
       {/* ══════════════════════════════════════
           GLOBAL CTA
@@ -738,8 +787,8 @@ const Success369Page = () => {
       <GlobalCTA
         title={
           <h2 className="text-white">
-            You do not need to master{" "}
-            <span className="text-primary italic">the model to begin.</span>
+            Mastering the 369 Method is not a necessity in the beginning. You will{" "}
+            <span className="text-primary italic">Align Yourself to it down the road</span>
           </h2>
         }
         description="Most people start with a decision, a tension, a sense that something could be more aligned. That is enough. The architecture works quietly in the background."

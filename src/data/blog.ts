@@ -113,5 +113,81 @@ export const blogPosts: BlogPost[] = [
       },
       { index: 16, label: "Where to Start Actually?" }
     ]
+  },
+  {
+    slug: "best-books-to-improve-personality-must-read-titles",
+    title: "Best Books to Improve Personality: 10 Must-Read Titles for Confidence, Communication, and Personal Growth",
+    metaTitle: "10 Best Books to Improve Personality & Confidence (2026)",
+    metaDescription: "Discover 10 must-read books to boost confidence, sharpen communication, and grow personally. Practical picks that actually work.",
+    excerpt: "Becoming a charismatic person isn't about trying to copy someone else. It's all about digging deep within yourself to find the truest, best version of yourself.",
+    content: [
+      "Becoming a charismatic person isn't about trying to copy someone else. It's all about digging deep within yourself to find the truest, best version of yourself. When we see people who make waves and breeze through difficult conversations, we think that those are inborn talents, but it’s not. When you need to overcome social anxiety, improve workplace communications, and become more resilient in your personal and professional life, books can help you do all that more easily. In fact, some of the best books to improve personality offer practical frameworks that go far beyond generic advice. In an age where information can be easily found online, certain literature will serve as your best guide for changing your mindset, speaking skills, and behavior.",
+      "Unfortunately, you cannot simply read to learn something new. You need a way to make changes happen and make sure that what you've learned becomes ingrained in your subconscious. That's where the Success 369 approach comes into play. Let’s tap into some of the valuable resources that will help you for transforming yourself to a better version.",
+      "The Stanford-based psychologist Carol Dweck has been engaged in research into this phenomenon for several decades now. Her explanation boils down to one idea: the growth mindset. This book will challenge the way you think about failure, hard work, and your own abilities, and the challenging itself is precisely the growth process.",
+      "We have not been properly taught how to express our needs without making others defensive. The technique developed by Rosenberg is refreshingly simple – talk about your needs without blame and listen to the other person with understanding. It will affect you profoundly at work and in your personal life.",
+      "It’s not just your mannerisms and presentation that determine personality but the habits that you form by what you do every day. The laws of building good habits have been elucidated to perfection by James Clear in his book where he uses four basic laws to explain the process.",
+      "This book deals with both character building and being productive. It begins with personal mastery - proactive attitude, goal setting, prioritization, and ends in how to interact with other people. This is a perfect book which can serve as an example of how to become a better person.",
+      "Success 369, on the other hand, is an empowering process based on the 369 Theory which comprises three questions, six principles of congruence and nine pillars for action and leads to a total transformation of your mindset and perception by yourself and those around you.",
+      "It is carried out through three phases, which begin with Clarity. The questions posed at this point are not easy to answer by many people: who am I, what do I do, where to apply it? Then comes the phase of Congruence, which bridges the gap between your personal image of yourself and the way in which others perceive you. Ultimately, the last phase, which is that of Catalysis, puts everything together to influence the way you communicate, brand, build your credibility and achieve your purpose. This is not a motivational book. This is a process of practical application towards achieving your highest potential, regardless of your role – whether you are a student, worker or a manager.",
+      "We spend most of our time in a reactive mode instead of a reflective one. This is because our brains have two modes of operating, and these modes are in conflict with each other. Daniel Kahneman, who won a Nobel Prize in economics, sheds light on why it happens. Self-knowledge is the key to any kind of self-growth, and this book is your key.",
+      "Some of the most critical experiences in your life take place in conversations – the challenging discussion with your manager, an authentic discussion with your loved one, the time when you must speak and don’t know how. The book offers you an actionable approach to dealing with these critical situations with composure rather than distress.",
+      "\"Confidence is not necessarily in what we say or wear.\" The author believes that confidence largely comes from our minds in the form of worries and criticisms, which continuously go on in our heads. \"The Power of Now\" is a powerful book that gently invites one to step away from all that noise and enter the realm of now.",
+      "Brown's findings on vulnerability have redefined the meaning of strength. Authentic strength, according to Brown, does not mean that one is without fear but rather that one shows up despite those fears. You will question your perceptions of courage, connection, and enoughness after reading this book.",
+      "It is not an inborn trait but an acquired skill. The author, who is an executive coach, defines charisma in terms of specific behaviors based on presence, power, and warmth. This book is part of those rare books that provide you with practical ways of altering your approach.",
+      "If this is your first experience with self-improvement reading, Success 369 should be obvious the first choice – they are both highly structured, actionable and meant to complement each other. Take Success 369 to learn more about yourself in order to become the person you want to be.",
+      "When seeking general knowledge on the subject, you will hardly find a couple of more straightforward and best books to improve personality than Atomic Habits and How to Win Friends and Influence People. But for someone who is willing to invest time into self-development seriously, The 7 Habits of Highly Effective People and Mindset can serve as an excellent base for building one's mindset. It is important to understand that no matter what book you pick from the list, with dedication and consistency you have chosen the way to change your perception and life completely. A better personality, actual confidence and the ability to interact with others effectively are not a gift, but something that can be developed step by step, over time you can master those skills."
+    ],
+    date: "Jul 1, 2026",
+    readTime: "7 min read",
+    author: "Success369 Team",
+    image: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&q=80&w=800",
+    category: "Clarity",
+    featured: false,
+    headings: [
+      {
+        index: 2,
+        label: "1. Mindset: The New Psychology of Success - Carol S. Dweck"
+      },
+      {
+        index: 3,
+        label: "2. Nonviolent Communication — Marshall B. Rosenberg"
+      },
+      {
+        index: 4,
+        label: "3. Atomic Habits – James Clear"
+      },
+      {
+        index: 5,
+        label: "4. 7 Habits of Highly Effective People – Stephen R. Covey"
+      },
+      {
+        index: 6,
+        label: "5. Success 369 — Dr. Ajayya Kumar & Praveen Parameswar"
+      },
+      {
+        index: 8,
+        label: "6. Thinking, Fast and Slow — Daniel Kahneman"
+      },
+      {
+        index: 9,
+        label: "7. Crucial Conversations — Kerry Patterson et al."
+      },
+      {
+        index: 10,
+        label: "8. The Power of Now — Eckhart Tolle"
+      },
+      {
+        index: 11,
+        label: "9. Daring Greatly — Brene Brown"
+      },
+      {
+        index: 12,
+        label: "10. The Charisma Myth — Olivia Fox Cabane"
+      },
+      {
+        index: 13,
+        label: "Where to Begin?"
+      }
+    ]
   }
 ];

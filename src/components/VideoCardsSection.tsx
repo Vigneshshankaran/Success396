@@ -19,13 +19,13 @@ interface VideoCard {
 
 const videoCards: VideoCard[] = [
   {
-    title: "MAYA-Realigning Unseen Patterns",
+    title: "MAAYA-A Destination Alignment Retreat",
     description:
-      "For those who are capable and progressing, yet feel misaligned.",
-    cta: "Begin the MAYA Journey",
+      "For accomplished people ready for an honest mirror and a post-retreat roadmap.",
+    cta: "Explore the MAAYA Retreat",
     videoUrl: mayaVideo,
-    href: "/program-maya",
-    pixelName: "MAYA Program",
+    href: "/maaya",
+    pixelName: "MAAYA Retreat",
   },
   {
     title: "GITA-Clarity Before Action",

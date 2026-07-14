@@ -57,7 +57,7 @@ const foundationSections = [
 
 const programSections = [
   { label: "Program Overview", description: "Our transformation path", icon: Layout, href: "/programs" },
-  { label: "Maya", description: "The illusion of separation", icon: Sparkles, href: "/program-maya" },
+  { label: "Maya", description: "The illusion of separation", icon: Sparkles, href: "/maaya" },
   { label: "Gita", description: "Eternal wisdom for life", icon: BookOpen, href: "/program-gita" },
   { label: "Sarvam", description: "Universal consciousness", icon: InfinityIcon, href: "/program-sarvam" },
   { label: "Shakti", description: "Inner power and energy", icon: Flame, href: "/program-shakti" },
@@ -80,7 +80,7 @@ const dropdownMap: Record<string, typeof foundationSections> = {
 /* Map dropdown label → route prefixes that mark it "active" */
 const dropdownActiveRoutes: Record<string, string[]> = {
   Foundation: ["/success-369", "/about-us"],
-  Programs: ["/programs", "/program-maya", "/program-gita", "/program-sarvam", "/program-shakti"],
+  Programs: ["/programs", "/maaya", "/program-gita", "/program-sarvam", "/program-shakti"],
   Arena: ["/events", "/podcast", "/round-tables", "/blog"],
 };
 
@@ -168,7 +168,7 @@ const Navbar = () => {
   /* Pages with a dark hero background */
   const isDarkHeroPage = [
     "/", "/programs", "/book", "/events", "/podcast", "/round-tables",
-    "/program-maya", "/program-gita", "/program-sarvam", "/program-shakti",
+    "/maaya", "/program-gita", "/program-sarvam", "/program-shakti",
     "/shakti-unfiltered-voice", "/thank-you-shakthi",
   ].includes(location.pathname);
 

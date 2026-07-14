@@ -64,7 +64,7 @@ const comparisonData: ComparisonRow[] = [
 
 const programs = [
   { id: "gita", name: "GITA", icon: Eye, flagship: false, href: "/program-gita", cta: "Apply for GITA" },
-  { id: "maya", name: "MAYA", icon: Layers, flagship: true, href: "/program-maya", cta: "Apply for MAYA" },
+  { id: "maya", name: "MAAYA RETREAT", icon: Layers, flagship: true, href: "/maaya", cta: "Apply for MAAYA" },
   { id: "sarvam", name: "SARVAM", icon: Shield, flagship: false, href: "/program-sarvam", cta: "Apply for SARVAM" },
   { id: "shakti", name: "SHAKTI", icon: Sun, flagship: false, href: "/program-shakti", cta: "Apply for SHAKTI" },
 ];
