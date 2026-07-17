@@ -860,7 +860,7 @@ const MaayaRetreat = () => {
                 </p>
 
                 <CTAButton 
-                  href="https://wa.me/917994441584?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20the%20MAAYA%20retreat." 
+                  href="https://wa.me/917591919369?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20the%20MAAYA%20retreat." 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   variant="outline"
