@@ -15,7 +15,6 @@ import CookieConsent from "./components/CookieConsent";
 const Index = lazy(() => import("./pages/Index"));
 const Programs = lazy(() => import("./pages/Programs"));
 const ProgramGita = lazy(() => import("./pages/ProgramGita"));
-const ProgramMaya = lazy(() => import("./pages/ProgramMaya"));
 const MaayaRetreat = lazy(() => import("./pages/MaayaRetreat"));
 const ProgramSarvam = lazy(() => import("./pages/ProgramSarvam"));
 const ProgramShakti = lazy(() => import("./pages/ProgramShakti"));

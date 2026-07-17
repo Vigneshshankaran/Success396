@@ -729,13 +729,13 @@ const MaayaRetreat = () => {
             className="text-center mb-16 max-w-3xl mx-auto"
           >
             <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Upcoming Cohorts</span>
-            <h2>Three journeys. Thirty seats each.</h2>
+            <h2>Two journeys. Thirty seats each.</h2>
             <p className="text-muted-foreground text-sm sm:text-base mt-4 max-w-2xl mx-auto">
               Every cohort includes the complete Maaya experience: your sealed personal dossier, the Three Mirrors, the Wheel of Life, an exclusive Harvard ManageMentor® session with certificate, a private roadmap consultation after you return — and your personalised Blueprint, delivered to your door.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
                 badge: "Exclusively for Emirati Women",
@@ -761,7 +761,8 @@ const MaayaRetreat = () => {
                 color: "from-[#3F2937] to-[#67455A]",
                 cta: "Reserve my seat",
                 btnBg: "bg-[#67455A] hover:bg-[#67455A]/90",
-                note: "Early reservation advised — visa timelines apply"
+                note: "Early reservation advised — visa timelines apply",
+                hidden: true
               },
               {
                 badge: "A Women-Only Cohort",
@@ -776,7 +777,7 @@ const MaayaRetreat = () => {
                 btnBg: "bg-[#EC008C] hover:bg-[#EC008C]/90",
                 note: "Registrations open · early-bird window closing"
               }
-            ].map((c, i) => (
+            ].filter(c => !c.hidden).map((c, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -790,11 +791,10 @@ const MaayaRetreat = () => {
                     {c.badge}
                   </h3>
                   <div className="w-12 h-1 bg-yellow-400 my-4" />
-                  <div className="text-xs font-extrabold uppercase tracking-widest text-white/95">{c.when}</div>
-                  <div className="text-xs text-white/80 font-medium mt-1">{c.where}</div>
+                  <div className="text-xs font-extrabold uppercase tracking-widest text-white/95">Coming Soon</div>
                 </div>
 
-                <div className="p-8 flex-1 flex flex-col justify-between">
+                {/* <div className="p-8 flex-1 flex flex-col justify-between">
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                     {c.desc}
                   </p>
@@ -828,7 +828,7 @@ const MaayaRetreat = () => {
                       </span>
                     )}
                   </div>
-                </div>
+                </div> */}
               </motion.div>
             ))}
           </div>
@@ -970,7 +970,7 @@ const MaayaRetreat = () => {
                         className="flex h-11 w-full rounded-xl border border-transparent bg-card/50 px-4 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
                       >
                         <option value="Emirati Women · UAE · Aug 2026" className="text-foreground bg-background">Emirati Women · UAE · Aug 2026</option>
-                        <option value="Open to All · Prague · Nov 2026" className="text-foreground bg-background">Open to All · Prague · Nov 2026</option>
+                        {/* <option value="Open to All · Prague · Nov 2026" className="text-foreground bg-background">Open to All · Prague · Nov 2026</option> */}
                         <option value="Women Only · Prague · Jan 2027" className="text-foreground bg-background">Women Only · Prague · Jan 2027</option>
                         <option value="Not sure yet — advise me" className="text-foreground bg-background">Not sure yet — advise me</option>
                       </select>
