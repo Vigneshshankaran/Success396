@@ -57,7 +57,7 @@ const foundationSections = [
 
 const programSections = [
   { label: "Program Overview", description: "Our transformation path", icon: Layout, href: "/programs" },
-  { label: "MAAYA", description: "The illusion of separation", icon: Sparkles, href: "/maaya" },
+  { label: "Maaya", description: "The illusion of separation", icon: Sparkles, href: "/maaya" },
   { label: "Gita", description: "Eternal wisdom for life", icon: BookOpen, href: "/program-gita" },
   { label: "Sarvam", description: "Universal consciousness", icon: InfinityIcon, href: "/program-sarvam" },
   { label: "Shakti", description: "Inner power and energy", icon: Flame, href: "/program-shakti" },
