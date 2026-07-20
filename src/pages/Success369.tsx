@@ -213,7 +213,7 @@ const Success369Page = () => {
 
         {/* Hero content — left-aligned, bottom-anchored like home */}
         <div className="absolute inset-0 flex items-end z-10">
-          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 pb-28 sm:pb-32">
+          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 pb-16 sm:pb-24">
             <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
               <span className="mb-3 sm:mb-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-white backdrop-blur-md">
                 <Sparkles size={12} />

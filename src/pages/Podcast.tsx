@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { Headphones, Mic, Play, ExternalLink, Youtube, Sparkles, Star, ChevronRight } from "lucide-react";
+import { Headphones, Mic, Play, ExternalLink, Youtube, Sparkles, Star, ChevronRight, RefreshCw } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,10 +10,16 @@ import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
 import model369Video from "@/assets/Model 369.mp4";
 import { fadeUp } from "@/lib/animations";
+
 const podcastCover1 = "https://images.unsplash.com/photo-1478737270239-2fccd27ee086?auto=format&fit=crop&q=80&w=800";
 const podcastCover2 = "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800";
 
-// fadeUp imported from @/lib/animations
+interface Episode {
+  title: string;
+  podcast: string;
+  id: string;
+  description: string;
+}
 
 const podcasts = [
   {
@@ -47,36 +53,99 @@ const podcasts = [
   },
 ];
 
-const featuredEpisodes = [
+const INITIAL_EPISODES: Episode[] = [
   {
-    title: "1st Episode by Ajay and Praveen",
+    title: "Dr. Kiran Bedi: The Woman Who Refused to Be Controlled | Success369 Podcast",
+    podcast: "Success369 Series",
+    id: "NQqF1np5eow",
+    description: "Deep dive into leadership, courage, and self-determination with Dr. Kiran Bedi."
+  },
+  {
+    title: "Can Success Be Catalyzed at a Young Age? | Insights from Praveen Parameswar",
+    podcast: "Success369 Series",
+    id: "wczEewh06Pc",
+    description: "Exploring early success catalysis, identity, and personal growth with Praveen Parameswar."
+  },
+  {
+    title: "You’re Thinking About Success Wrong | Insights from Dr Ajayya Kumar",
+    podcast: "Success369 Series",
+    id: "ud9SZSZyCao",
+    description: "Rethinking traditional paradigms of success and alignment with Dr. Ajayya Kumar."
+  },
+  {
+    title: "Is Success Actually Structured? | Insights from Methil Renuka (Forbes Africa)",
+    podcast: "Success369 Series",
+    id: "dJcVgA1R0SY",
+    description: "Insights on structured success, media, and leadership from Forbes Africa's Methil Renuka."
+  },
+  {
+    title: "What is Success369? | Episode 1 | Success369 Podcast",
     podcast: "The Success369 Podcast",
-    id: "ZatkdgdW7pY",
-    description: "Deep dive into the core philosophy of Success369 with the creators themselves."
-  },
-  {
-    title: "2nd Episode by Renuka Methil",
-    podcast: "Success369 Series",
     id: "eg7rowfo19U",
-    description: "Insights on leadership and alignment with Renuka Methil."
-  },
-  {
-    title: "Episode 1 by Marco Landi",
-    podcast: "Success369 Series",
-    id: "jca2VitiUxc",
-    description: "International perspectives on business and human potential."
-  },
-  {
-    title: "Episode 2 by Divya S Iyer",
-    podcast: "Success369 Series",
-    id: "JhBuOrz3GOc",
-    description: "Exploring purpose and performance with Divya S Iyer."
+    description: "Deep dive into the core philosophy of Success369 with the creators themselves."
   }
 ];
 
 const Podcast = () => {
+  const [episodes, setEpisodes] = useState<Episode[]>(INITIAL_EPISODES);
+  const [activeVideoId, setActiveVideoId] = useState<string>(INITIAL_EPISODES[0].id);
+  const [isLiveUpdated, setIsLiveUpdated] = useState(false);
   const [showGuestForm, setShowGuestForm] = useState(false);
   const [guestForm, setGuestForm] = useState({ name: "", email: "", linkedin: "", story: "" });
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchLatestYouTubeEpisodes = async () => {
+      const proxies = [
+        "https://corsproxy.io/?https://www.youtube.com/@the369leader/videos",
+        "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://www.youtube.com/@the369leader/videos")
+      ];
+
+      for (const proxyUrl of proxies) {
+        try {
+          const res = await fetch(proxyUrl);
+          if (!res.ok) continue;
+          const text = await res.text();
+
+          const regex = /"videoId":"([a-zA-Z0-9_-]{11})".*?"lockupMetadataViewModel":\{"title":\{"content":"([^"]+)"\}/gs;
+          const fetched: Episode[] = [];
+          const seen = new Set<string>();
+          let match;
+
+          while ((match = regex.exec(text)) !== null) {
+            const id = match[1];
+            const rawTitle = match[2] || "";
+            const title = rawTitle
+              .replace(/\\u0026/g, "&")
+              .replace(/\\"/g, '"')
+              .replace(/&#39;/g, "'");
+
+            if (!seen.has(id)) {
+              seen.add(id);
+              fetched.push({
+                id,
+                title,
+                podcast: "Success369 Podcast Network",
+                description: `Watch "${title}" on the official Success369 YouTube channel.`
+              });
+            }
+          }
+
+          if (fetched.length > 0 && isMounted) {
+            setEpisodes(fetched);
+            setActiveVideoId(fetched[0].id);
+            setIsLiveUpdated(true);
+            break;
+          }
+        } catch (e) {
+          // Ignore proxy errors and continue to fallback
+        }
+      }
+    };
+
+    fetchLatestYouTubeEpisodes();
+    return () => { isMounted = false; };
+  }, []);
 
   const handleGuestSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -163,11 +232,17 @@ const Podcast = () => {
         <div className="absolute inset-0 bg-primary/[0.02]" />
         <div className="relative container-custom">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 mb-6 justify-center w-full">
+            <div className="inline-flex items-center gap-3 mb-6 justify-center w-full flex-wrap">
               <span className="h-[1px] w-8 bg-primary/60" />
-              <p className="font-display text-xs uppercase tracking-[0.4em] text-primary font-bold">
+              <p className="font-display text-xs uppercase tracking-[0.4em] text-primary font-bold flex items-center gap-2">
                 Watch Latest Episodes
               </p>
+              {isLiveUpdated && (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Auto-Synced
+                </span>
+              )}
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
             <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Visual <span className="italic font-normal">Transformation.</span></h2>
@@ -183,8 +258,9 @@ const Podcast = () => {
             {/* YouTube Embed Container */}
             <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-black">
               <iframe
+                key={activeVideoId}
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/ZatkdgdW7pY"
+                src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=0`}
                 title="Success369 Featured Episode"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
@@ -210,74 +286,6 @@ const Podcast = () => {
         </div>
       </section>
 
-      {/* Podcast Shows - Hidden for now
-      <section id="shows" className="section relative overflow-hidden bg-background">
-        <div className="container-custom relative z-10">
-          {podcasts.map((podcast, idx) => (
-            <motion.div
-              key={podcast.title}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={0}
-              className={`relative flex flex-col ${
-                idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              } gap-12 md:gap-20 items-center group`}
-            >
-              <span className={`absolute -top-12 ${idx % 2 === 0 ? "-right-8" : "-left-8"} font-display text-[12rem] font-black text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.07] group-hover:-translate-y-4`}>
-                0{idx + 1}
-              </span>
-              <div className="w-full max-w-[320px] shrink-0">
-                <div className="relative group">
-                  <div className="absolute -inset-3 bg-gradient-to-br from-primary/30 to-pink-400/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <img
-                    src={podcast.image}
-                    alt={podcast.title}
-                    className="relative w-full aspect-square rounded-2xl object-cover border border-border/30 shadow-2xl"
-                  />
-                </div>
-              </div>
-
-              <div className="relative flex-1 space-y-8 z-10">
-                <div>
-                  <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-tight">
-                    {podcast.title}
-                  </h2>
-                  <p className="text-primary text-xs font-bold uppercase tracking-[0.3em] opacity-60 italic">{podcast.host}</p>
-                </div>
-
-                <p className="text-foreground/90 leading-relaxed">{podcast.description}</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {podcast.longDescription}
-                </p>
-
-                <div>
-                  <p className="text-muted-foreground text-sm font-medium mb-3">
-                    Listen here:
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    {podcast.platforms.map((platform) => (
-                      <a
-                        key={platform.label}
-                        href={platform.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border/50 bg-card/50 backdrop-blur-sm text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-all duration-300 group"
-                      >
-                        <ExternalLink size={14} className="text-muted-foreground group-hover:text-primary transition-colors" />
-                        {platform.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-      */}
-
       {/* Featured Episodes */}
       <section id="episodes" className="section relative">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background" />
@@ -300,15 +308,20 @@ const Podcast = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-            {featuredEpisodes.map((ep, i) => (
+            {episodes.map((ep, i) => (
               <motion.div
-                key={ep.title}
+                key={ep.id + "-" + i}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={i * 0.1}
-                className="group space-y-6"
+                className="group space-y-6 cursor-pointer"
+                onClick={() => {
+                  setActiveVideoId(ep.id);
+                  const el = document.getElementById("watch");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
               >
                 {/* YouTube Embed */}
                 <div className="relative aspect-video rounded-3xl overflow-hidden border border-border/30 bg-black shadow-2xl group-hover:border-primary/40 transition-colors duration-500">
@@ -327,6 +340,11 @@ const Podcast = () => {
                     <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary px-3 py-1 rounded-full bg-primary/10">
                       {ep.podcast}
                     </span>
+                    {activeVideoId === ep.id && (
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+                        Now Playing Above
+                      </span>
+                    )}
                   </div>
                   <h3 className="text-2xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors">
                     {ep.title}

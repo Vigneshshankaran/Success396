@@ -1,22 +1,55 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, Sparkles, Clock, Search } from "lucide-react";
+import { ArrowRight, Sparkles, Clock, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlobalCTA from "@/components/GlobalCTA";
+import CTAButton from "@/components/CTAButton";
 import { blogPosts, categories, type BlogCategory } from "@/data/blog";
-import { fadeUp } from "@/lib/animations";
-
-// fadeUp imported from @/lib/animations
 
 type FilterType = "All" | BlogCategory;
 
 const Blog = () => {
   const [filter, setFilter] = useState<FilterType>("All");
   const [search, setSearch] = useState("");
-  const featured = blogPosts.find((p) => p.featured);
+  const featuredList = blogPosts;
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % featuredList.length);
+    setProgress(0);
+  }, [featuredList.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + featuredList.length) % featuredList.length);
+    setProgress(0);
+  }, [featuredList.length]);
+
+  const goToSlide = useCallback((index: number) => {
+    setCurrentSlide(index);
+    setProgress(0);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          nextSlide();
+          return 0;
+        }
+        return prev + 100 / (6000 / 50);
+      });
+    }, 50);
+    return () => clearInterval(interval);
+  }, [isPaused, nextSlide]);
+
+  const activePost = featuredList[currentSlide];
 
   const filtered = blogPosts.filter((p) => {
     const matchesCategory = filter === "All" || p.category === filter;
@@ -38,94 +71,147 @@ const Blog = () => {
       </Helmet>
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-16 sm:pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-background" />
-        <div className="absolute top-20 left-1/4 w-[400px] h-[300px] bg-primary/8 rounded-full blur-[150px]" />
-        <div className="absolute top-40 right-1/4 w-[300px] h-[200px] bg-pink-500/5 rounded-full blur-[120px]" />
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div initial="hidden" animate="visible">
-            <motion.div
-              custom={0}
-              variants={fadeUp}
-              className="inline-flex items-center gap-3 mb-6"
-            >
-              <span className="h-[1px] w-8 bg-primary/60" />
-              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
-                Leadership & Thought Leadership
-              </p>
-              <span className="h-[1px] w-8 bg-primary/60" />
-            </motion.div>
-
-            <motion.h1
-              custom={1}
-              variants={fadeUp}
-              className="mb-8"
-            >
-              Insights for{" "}
-              <span className="text-primary text-glow">sustainable growth</span>
-            </motion.h1>
-
-            <motion.p
-              custom={2}
-              variants={fadeUp}
-              className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"
-            >
-              Explore perspectives on clarity, congruence, and catalysis — the three pillars of
-              lasting transformation.
-            </motion.p>
+      {/* --- HERO SLIDER (Identical structure to Home Page Hero Slider) --- */}
+      <section
+        id="hero"
+        className="relative h-screen w-full overflow-hidden bg-black"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Background Image with AnimatePresence */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 overflow-hidden"
+          >
+            <img
+              src={activePost.image}
+              alt={activePost.title}
+              className="h-full w-full object-cover opacity-60 scale-105 transition-transform duration-1000"
+            />
           </motion.div>
+        </AnimatePresence>
+
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 hero-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
+
+        {/* Content */}
+        <div className="absolute inset-0 flex items-end">
+          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 pb-28 sm:pb-32">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="max-w-3xl"
+              >
+                {/* Tag */}
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                  className="mb-3 sm:mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-white backdrop-blur-md"
+                >
+                  {activePost.category} • {activePost.readTime}
+                </motion.span>
+
+                {/* Title */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-glow text-white leading-[1.1] font-bold font-display"
+                >
+                  {activePost.title}
+                </motion.h1>
+
+                {/* Subtitle / Excerpt */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.55, duration: 0.6 }}
+                  className="mb-8 sm:mb-10 max-w-2xl text-lg sm:text-xl text-white/90 font-light line-clamp-2"
+                >
+                  {activePost.excerpt}
+                </motion.p>
+
+                {/* CTAs */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.5 }}
+                  className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
+                >
+                  <CTAButton 
+                    href={`/blog/${activePost.slug}`}
+                    size="md"
+                    variant="shimmer"
+                  >
+                    Read Article
+                  </CTAButton>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Navigation arrows */}
+        <div className="absolute right-4 sm:right-6 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-2 sm:gap-3">
+          <button
+            onClick={prevSlide}
+            className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/15 bg-black/20 text-white/70 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-primary/20 hover:text-primary"
+            aria-label="Previous Article"
+          >
+            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/15 bg-black/20 text-white/70 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-primary/20 hover:text-primary"
+            aria-label="Next Article"
+          >
+            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
+          </button>
+        </div>
+
+        {/* Progress indicators */}
+        <div className="absolute bottom-10 sm:bottom-12 left-4 sm:left-6 right-16 sm:right-6 z-20">
+          <div className="flex max-w-md items-center gap-2 sm:gap-3">
+            {featuredList.map((post, index) => (
+              <button key={post.slug} onClick={() => goToSlide(index)} className="group relative flex-1">
+                <div className="slider-progress h-1">
+                  <motion.div
+                    className="slider-progress-fill"
+                    initial={{ scaleX: 0 }}
+                    animate={{
+                      scaleX: index === currentSlide ? progress / 100 : index < currentSlide ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.05, ease: "linear" }}
+                  />
+                </div>
+                <span className="mt-2 hidden sm:block text-xs font-medium text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 truncate max-w-[100px]">
+                  {post.category}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Slide counter */}
+        <div className="absolute bottom-10 sm:bottom-12 right-4 sm:right-6 z-20">
+          <span className="font-display text-xs sm:text-sm tabular-nums text-white/70">
+            <span className="text-white">{String(currentSlide + 1).padStart(2, "0")}</span>
+            {" / "}
+            {String(featuredList.length).padStart(2, "0")}
+          </span>
         </div>
       </section>
-
-      {/* Featured Post */}
-      {featured && (
-        <section className="section bg-background/50 relative overflow-hidden">
-          <div className="container-custom">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <Link
-                to={`/blog/${featured.slug}`}
-                className="group block rounded-2xl overflow-hidden bg-card/40 backdrop-blur-sm border border-border/30 transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_60px_-15px_hsl(var(--primary)/0.15)]"
-              >
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative h-64 lg:h-auto overflow-hidden">
-                    <img
-                      src={featured.image}
-                      alt={featured.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/60 hidden lg:block" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent lg:hidden" />
-                  </div>
-                  <div className="p-8 lg:p-12 flex flex-col justify-center">
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
-                      <span className="text-primary font-semibold uppercase tracking-wider">{featured.category}</span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1"><Clock size={12} /> {featured.readTime}</span>
-                    </div>
-                    <h2 className="text-2xl sm:text-3xl font-bold font-display text-foreground group-hover:text-primary transition-colors mb-4 leading-tight">
-                      {featured.title}
-                    </h2>
-                    <p className="text-muted-foreground text-base leading-relaxed mb-6">
-                      {featured.excerpt}
-                    </p>
-                    <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
-                      Read Article
-                      <ArrowRight size={16} />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-      )}
 
       {/* Filters + Search + Grid */}
       <section className="section relative">

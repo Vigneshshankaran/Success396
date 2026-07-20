@@ -25,9 +25,7 @@ import { trackLead } from "@/lib/pixel";
 
 // Video and Image assets
 import mayaHeroImg from "@/assets/maya-hero.png";
-import clarityImg from "@/assets/CLARITY.jpg.webp";
-import congruenceImg from "@/assets/CONGRUENCE.jpg.webp";
-import catalysisImg from "@/assets/CATALYSIS.jpg.webp";
+import certificateImg from "@/assets/shakthi-certificate.jpg";
 
 
 
@@ -41,8 +39,7 @@ const roadData = [
     color: "#10CFC9",
     rc: "Day 1 · Arrival & Opening Evening",
     title: "Orientation & Identity",
-    desc: "You arrive at the destination through the day; the retreat opens in the evening — and your sealed personal dossier, six weeks in the making, is placed in your hands. Then the identity work begins: interests mapped, life roles examined, and the first signals of who you are beyond your title.",
-    tags: ["Arrival & Welcome", "Sealed Dossier", "Success Architecture", "Life Roles", "Identity Signals"]
+    desc: "You arrive at the destination through the day; the retreat opens in the evening — and your sealed personal dossier, six weeks in the making, is placed in your hands. Then the identity work begins: interests mapped, life roles examined, and the first signals of who you are beyond your title."
   },
   {
     badge: "DAY 2",
@@ -50,8 +47,7 @@ const roadData = [
     color: "#5BC8D6",
     rc: "Day 2 · Clarity Lab",
     title: "The Clarity Lab",
-    desc: "The deepest identity work that surfaces your natural strengths. The day closes with a written Identity Statement.",
-    tags: ["FACE Assessment", "Strength Map", "Values Declaration", "Contribution Audit", "Identity Statement"]
+    desc: "The deepest identity work that surfaces your natural strengths. The day closes with a written Identity Statement."
   },
   {
     badge: "DAY 3",
@@ -59,8 +55,7 @@ const roadData = [
     color: "#8490C8",
     rc: "Day 3 · Wheel of Life",
     title: "The Wheel of Life",
-    desc: "The gaps between where you are and where you want to be become the foundation of your Blueprint.",
-    tags: ["13 Dimensions", "Current Score", "Aspirational Score", "Gap Analysis", "Blueprint Draft"]
+    desc: "The gaps between where you are and where you want to be become the foundation of your Blueprint."
   },
   {
     badge: "DAY 4",
@@ -68,8 +63,7 @@ const roadData = [
     color: "#A57BB0",
     rc: "Day 4 · Morning",
     title: "Congruence & Perception",
-    desc: "The honest mirror. Do your actions, values, potential and public perception match the future you declared?",
-    tags: ["Aspiration–Action Gap", "Potential–Reality Gap", "Values Visibility", "360° Perception Scan"]
+    desc: "The honest mirror. Do your actions, values, potential and public perception match the future you declared?"
   },
   {
     badge: "DAY 4",
@@ -77,8 +71,7 @@ const roadData = [
     color: "#E999AC",
     rc: "Day 4 · Afternoon",
     title: "Blocker Diagnosis",
-    desc: "The gap is diagnosed, not judged — across structural, capability, emotional and strategic blockers. You leave the afternoon with a primary blocker map and a clear action priority.",
-    tags: ["Primary Blocker Map", "Secondary Blockers", "Action Priority"]
+    desc: "The gap is diagnosed, not judged — across structural, capability, emotional and strategic blockers. You leave the afternoon with a primary blocker map and a clear action priority."
   },
   {
     badge: "DAY 5",
@@ -86,8 +79,7 @@ const roadData = [
     color: "#D2AF78",
     rc: "Day 5",
     title: "Harvard Learning",
-    desc: "An exclusive Harvard ManageMentor® session — the leadership curriculum from Harvard Business Publishing, trusted by the world's leading companies — delivered privately to your cohort of 30. You leave carrying a Harvard ManageMentor® course-completion certificate with your name on it.",
-    tags: ["Harvard ManageMentor®", "Leadership Curriculum", "Completion Certificate", "Cohort of 30"]
+    desc: "An exclusive Harvard ManageMentor® session — the leadership curriculum from Harvard Business Publishing, trusted by the world's leading companies — delivered privately to your cohort of 30. You leave carrying a Harvard ManageMentor® course-completion certificate with your name on it."
   },
   {
     badge: "★",
@@ -95,8 +87,7 @@ const roadData = [
     color: "#FFCB05",
     rc: "The Takeaway",
     title: "Your Personal Blueprint",
-    desc: "You go home with a hardbound, personalised Blueprint — identity, aspiration, life priorities, alignment gaps, capability focus areas and a 369-day roadmap. A private roadmap consultation follows after you return.",
-    tags: ["Hardbound Blueprint", "369-Day Roadmap", "Roadmap Consultation"]
+    desc: "You go home with a hardbound, personalised Blueprint — identity, aspiration, life priorities, alignment gaps, capability focus areas and a 369-day roadmap. A private roadmap consultation follows after you return."
   }
 ];
 
@@ -154,7 +145,7 @@ const MaayaRetreat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Helmet>
         <title>MAAYA — A Success369 Destination Retreat</title>
         <meta name="description" content="MAAYA is a five-day residential retreat by Success369 for accomplished people who want complete clarity about their life and their future. One cohort of 30. A personalised Blueprint you take home." />
@@ -166,38 +157,18 @@ const MaayaRetreat = () => {
       {/* ══════════════════════════════════════
           HERO — Image Backdrop
       ══════════════════════════════════════ */}
-      <section id="hero" className="relative h-screen w-full overflow-hidden bg-black flex items-end">
+      <section id="hero" className="relative min-h-[100dvh] sm:h-screen w-full overflow-hidden bg-black flex items-end">
         <div className="absolute inset-0 z-0">
           <img
             src={mayaHeroImg}
             alt="MAAYA Retreat"
-            className="h-full w-full object-cover opacity-60"
+            className="h-full w-full object-cover opacity-70"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-transparent to-accent/15" />
         </div>
 
-        {/* Ambient floating elements */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          {["3", "6", "9"].map((n, i) => (
-            <motion.span
-              key={n}
-              className="absolute font-display font-black text-white/[0.03] select-none"
-              style={{
-                fontSize: "clamp(120px, 15vw, 260px)",
-                left: `${15 + i * 30}%`,
-                top: "35%",
-                transform: "translateY(-50%)",
-              }}
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 7 + i * 2, repeat: Infinity, ease: "easeInOut", delay: i * 1 }}
-            >
-              {n}
-            </motion.span>
-          ))}
-        </div>
-
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 pb-20 sm:pb-28 relative z-10">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-24 relative z-10">
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
             <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-md">
               <Sparkles size={12} className="text-primary animate-pulse" />
@@ -239,15 +210,15 @@ const MaayaRetreat = () => {
             initial="hidden"
             animate="visible"
             custom={4}
-            className="flex flex-wrap gap-8 items-stretch mb-10 pt-6 max-w-2xl"
+            className="flex flex-wrap gap-4 sm:gap-8 items-center mb-8 sm:mb-10 pt-6 max-w-2xl"
           >
             {[
               { icon: Calendar, label: "4 Nights" },
               { icon: Clock, label: "5 Days" },
               { icon: Users, label: "30 Seats" }
             ].map(({ icon: Icon, label }, i) => (
-              <div key={i} className="flex items-center gap-3 pr-8 last:pr-0">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+              <div key={i} className="flex items-center gap-3 pr-4 sm:pr-8 last:pr-0">
+                <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center shrink-0">
                   <Icon size={18} className="text-primary" />
                 </div>
                 <span className="text-sm font-extrabold text-white uppercase tracking-widest">{label}</span>
@@ -260,16 +231,16 @@ const MaayaRetreat = () => {
             initial="hidden"
             animate="visible"
             custom={5}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
-            <CTAButton href="#cohorts" size="md" variant="shimmer">
+            <CTAButton href="#cohorts" size="md" variant="shimmer" className="w-full sm:w-auto">
               View Upcoming Cohorts
             </CTAButton>
             <CTAButton
               href="#apply"
               size="md"
               variant="outline"
-              className="text-white hover:text-white hover:border-primary/50"
+              className="w-full sm:w-auto text-white hover:text-white hover:border-primary/50"
             >
               Apply for Selection
             </CTAButton>
@@ -280,9 +251,9 @@ const MaayaRetreat = () => {
       {/* ══════════════════════════════════════
           WHAT IS MAAYA — Section
       ══════════════════════════════════════ */}
-      <section className="section bg-card/20 relative overflow-hidden" id="what">
+      <section className="section bg-card/40 dark:bg-card/20 border-y border-border/40 relative overflow-hidden" id="what">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -292,13 +263,12 @@ const MaayaRetreat = () => {
             >
               <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">What MAAYA is</span>
               <h2 className="mb-6 leading-tight">
-                Not a vacation.<br />
-                A structured{" "}
+                Not a vacation.{" "}
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent italic">
-                  alignment experience.
+                  A structured alignment experience.
                 </span>
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
                 MAAYA is a five-day residential retreat by Success369 where your life is studied, mapped, reflected, and redesigned — through guided frameworks, private reflection, expert facilitation, and a personalised post-retreat roadmap.
               </p>
             </motion.div>
@@ -308,18 +278,18 @@ const MaayaRetreat = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5 space-y-6"
+              className="lg:col-span-5 space-y-4 sm:space-y-6"
             >
               {[
                 "Before you arrive, MAAYA studies signals from your real life: your sleep, your emotional state, your self-perception, and how others actually experience you.",
                 "At the retreat, those signals become your mirror — the honest starting point most programmes skip.",
                 "You leave with a written Identity Statement, a mapped life audit, and a personalised Blueprint for your future."
               ].map((text, i) => (
-                <div key={i} className="flex gap-4 p-5 rounded-2xl bg-card/30 hover:shadow-md transition-all duration-300">
+                <div key={i} className="flex gap-4 p-5 rounded-2xl bg-card border border-border/60 dark:bg-card/30 dark:border-border/40 hover:shadow-md transition-all duration-300">
                   <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-primary" />
                   </div>
-                  <p className="text-sm text-foreground/90 font-medium leading-relaxed">{text}</p>
+                  <p className="text-xs sm:text-sm text-foreground/90 font-medium leading-relaxed">{text}</p>
                 </div>
               ))}
             </motion.div>
@@ -336,35 +306,46 @@ const MaayaRetreat = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 sm:p-12 md:p-16 rounded-[2.5rem] bg-gradient-to-br from-card to-background relative overflow-hidden shadow-2xl"
+            className="p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[2.5rem] bg-card border border-border/60 shadow-2xl relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
             
-            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center relative z-10">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center relative z-10">
               <div>
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-6">
                   <Award size={12} className="animate-pulse" />
                   Leadership Curriculum
                 </span>
                 <h2 className="mb-4">Harvard ManageMentor®</h2>
-                <p className="text-muted-foreground text-base sm:text-lg mb-8 leading-relaxed">
+                <p className="text-muted-foreground text-base sm:text-lg mb-6 leading-relaxed">
                   The retreat closes with a leadership session built on world-class curriculum, and a certificate you carry home.
                 </p>
                 
-                <div className="inline-flex items-center gap-2 p-3.5 rounded-xl bg-primary/5 text-sm font-bold text-primary">
+                <div className="space-y-4 mb-6">
+                  {[
+                    "We use course materials developed by professors at Harvard Business School.",
+                    "Participants receive certificates from Harvard ManageMentor upon completion of enclosed courses."
+                  ].map((text, i) => (
+                    <div key={i} className="p-4 sm:p-5 rounded-2xl bg-secondary/50 dark:bg-background/50 border border-border/40 hover:shadow-md transition-all">
+                      <p className="text-xs sm:text-sm md:text-base font-semibold leading-relaxed text-foreground">{text}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="inline-flex items-center gap-2 p-3.5 rounded-xl bg-primary/10 text-xs sm:text-sm font-bold text-primary">
                   ★ Harvard ManageMentor content included
                 </div>
               </div>
 
-              <div className="space-y-6">
-                {[
-                  "We use course materials developed by professors at Harvard Business School.",
-                  "Participants receive certificates from Harvard ManageMentor upon completion of enclosed courses."
-                ].map((text, i) => (
-                  <div key={i} className="p-6 rounded-2xl bg-background/50 hover:shadow-md transition-all">
-                    <p className="text-sm sm:text-base font-semibold leading-relaxed text-foreground">{text}</p>
-                  </div>
-                ))}
+              <div className="relative">
+                <div className="rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card">
+                  <img
+                    src={certificateImg}
+                    alt="Harvard ManageMentor certificate of completion"
+                    className="w-full h-auto"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
@@ -422,7 +403,7 @@ const MaayaRetreat = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7 }}
-                className="group relative p-8 rounded-3xl bg-card/30 hover:bg-card/50 hover:shadow-md transition-all duration-500 overflow-hidden"
+                className="group relative p-6 sm:p-8 rounded-3xl bg-card border border-border/60 dark:bg-card/30 dark:border-border/40 hover:border-primary/30 hover:shadow-lg transition-all duration-500 overflow-hidden"
               >
                 <span className="absolute top-4 right-6 font-display font-black text-6xl text-foreground/[0.03] group-hover:text-primary/[0.06] transition-colors duration-500 leading-none select-none">
                   {card.num}
@@ -489,10 +470,10 @@ const MaayaRetreat = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7 }}
-                className={`p-8 rounded-3xl flex flex-col justify-between transition-all duration-500 shadow-xl ${
+                className={`p-6 sm:p-8 rounded-3xl flex flex-col justify-between transition-all duration-500 shadow-xl ${
                   m.hl 
-                    ? "bg-card shadow-[0_0_50px_-10px_rgba(236,0,140,0.15)] ring-1 ring-primary/20" 
-                    : "bg-card/30 hover:bg-card/50"
+                    ? "bg-card border-2 border-primary/40 shadow-[0_0_50px_-10px_rgba(236,0,140,0.15)] ring-1 ring-primary/20" 
+                    : "bg-card border border-border/60 dark:bg-card/30 dark:border-border/40 hover:border-primary/30"
                 }`}
               >
                 <div>
@@ -540,7 +521,7 @@ const MaayaRetreat = () => {
             viewport={{ once: true }}
             className="text-center mb-16 max-w-3xl mx-auto"
           >
-            <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The 5-day journey</span>
+            <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The 5-Day Journey</span>
             <h2>The road ahead: five immersive days at the destination.</h2>
             <p className="text-muted-foreground text-sm sm:text-base mt-3">
               Click any milestone on the road to see what happens at that stage of the journey.
@@ -620,22 +601,22 @@ const MaayaRetreat = () => {
             </div>
           </div>
 
-          {/* Interactive Road Selector (Mobile & Tablet - No Scroll) */}
-          <div className="lg:hidden grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 mb-8 max-w-5xl mx-auto">
+          {/* Interactive Road Selector (Mobile & Tablet - Grid) */}
+          <div className="lg:hidden grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-8 max-w-5xl mx-auto">
             {roadData.map((node, idx) => {
               const active = idx === activeRoadNode;
               return (
                 <button
                   key={idx}
                   onClick={() => setActiveRoadNode(idx)}
-                  className={`flex flex-col items-center justify-center p-4 rounded-2xl transition-all duration-300 shadow-md ${
+                  className={`flex flex-col items-center justify-center p-3.5 rounded-2xl border transition-all duration-300 shadow-sm ${
                     active 
-                      ? "bg-primary text-white scale-[1.02]" 
-                      : "bg-card/30 text-muted-foreground hover:bg-card/50"
+                      ? "bg-primary text-white border-primary scale-[1.02] shadow-primary/20 shadow-md" 
+                      : "bg-card border-border/60 dark:bg-card/30 text-muted-foreground hover:bg-card/80"
                   }`}
                 >
                   <span className="text-[10px] font-black tracking-widest uppercase">{node.badge}</span>
-                  <span className="text-xs font-bold mt-1 text-foreground leading-tight text-center">{node.cap}</span>
+                  <span className="text-xs font-bold mt-1 leading-tight text-center truncate w-full">{node.cap}</span>
                 </button>
               );
             })}
@@ -650,7 +631,7 @@ const MaayaRetreat = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="p-8 rounded-2xl bg-card shadow-xl"
+                className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-card border border-border/60 shadow-xl"
               >
                 <span className="text-xs font-black uppercase tracking-widest text-primary block mb-1">
                   {roadData[activeRoadNode].rc}
@@ -662,13 +643,7 @@ const MaayaRetreat = () => {
                   {roadData[activeRoadNode].desc}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {roadData[activeRoadNode].tags.map((tag, i) => (
-                    <span key={i} className="px-3.5 py-1.5 rounded-full bg-background text-xs font-bold text-foreground">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+
               </motion.div>
             </AnimatePresence>
           </div>
@@ -686,20 +661,19 @@ const MaayaRetreat = () => {
             viewport={{ once: true }}
             className="text-center mb-16 max-w-3xl mx-auto"
           >
-            <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Who it is for</span>
+            <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Who It Is For</span>
             <h2>Accomplished people ready for an honest mirror.</h2>
             <p className="text-muted-foreground text-lg mt-3 max-w-xl mx-auto">
               MAAYA is built for people whose outside progress has outpaced their inside clarity.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               { role: "Founders", desc: "Building fast, unsure what to build next." },
               { role: "Leaders", desc: "Managing everyone but their own direction." },
               { role: "Professionals", desc: "Successful on paper, quietly misaligned." },
-              { role: "Successors", desc: "Family-business heirs defining their own path." },
-              { role: "HNIs", desc: "Resourced for anything except a clear next chapter." }
+              { role: "Successors", desc: "Family-business heirs defining their own path." }
             ].map((p, i) => (
               <motion.div
                 key={i}
@@ -707,7 +681,7 @@ const MaayaRetreat = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.6 }}
-                className="p-6 rounded-2xl bg-card hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
               >
                 <b className="text-lg font-black text-foreground block mb-2">{p.role}</b>
                 <span className="text-sm text-muted-foreground leading-relaxed block">{p.desc}</span>
@@ -731,7 +705,7 @@ const MaayaRetreat = () => {
             <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Upcoming Cohorts</span>
             <h2>Two journeys. Thirty seats each.</h2>
             <p className="text-muted-foreground text-sm sm:text-base mt-4 max-w-2xl mx-auto">
-              Every cohort includes the complete Maaya experience: your sealed personal dossier, the Three Mirrors, the Wheel of Life, an exclusive Harvard ManageMentor® session with certificate, a private roadmap consultation after you return — and your personalised Blueprint, delivered to your door.
+              Every cohort includes the complete MAAYA experience: your sealed personal dossier, the Three Mirrors, the Wheel of Life, an exclusive Harvard ManageMentor® session with certificate, a private roadmap consultation after you return — and your personalised Blueprint, delivered to your door.
             </p>
           </motion.div>
 
@@ -784,7 +758,7 @@ const MaayaRetreat = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8 }}
-                className="flex flex-col rounded-3xl bg-card overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-300"
+                className="flex flex-col rounded-3xl bg-card border border-border/60 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-300"
               >
                 <div className={`p-8 text-white bg-gradient-to-br ${c.color} relative overflow-hidden`}>
                   <h3 className="text-2xl font-black leading-tight min-h-[64px]">
@@ -845,7 +819,7 @@ const MaayaRetreat = () => {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-12 gap-12 items-start">
               <div className="md:col-span-5">
-                <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Apply</span>
+                <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Cohort Application</span>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground leading-tight mb-6">
                   Apply for the next MAAYA cohort.
                 </h2>
@@ -891,7 +865,7 @@ const MaayaRetreat = () => {
                     </button>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleFormSubmit} className="p-8 sm:p-10 rounded-3xl bg-card/40 backdrop-blur-sm shadow-xl space-y-4">
+                  <form onSubmit={handleFormSubmit} className="p-6 sm:p-8 md:p-10 rounded-3xl bg-card border border-border/60 shadow-xl space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
                       <div>
                         <label htmlFor="name" className="block text-xs font-bold text-foreground mb-2">
@@ -905,7 +879,7 @@ const MaayaRetreat = () => {
                           value={formState.name}
                           onChange={handleInputChange}
                           placeholder="Your name"
-                          className="flex h-11 w-full rounded-xl border border-transparent bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
+                          className="flex h-11 w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
                         />
                       </div>
                       <div>
@@ -920,7 +894,7 @@ const MaayaRetreat = () => {
                           value={formState.age}
                           onChange={handleInputChange}
                           placeholder="Age"
-                          className="flex h-11 w-full rounded-xl border border-transparent bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
+                          className="flex h-11 w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
                         />
                       </div>
                     </div>
@@ -938,7 +912,7 @@ const MaayaRetreat = () => {
                           value={formState.city}
                           onChange={handleInputChange}
                           placeholder="e.g. Dubai, UAE"
-                          className="flex h-11 w-full rounded-xl border border-transparent bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
+                          className="flex h-11 w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
                         />
                       </div>
                       <div>
@@ -953,7 +927,7 @@ const MaayaRetreat = () => {
                           value={formState.role}
                           onChange={handleInputChange}
                           placeholder="What you do"
-                          className="flex h-11 w-full rounded-xl border border-transparent bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
+                          className="flex h-11 w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
                         />
                       </div>
                     </div>
@@ -967,12 +941,12 @@ const MaayaRetreat = () => {
                         name="cohort"
                         value={formState.cohort}
                         onChange={handleInputChange}
-                        className="flex h-11 w-full rounded-xl border border-transparent bg-card/50 px-4 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
+                        className="flex h-11 w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
                       >
-                        <option value="Emirati Women · UAE · Aug 2026" className="text-foreground bg-background">Emirati Women · UAE · Aug 2026</option>
-                        {/* <option value="Open to All · Prague · Nov 2026" className="text-foreground bg-background">Open to All · Prague · Nov 2026</option> */}
-                        <option value="Women Only · Prague · Jan 2027" className="text-foreground bg-background">Women Only · Prague · Jan 2027</option>
-                        <option value="Not sure yet — advise me" className="text-foreground bg-background">Not sure yet — advise me</option>
+                        <option value="Emirati Women · UAE · Aug 2026" className="text-foreground bg-popover">Emirati Women · UAE · Aug 2026</option>
+                        {/* <option value="Open to All · Prague · Nov 2026" className="text-foreground bg-popover">Open to All · Prague · Nov 2026</option> */}
+                        <option value="Women Only · Prague · Jan 2027" className="text-foreground bg-popover">Women Only · Prague · Jan 2027</option>
+                        <option value="Not sure yet — advise me" className="text-foreground bg-popover">Not sure yet — advise me</option>
                       </select>
                     </div>
 
@@ -988,7 +962,7 @@ const MaayaRetreat = () => {
                         onChange={handleInputChange}
                         placeholder="A few honest lines"
                         rows={3}
-                        className="flex min-h-[100px] w-full rounded-xl border border-transparent bg-card/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300 resize-y"
+                        className="flex min-h-[100px] w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300 resize-y"
                       />
                     </div>
 
@@ -1003,7 +977,7 @@ const MaayaRetreat = () => {
                         onChange={handleInputChange}
                         placeholder="Optional, but it helps us prepare"
                         rows={3}
-                        className="flex min-h-[100px] w-full rounded-xl border border-transparent bg-card/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300 resize-y"
+                        className="flex min-h-[100px] w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300 resize-y"
                       />
                     </div>
 
@@ -1020,7 +994,7 @@ const MaayaRetreat = () => {
                           value={formState.whatsapp}
                           onChange={handleInputChange}
                           placeholder="+___ __________"
-                          className="flex h-11 w-full rounded-xl border border-transparent bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
+                          className="flex h-11 w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
                         />
                       </div>
                       <div>
@@ -1035,7 +1009,7 @@ const MaayaRetreat = () => {
                           value={formState.email}
                           onChange={handleInputChange}
                           placeholder="you@email.com"
-                          className="flex h-11 w-full rounded-xl border border-transparent bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
+                          className="flex h-11 w-full rounded-xl border border-input bg-background/80 dark:bg-card/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all duration-300"
                         />
                       </div>
                     </div>

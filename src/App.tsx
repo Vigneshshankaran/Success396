@@ -81,6 +81,7 @@ const App = () => (
             <Route path="/shakti-unfiltered-voice" element={<ShakthiLanding />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/what-is-the-369-method" element={<Navigate to="/blog/what-is-the-369-method" replace />} />
             <Route path="/book" element={<Book />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/events" element={<Events />} />

@@ -206,7 +206,7 @@ const ShakthiLanding = () => {
         </div>
         <div className="absolute inset-0 hero-overlay z-[1]" />
 
-        <div className="relative z-10 container-custom py-20 md:py-28 w-full">
+        <div className="relative z-10 container-custom pt-12 md:pt-16 pb-16 md:pb-24 w-full">
           <div className="max-w-4xl">
             <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
               <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-primary backdrop-blur-md">

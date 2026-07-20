@@ -9,12 +9,13 @@ import success369video from "@/assets/Success 369.mp4";
 import CTAButton from "./CTAButton";
 
 interface Slide {
-  video: string;
+  video?: string;
+  youtubeId?: string;
   tag: string;
   title: string;
   subtitle: string;
   cta: string;
-  ctaSecondary: string;
+  ctaSecondary?: string;
   ctaHref: string;
 }
 
@@ -59,13 +60,13 @@ const slides: Slide[] = [
     ctaHref: "/book",
   },
   {
-    video: event,
-    tag: "Events",
-    title: "Success 369 Events – Inspire. Act. Achieve.",
-    subtitle: "You don’t attend to follow the crowd. You show up for the conversation that meets you where you are.",
-    cta: "Join the Event",
-    ctaSecondary: "View Gallery",
-    ctaHref: "/events",
+    youtubeId: "NQqF1np5eow",
+    tag: "Podcast",
+    title: "Dr. Kiran Bedi: The Woman Who Refused to Be Controlled",
+    subtitle: "Listen to inspiring conversations on leadership, courage, and self-determination on the Success369 Podcast.",
+    cta: "Explore Podcast",
+    ctaSecondary: "Watch Episode",
+    ctaHref: "/podcast",
   },
 ];
 
@@ -122,16 +123,27 @@ const HeroSlider = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0"
+          className="absolute inset-0 overflow-hidden"
         >
-          <video
-            src={slide.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="h-full w-full object-cover"
-          />
+          {slide.youtubeId ? (
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <iframe
+                src={`https://www.youtube.com/embed/${slide.youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${slide.youtubeId}&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1`}
+                title={slide.title}
+                className="w-[300%] h-[300%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover scale-150 sm:scale-125 opacity-80"
+                allow="autoplay; encrypted-media"
+              />
+            </div>
+          ) : (
+            <video
+              src={slide.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-cover"
+            />
+          )}
         </motion.div>
       </AnimatePresence>
 
