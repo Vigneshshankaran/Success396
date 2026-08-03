@@ -180,10 +180,12 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6 {
     @apply tracking-tight text-foreground;
     font-family: var(--font-display);
     letter-spacing: -0.5px;
+    /* Balance headings so no single word is left alone on the last line */
+    text-wrap: balance;
   }
 
   h1 {
@@ -217,6 +219,13 @@
     font-size: var(--fs-body);
     line-height: var(--lh-body);
     font-weight: var(--fw-regular);
+    /* Avoid orphans — a single word wrapping alone onto the last line */
+    text-wrap: pretty;
+  }
+
+  /* Also balance short lead/blockquote text and list items */
+  .lead, blockquote, figcaption, li, .hero-tag, .hero-sub {
+    text-wrap: pretty;
   }
 
   /* Limit reading width */

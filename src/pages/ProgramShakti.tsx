@@ -20,8 +20,8 @@ const ProgramShakti = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>SHAKTI — Activating Aligned Momentum | Success369</title>
-        <meta name="description" content="SHAKTI is for leaders and teams ready to execute. Translate alignment into real-world strength with focused activation." />
+        <title>Leadership Development Courses Online — SHAKTI by Success369</title>
+        <meta name="description" content="SHAKTI is Success369's leadership development program — focused activation modules for leaders and teams ready to turn alignment into sharper execution and stronger influence. Available online and in-person." />
       </Helmet>
       <Navbar />
 
@@ -58,8 +58,8 @@ const ProgramShakti = () => {
               custom={1}
               className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]"
             >
-              Activating{" "}
-              <span className="text-primary text-glow italic">Aligned Momentum</span>
+              Leadership Development Courses Online —{" "}
+              <span className="text-primary text-glow italic">SHAKTI by Success369</span>
             </motion.h1>
 
             <motion.p
@@ -67,9 +67,9 @@ const ProgramShakti = () => {
               initial="hidden"
               animate="visible"
               custom={2}
-              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-white/90 font-light"
+              className="mb-8 sm:mb-10 max-w-xl text-lg sm:text-xl text-white/90 font-light"
             >
-              Clarity without movement creates frustration. Alignment without activation creates delay. SHAKTI exists to turn alignment into impact.
+              SHAKTI is the leadership development training module of Success369, which involves people who are prepared to go ahead and are in alignment. SHAKTI Leadership Development Program, unlike traditional leadership development courses online, does not involve teaching of leadership skills. Instead, SHAKTI unlocks the innate leadership that is within us through removal of the blocks that prevent its expression.
             </motion.p>
 
             <motion.div
@@ -97,7 +97,7 @@ const ProgramShakti = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="mb-6">What You Gain</h2>
+            <h2 className="mb-6">What You Gain from SHAKTI</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Movement becomes clean and confident — not forced."</p>
           </motion.div>
 
@@ -124,6 +124,15 @@ const ProgramShakti = () => {
               </motion.div>
             ))}
           </div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto text-center mt-14"
+          >
+            Most leadership development courses online and communication skills for leaders programs concentrate on frameworks and knowledge transfer. SHAKTI is different. It focuses on activation, translating what you already know into consistent, confident execution. The shift is not in what you learn, but in how you move.
+          </motion.p>
         </div>
       </section>
 
@@ -148,7 +157,7 @@ const ProgramShakti = () => {
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
             <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Who is SHAKTI For?
+              Who Is This Leadership Development Program For?
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
               SHAKTI is for those who already have clarity and alignment — and are ready to move. This is an accelerator, not a starting point.
@@ -160,12 +169,14 @@ const ProgramShakti = () => {
               {
                 image: shakti1,
                 title: "Leaders & Teams in Motion",
+                alt: "Leadership development for teams and organisations — SHAKTI by Success369",
                 description: "Leaders strengthening presence and communication, and teams seeking alignment and execution rhythm. Translating purpose into performance.",
                 step: "01",
               },
               {
                 image: shakti2,
                 title: "Journey Integration",
+                alt: "Online leadership development for individuals emerging from MAYA, GITA or SARVAM",
                 description: "Individuals and organisations emerging from MAYA, GITA, or SARVAM who need to translate their insights into real-world capability.",
                 step: "02",
               },
@@ -187,7 +198,7 @@ const ProgramShakti = () => {
                   <div className="relative h-64 sm:h-80 md:h-[400px] overflow-hidden">
                     <motion.img
                       src={card.image}
-                      alt={card.title}
+                      alt={card.alt}
                       className="w-full h-full object-cover grayscale brightness-75 transition-all duration-1000 ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
                       loading="lazy"
                     />
@@ -205,6 +216,21 @@ const ProgramShakti = () => {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-3">
+              For anyone from a personal leader seeking specific activation to a team needing leadership development, SHAKTI is available in ways that can work virtually, face-to-face, or both.
+            </p>
+            <p className="text-foreground font-semibold mb-6">Not sure which program fits where you are right now?</p>
+            <CTAButton to="/programs" size="md" variant="outline">
+              Compare all Success369 journeys
+            </CTAButton>
+          </motion.div>
         </div>
       </section>
 
@@ -220,11 +246,13 @@ const ProgramShakti = () => {
             >
               <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The Activation Journey</span>
               <h2 className="mb-8">
-                Insight into execution, <br />
-                <span className="text-primary italic">alignment into influence.</span>
+                How does the <span className="text-primary italic">SHAKTI work on You?</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-xl">
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed max-w-xl">
                 SHAKTI is a focused activation journey rooted in the Catalysis pillar of Success369. It is not about working harder—it is about directing energy where it matters most.
+              </p>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-xl">
+                With 3–6 hour focused modules available online or in-person, SHAKTI fits into the schedule of working professionals and organisations without the commitment of a long-term leadership skills training online program or traditional leadership development course online.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -254,7 +282,7 @@ const ProgramShakti = () => {
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200"
-                  alt="Activation Session"
+                  alt="SHAKTI leadership development sessions — online and in-person"
                   className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
@@ -268,39 +296,26 @@ const ProgramShakti = () => {
         </div>
       </section>
 
-      <FAQSection 
+      <FAQSection
+        title="Frequently Asked Questions About SHAKTI Leadership Development Program"
+        description="How SHAKTI compares to other leadership development courses online — and who it's for."
         items={[
           {
-            question: "What Is SHAKTI?",
-            answer: "SHAKTI is a set of focused, applied activation journeys rooted in the Catalysis pillar of the Success369 model. It strengthens the specific capabilities that convert:\n• Insight into execution\n• Alignment into influence\n• Intention into outcomes\n\nSHAKTI is not about adding more effort. It is about directing energy where it matters most. In the meaning economy, momentum is not created by force—it is created by coherent activation."
+            question: "What makes SHAKTI different from other leadership development courses?",
+            answer: "Most leadership development courses online and leadership communication training courses teach leadership as a set of skills and models. SHAKTI starts from a different assumption. You already have what it takes. The program focuses on removing what blocks your existing capability from becoming consistent output.",
+            cta: { text: "Explore the full Success369 framework", href: "/success-369" }
           },
           {
-            question: "Who SHAKTI Is For",
-            answer: "SHAKTI is designed for individuals and systems that already have a degree of clarity and alignment, and are now asking: How do we move faster—without losing coherence?\n\nSHAKTI is ideal for:\n• Leaders strengthening presence, credibility, or communication\n• Teams seeking trust, alignment, and execution rhythm\n• Organisations translating purpose into performance\n• Individuals emerging from GITA, MAYA, or SARVAM\n• Institutions needing targeted capability activation\n\nSHAKTI is not a starting point. It is an accelerator."
+            question: "Is SHAKTI available as an online leadership development course?",
+            answer: "Yes. SHAKTI modules can be accessed in both online and offline modes, which have been specifically designed to accommodate the time frame of professionals. Each module lasts 3 to 6 hours and is conducted by a certified Success369 Facilitator."
           },
           {
-            question: "What You Will Experience in SHAKTI",
-            answer: "Participants in SHAKTI typically experience:\n• Sharper execution — reduced friction between intent and action\n• Stronger influence — credibility, communication, and presence\n• Aligned teams — clarity of roles, trust, and shared direction\n• Practical tools — immediately applicable in real contexts\n• Sustainable momentum — progress that compounds, not burns out\n\nSHAKTI creates movement that feels clean, confident, and grounded."
+            question: "Who should join the SHAKTI leadership development course online?",
+            answer: "SHAKTI is designed for individuals who already have clarity and alignment and are ready to move. This includes leaders strengthening presence and execution, teams seeking alignment and rhythm, and organizations emerging from other Success369 journeys who need to translate insights into real-world capability."
           },
           {
-            question: "How SHAKTI Works",
-            answer: "SHAKTI is delivered through modular activation engagements. Each SHAKTI engagement is focused on a specific capability, context-aware and applied, and designed for clarity, relevance, and action.\n\nModules can be:\n• Experienced independently\n• Combined into short activation journeys\n• Integrated within MAYA or SARVAM\n• Delivered to individuals, teams, or organisations\n\nFormats are flexible and designed around real-world constraints."
-          },
-          {
-            question: "Examples of SHAKTI Activation Areas",
-            answer: "Depending on context and need, SHAKTI may focus on areas such as:\n• Clarity-Led Communication\n• Credible Leadership Presence\n• Aligned Teams & Trust Networks\n• Authentic Personal Brand Expression\n• Purpose-Driven Performance Systems\n\nEach engagement begins with understanding where alignment already exists—and then activating it."
-          },
-          {
-            question: "Duration & Format",
-            answer: "• Duration: 3–6 hours per module (or combined engagements)\n• Format: Online or in-person\n• Delivery: Individual, team, or organisational setting\n\nSHAKTI respects time while creating real movement."
-          },
-          {
-            question: "Where SHAKTI Fits in the Success369 Journeys",
-            answer: "SHAKTI can be experienced as a standalone activation, as a bridge between journeys, as an embedded activation layer within SARVAM, or as an organisational engagement.\n\nIt does not replace the core journeys. It amplifies them."
-          },
-          {
-            question: "Activate What Is Already Aligned",
-            answer: "If clarity is present and readiness exists, SHAKTI helps you move—cleanly and confidently."
+            question: "How is SHAKTI different from other leadership development programs?",
+            answer: "Most leadership development courses online are built on the assumption that leaders need more knowledge. SHAKTI is built on a different premise, that aligned leaders need activation, not more information. The result is sharper execution, stronger influence, and momentum that feels sustainable rather than forced."
           }
         ]}
       />
@@ -308,7 +323,8 @@ const ProgramShakti = () => {
       <GlobalCTA
         title={
           <h2 className="text-white">
-            Activate your <span className="text-primary italic">aligned momentum.</span>
+            Begin Your Leadership Development Journey with{" "}
+            <span className="text-primary italic">SHAKTI</span>
           </h2>
         }
         description="Take a session to explore how SHAKTI can accelerate impact for you, your team, or your organisation."

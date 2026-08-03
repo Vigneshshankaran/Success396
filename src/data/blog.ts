@@ -20,6 +20,40 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "how-to-align-identity-and-purpose",
+    title: "How to Align Identity and Purpose — The Step Most People Skip",
+    metaTitle: "How to Align Identity and Purpose — The Step Most People Skip",
+    metaDescription: "Most people chase goals without asking if those goals actually belong to them. Here's how to align identity and purpose — and why it changes everything.",
+    excerpt: "Most people chase goals without asking if those goals actually belong to them. Here's how to align identity and purpose — and why it changes everything.",
+    content: [
+      "Everyone is talking about goal-setting, but nobody talks about creating an identity capable of achieving those goals. That's why lots of people try so hard and hit their milestones, yet still feel like something is missing. And the missing thing isn't discipline or habits — it's making sure that your identity reflects your goals.",
+      "Long-term change can't be achieved through forcing new habits alone. It happens through becoming the right kind of person who does things because they align with their identity. If you spend your days doing things that go against your true belief system, the change you experience becomes less enjoyable and impossible to sustain. You might reach some goals, but you won't feel fulfilled — because you've done it out of your way. But by creating your own identity, setting goals, and acting according to it, you can achieve much more, grow consistently, and actually enjoy the journey. And if you're wondering how to align identity and purpose, this guide will help you.",
+      "It does not always proclaim itself loudly. Instead, it appears in small cues here and there:",
+      "<ul class=\"list-disc pl-5 space-y-2 my-2\"><li>You accomplish something you believe is what you wanted, and the sense of achievement lasts about a day.</li><li>You commit yourself to paths that make perfect sense to everyone on paper, yet don't resonate within you.</li><li>You describe your life to other people using words that don't reflect how you actually experience being alive.</li><li>You are busy and productive, yet somehow feel empty, lacking any meaningful direction.</li></ul>",
+      "This happens because most people base their goals and aspirations on an unchosen or vague identity — something inherited from their families, their earliest accomplishments, or the roles that earned them admiration from the very beginning. Purpose imposed on top of an identity you never chose can never fit perfectly, just like an exquisite suit worn by another person. This is the stage where an individual needs <a href=\"/maaya\" class=\"text-primary underline hover:text-primary/80 transition-colors\">identity and purpose coaching</a>.",
+      "Identity work is a slower process, and less obvious than goal setting. Writing \"I will earn X\" or \"I will build Y\" is an immediate sign of productivity. Asking yourself \"Who am I becoming? Is this even my goal?\" does not produce a to-do list; it creates emptiness.",
+      "So it's easier to act, set the goal, chase the numbers, and let identity work itself out somewhere on the side. In most cases, it doesn't. The questions return later — as burnout, as \"What am I doing this for?\", or as an achieved goal that somehow feels pointless.",
+      "<strong>1. Ask where each goal actually came from.</strong> For each of your big aspirations, ask clearly: did I arrive at this from my own values, or inherit it from an early influence — a parent, a teacher, a cultural upbringing, a comparison? This isn't an indictment of anyone. It's about identifying which of your aspirations truly belong to you.",
+      "<strong>2. Frame your identity statement in the present, not the future.</strong> Rather than \"I want to become disciplined,\" frame it as \"I am someone who follows through.\" Identity statements in the present tense reframe decision-making away from its usual future orientation. Purpose grows out of who you are becoming now, not who you might become once you achieve something else.",
+      "<strong>3. Test your aspirations against your identity, not the other way around.</strong> Before pursuing any goal, ask: does chasing this bring me closer to being myself, or farther away? Goals that fit your identity will feel challenging, but right.",
+      "<strong>4. Let your everyday behaviour speak for itself rather than performing.</strong> Every small action casts a vote for the identity you're trying to build. Alignment isn't an instant recognition — it happens through consistency, day after day.",
+      "<strong>5. Check your alignment regularly, not just once.</strong> Identity evolves as you evolve. What aligned when you were 25 may not align at 35. This is an ongoing practice, not a one-time fix.",
+      "The purpose provides your direction. The identity provides the motive behind it. Unless the two are linked, motivation falls short the moment things get hard — there's no underlying reason keeping you from giving up and walking away. It can't be boiled down into a five-day challenge. But the difference between the outward appearance of success and the genuine feeling of being true to yourself is precisely this. Ready to take the next step from mere aspiration to an identity-based life? The <a href=\"/success-369\" class=\"text-primary underline hover:text-primary/80 transition-colors\">Success 369</a> framework was designed specifically for this."
+    ],
+    date: "Aug 3, 2026",
+    readTime: "5 min read",
+    author: "Success369 Team",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=800",
+    category: "Alignment",
+    featured: true,
+    headings: [
+      { index: 2, label: "What Misalignment Actually Feels Like" },
+      { index: 5, label: "Why Do Most People Skip This?" },
+      { index: 7, label: "How to Actually Align Identity & Purpose" },
+      { index: 12, label: "The Real Reason Behind It" }
+    ]
+  },
+  {
     slug: "what-is-the-369-method",
     title: "What Is the 369 Method? Understanding Its Meaning and Application for Personal Success",
     metaTitle: "What Is the 369 Method? Meaning, Nikola Tesla & Success 369 Explained",

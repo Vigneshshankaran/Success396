@@ -12,8 +12,32 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
+import FAQSection from "@/components/FAQSection";
 import bookVideo from "@/assets/Book.mp4";
 import { fadeUp } from "@/lib/animations";
+
+const faqItems = [
+  {
+    question: "What is the success 369 book about?",
+    answer: "The Success 369 Book is a comprehensive personal development framework that comprises three pillars – Clarity, Congruence and Catalysis. This book is meant for individuals, leaders, and entrepreneurs who wish to achieve sustainable success through alignment and not merely efforts.",
+  },
+  {
+    question: "Who wrote the Success 369 book?",
+    answer: "The Success 369 book is authored by Dr. Ajayya Kumar and Praveen Parameswar. Dr. Ajayya Kumar is a management thinker, TEDx speaker, and Amazon bestselling author with over three decades of experience. Praveen Parameswar is the CEO of Lifology — India's first career ecosystem for parents and a Guinness World Record-winning organisation.",
+  },
+  {
+    question: "Where can I buy the success 369 book?",
+    answer: "The Success 369 book is available as a hardcover edition directly on this page — including bonus worksheets and a limited author's signature copy. It is also available on Amazon and major book retailers.",
+  },
+  {
+    question: "Is the book suitable for beginners?",
+    answer: "Yes. The Success 369 Book is ideal for anyone in their starting stage – be it students, professionals, leaders, or entrepreneurs. The Success 369 framework starts off with Clarity, hence making it accessible regardless of where you currently are.",
+  },
+  {
+    question: "Does the success 369 book include practical exercises or is it only based on theory?",
+    answer: "Success 369 Book not only offers advice but actionable learning. Apart from the main framework offered, people will get bonus worksheets to apply the lessons into daily habits, goal setting, and reflections. This makes it a tool that provides a hands-on approach to the Success 369 principles.",
+  },
+];
 
 const pillars = [
   {
@@ -79,8 +103,8 @@ const Book = () => {
   return (
     <div className="min-h-screen bg-background text-foreground/90 selection:bg-primary/30 overflow-x-hidden">
       <Helmet>
-        <title>The Book — Blueprint for Sustainable Success | Success369</title>
-        <meta name="description" content="Discover the three-pillar framework that's transforming how leaders and entrepreneurs build impact that lasts — without the burnout." />
+        <title>Success 369 Book by Dr. Ajayya Kumar & Praveen Parameswar</title>
+        <meta name="description" content="The Success 369 book is a structured personal development framework built on three pillars — Clarity, Congruence, and Catalysis. Available now in hardcover with bonus worksheets." />
       </Helmet>
       <Navbar />
 
@@ -114,16 +138,16 @@ const Book = () => {
                 variants={fadeUp}
                 className="mb-4 sm:mb-6 text-glow text-white"
               >
-                Your Companion for <br />
-                <span className="italic text-primary text-glow font-light">Sustainable Success</span>
+                Success 369 Book – <br />
+                <span className="italic text-primary text-glow font-light">The Blueprint to Sustainable Success</span>
               </motion.h1>
 
               <motion.p
                 custom={2}
                 variants={fadeUp}
-                className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-white/90 font-light"
+                className="mb-8 sm:mb-10 max-w-xl text-lg sm:text-xl text-white/90 font-light"
               >
-                Discover the three-pillar framework that's transforming how leaders and entrepreneurs build impact that lasts — without the burnout.
+                The Success 369 book is an innovative and structured personal development framework by Dr. Ajayya Kumar and Praveen Parameswar. Designed for people who wish to create sustainable impact through alignment, not just hard work. Start where you are and build toward a life that is coherent, purposeful and lasting — Zero to Success in 369 Days.
               </motion.p>
 
               <motion.div custom={3} variants={fadeUp} className="flex flex-wrap gap-6">
@@ -156,8 +180,8 @@ const Book = () => {
                 <span className="h-[1px] w-8 bg-primary/60" />
               </div>
               <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Success isn't about doing more. <br />
-                <span className="italic font-light">It's about becoming aligned.</span>
+                What the Success 369 Book Is About <br />
+                <span className="italic font-light">— Becoming Aligned, Not Just Busy</span>
               </h2>
               <p className="text-xl text-muted-foreground font-light leading-relaxed mb-12">
                 Most people chase success through strategy and willpower. But the leaders who create lasting impact understand something different: sustainable success comes from alignment — between who you are, what you do, and how you grow.
@@ -170,9 +194,11 @@ const Book = () => {
       {/* --- THREE PILLARS --- */}
       <section id="pillars" className="section-lg relative overflow-hidden bg-background">
         <div className="container-custom">
-          <div className="text-center mb-28">
-            <h2 className="font-display text-5xl sm:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">Three Pillars. <span className="italic font-normal">One Framework.</span></h2>
-            <p className="text-muted-foreground text-xl font-light">The foundational architecture for modern transformation.</p>
+          <div className="text-center mb-28 max-w-4xl mx-auto">
+            <h2 className="font-display text-5xl sm:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">Three Pillars. One Framework. <span className="italic font-normal">The Core of the Success 369 Book.</span></h2>
+            <p className="text-muted-foreground text-xl font-light">
+              In this case, the three pillars, which is, Clarity, congruence and catalyst — represent the foundation of the Success 369 book that must be studied sequentially, implemented in action and further developed over the course of 369 days.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-10">
@@ -224,8 +250,10 @@ const Book = () => {
               </p>
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
-            <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Secure Your <span className="italic font-normal">Blueprint.</span></h2>
-            <p className="text-muted-foreground text-xl font-light">Choose the format that fits your journey.</p>
+            <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Get Your Copy of the <span className="italic font-normal">Success 369 Book</span></h2>
+            <p className="text-muted-foreground text-xl font-light max-w-2xl mx-auto">
+              Success 369 is available in Hardcover format – with Bonus Worksheets and even an Autographed Author Limited Edition! Each comes prepared to help you out in your endeavours, not just stay there as decor on your shelf.
+            </p>
           </div>
 
             <div className={`grid ${bookFormats.length === 1 ? 'max-w-2xl mx-auto' : 'md:grid-cols-2 gap-10 max-w-5xl mx-auto'}`}>
@@ -311,7 +339,7 @@ const Book = () => {
                 </p>
                 <span className="h-[1px] w-8 bg-primary/60" />
               </div>
-              <h2 className="font-display text-5xl sm:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">What Leaders <span className="italic font-normal">Experience.</span></h2>
+              <h2 className="font-display text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6">What Leaders Say About the <span className="italic font-normal">Success 369 Book</span></h2>
            </div>
 
            <div className="grid md:grid-cols-3 gap-8">
@@ -343,10 +371,39 @@ const Book = () => {
         </div>
       </section>
 
+      {/* --- FAQ --- */}
+      <FAQSection
+        title="Frequently Asked Questions About the Success 369 Book"
+        description="Everything you need to know about the book, the authors, and how to get your copy."
+        items={faqItems}
+      />
+
+      {/* --- CONTINUE / INTERNAL LINKS --- */}
+      <section className="section bg-background relative overflow-hidden">
+        <div className="container-custom relative z-10 max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className="mb-8">Ready to Begin Your 369-Day Journey?</h2>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
+              <CTAButton to="/programs" size="md" variant="shimmer">
+                Explore the Programs
+              </CTAButton>
+              <CTAButton to="/success-369" size="md" variant="outline">
+                Understand the Success369 Method
+              </CTAButton>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <GlobalCTA
         title={
-          <h2 className="font-display text-5xl sm:text-8xl font-bold mb-12 leading-[0.9] text-white">
-            Ready to <span className="italic text-primary text-glow">Build?</span>
+          <h2 className="font-display text-4xl sm:text-6xl font-bold mb-12 leading-[0.95] text-white">
+            Start with the book. <span className="italic text-primary text-glow">Grow with the Journeys.</span>
           </h2>
         }
         description="Start with the book. Go deeper with the Journeys. Either way, the first step is clarity."

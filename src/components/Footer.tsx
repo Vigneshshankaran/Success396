@@ -12,6 +12,7 @@ const exploreLinks = [
   { label: "Home", href: "/" },
   { label: "Programs", href: "/programs" },
   { label: "The Book", href: "/book" },
+  { label: "Authors", href: "/authors" },
   { label: "Events", href: "/events" },
   { label: "Blog", href: "/blog" },
   { label: "Podcast", href: "/podcast" },

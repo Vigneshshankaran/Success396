@@ -15,7 +15,7 @@ import CookieConsent from "./components/CookieConsent";
 const Index = lazy(() => import("./pages/Index"));
 const Programs = lazy(() => import("./pages/Programs"));
 const ProgramGita = lazy(() => import("./pages/ProgramGita"));
-const MaayaRetreat = lazy(() => import("./pages/MaayaRetreat"));
+const MaayaNew = lazy(() => import("./pages/MaayaNew"));
 const ProgramSarvam = lazy(() => import("./pages/ProgramSarvam"));
 const ProgramShakti = lazy(() => import("./pages/ProgramShakti"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -42,7 +42,8 @@ const CommunityCharter = lazy(() => import("./pages/CommunityCharter"));
 const AcceptableUsePolicy = lazy(() => import("./pages/AcceptableUsePolicy"));
 const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const Disclaimer = lazy(() => import("./pages/Disclaimer"));
-const ShakthiLanding = lazy(() => import("./pages/ShakthiLanding"));
+const ShakthiNew = lazy(() => import("./pages/ShakthiNew"));
+const Authors = lazy(() => import("./pages/Authors"));
 const ThankYou = lazy(() => import("./pages/ThankYou"));
 const ThankYouShakthi = lazy(() => import("./pages/ThankYouShakthi"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -75,14 +76,15 @@ const App = () => (
             <Route path="/programs" element={<Programs />} />
             <Route path="/program-gita" element={<ProgramGita />} />
             <Route path="/program-maya" element={<Navigate to="/maaya" replace />} />
-            <Route path="/maaya" element={<MaayaRetreat />} />
+            <Route path="/maaya" element={<MaayaNew />} />
             <Route path="/program-sarvam" element={<ProgramSarvam />} />
             <Route path="/program-shakti" element={<ProgramShakti />} />
-            <Route path="/shakti-unfiltered-voice" element={<ShakthiLanding />} />
+            <Route path="/shakti-unfiltered-voice" element={<ShakthiNew />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/what-is-the-369-method" element={<Navigate to="/blog/what-is-the-369-method" replace />} />
             <Route path="/book" element={<Book />} />
+            <Route path="/authors" element={<Authors />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/events" element={<Events />} />
             <Route path="/events/:slug" element={<EventDetail />} />

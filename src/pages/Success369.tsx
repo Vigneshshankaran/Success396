@@ -133,28 +133,28 @@ const Success369Page = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Helmet>
-        <title>The Success369 Model | Clarity. Congruence. Catalysis.</title>
-        <meta name="description" content="Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success." />
+        <title>What Is the Success369 Method? | Zero to Success in 369 Days</title>
+        <meta name="description" content="The Success369 method is a structured 369-day framework built on Clarity, Congruence, and Catalysis. Discover how alignment creates sustainable success — not just effort." />
         <link rel="canonical" href="https://success369.org/success-369" />
-        <meta property="og:title" content="The Success369 Model | Clarity. Congruence. Catalysis." />
-        <meta property="og:description" content="Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success." />
+        <meta property="og:title" content="What Is the Success369 Method? | Zero to Success in 369 Days" />
+        <meta property="og:description" content="The Success369 method is a structured 369-day framework built on Clarity, Congruence, and Catalysis. Discover how alignment creates sustainable success — not just effort." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://success369.org/success-369" />
         <meta property="og:image" content="https://success369.org/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="The Success369 Model | Clarity. Congruence. Catalysis." />
-        <meta name="twitter:description" content="Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success." />
+        <meta name="twitter:title" content="What Is the Success369 Method? | Zero to Success in 369 Days" />
+        <meta name="twitter:description" content="The Success369 method is a structured 369-day framework built on Clarity, Congruence, and Catalysis. Discover how alignment creates sustainable success — not just effort." />
         <meta name="twitter:image" content="https://success369.org/og-image.png" />
 
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "The Success369 Model — Clarity. Congruence. Catalysis.",
+            "name": "What Is the Success369 Method? | Zero to Success in 369 Days",
             "url": "https://success369.org/success-369",
-            "description": "Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success.",
+            "description": "The Success369 method is a structured 369-day framework built on Clarity, Congruence, and Catalysis. Discover how alignment creates sustainable success — not just effort.",
             "publisher": {
               "@type": "Organization",
               "name": "Success369",
@@ -358,7 +358,7 @@ const Success369Page = () => {
               <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden">
                 <img
                   src={clarityImg}
-                  alt="Clarity — knowing who you are"
+                  alt="Clarity pillar of Success369 method — where direction begins"
                   className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
                   loading="lazy"
                 />
@@ -458,6 +458,13 @@ const Success369Page = () => {
                 Knowing what matters is not enough. You must live it. Congruence strengthens six critical alignments that determine whether your internal world matches how you show up externally.
               </p>
               <p className="text-foreground font-display font-bold text-xl">Congruence creates coherence.</p>
+              <p className="text-muted-foreground text-base leading-relaxed mt-6">
+                Eager to know how to improve leadership communication?{" "}
+                <Link to="/contact" className="text-primary font-semibold hover:underline">
+                  Contact us
+                </Link>{" "}
+                to know more about our programs.
+              </p>
             </motion.div>
 
             <motion.div
@@ -470,7 +477,7 @@ const Success369Page = () => {
               <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden">
                 <img
                   src={congruenceImg}
-                  alt="Congruence — aligning intention with behaviour"
+                  alt="Congruence pillar — 6 alignments in the Success369 method"
                   className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
                   loading="lazy"
                 />
@@ -611,7 +618,7 @@ const Success369Page = () => {
               <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border border-border/30">
                 <img
                   src={catalysisImg}
-                  alt="Catalysis — turning alignment into momentum"
+                  alt="Catalysis pillar — 9 forces driving zero to success in 369 days"
                   className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
                   loading="lazy"
                 />
@@ -780,6 +787,33 @@ const Success369Page = () => {
         description="Learn more about the fundamentals of the Success369 approach."
         items={faqItems}
       />
+
+      {/* ══════════════════════════════════════
+          CONTINUE YOUR JOURNEY — internal links
+      ══════════════════════════════════════ */}
+      <section className="section bg-background relative overflow-hidden">
+        <div className="container-custom relative z-10 max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className="mb-4">Continue Your Success369 Journey</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              The method is the foundation. Your journey is where it becomes real.
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
+              <CTAButton to="/programs" size="md" variant="shimmer">
+                Explore the Programs
+              </CTAButton>
+              <CTAButton to="/book" size="md" variant="outline">
+                Read the Book: Success 369
+              </CTAButton>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ══════════════════════════════════════
           GLOBAL CTA
