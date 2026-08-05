@@ -15,7 +15,7 @@ import CookieConsent from "./components/CookieConsent";
 const Index = lazy(() => import("./pages/Index"));
 const Programs = lazy(() => import("./pages/Programs"));
 const ProgramGita = lazy(() => import("./pages/ProgramGita"));
-const MaayaNew = lazy(() => import("./pages/MaayaNew"));
+const MaayaRetreat = lazy(() => import("./pages/MaayaRetreat"));
 const ProgramSarvam = lazy(() => import("./pages/ProgramSarvam"));
 const ProgramShakti = lazy(() => import("./pages/ProgramShakti"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -76,7 +76,7 @@ const App = () => (
             <Route path="/programs" element={<Programs />} />
             <Route path="/program-gita" element={<ProgramGita />} />
             <Route path="/program-maya" element={<Navigate to="/maaya" replace />} />
-            <Route path="/maaya" element={<MaayaNew />} />
+            <Route path="/maaya" element={<MaayaRetreat />} />
             <Route path="/program-sarvam" element={<ProgramSarvam />} />
             <Route path="/program-shakti" element={<ProgramShakti />} />
             <Route path="/shakti-unfiltered-voice" element={<ShakthiNew />} />

@@ -26,6 +26,9 @@ import { trackLead } from "@/lib/pixel";
 // Video and Image assets
 import mayaHeroImg from "@/assets/maya-hero.png";
 import certificateImg from "@/assets/shakthi-certificate.jpg";
+import avatarRihab from "@/assets/shakthi-new/testimonial-rihab.jpg";
+import avatarAadhya from "@/assets/shakthi-new/testimonial-aadhya.jpg";
+import avatarRavisankar from "@/assets/shakthi-new/testimonial-ravisankar.jpg";
 
 
 
@@ -686,6 +689,63 @@ const MaayaRetreat = () => {
                 <b className="text-lg font-black text-foreground block mb-2">{p.role}</b>
                 <span className="text-sm text-muted-foreground leading-relaxed block">{p.desc}</span>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          VOICES / TESTIMONIALS
+      ══════════════════════════════════════ */}
+      <section className="section bg-background relative overflow-hidden" id="voices">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16 max-w-3xl mx-auto"
+          >
+            <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Voices</span>
+            <h2>
+              What participants{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">realised</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {[
+              { m: "PN", quote: "Before Maaya I thought I was already clear about myself. Now I know my core strength — and exactly where to focus.", name: "Praveen Gopinathan Nair", role: "Business" },
+              { m: "PR", quote: "Success, for me, doesn't have to mean relentlessly working toward something ‘extraordinary’ at the cost of everything else.", name: "Pooja Radhakrishnan", role: "Orthodontist" },
+              { m: "MV", quote: "A good way to discover yourself — and to identify the areas where your progress has stalled.", name: "Murtuza Viramgamwala", role: "Director, Europe" },
+              { m: "BR", quote: "I stopped trying to control everything — focusing only on what's within my control, and going with the flow for the rest.", name: "Bharath Radhakrishnan", role: "Startup Co-Founder" },
+              { m: "SS", quote: "Even if you walk away with just one useful idea to reach your ambition — that's already a win.", name: "Sankaranarayanan S", role: "Independent Consultant (Retd.)" },
+              { img: avatarRihab, m: "RA", quote: "In advertising, I assumed I already communicated well. SHAKTHI showed me the gap between being heard and being understood — I walk into every room differently now.", name: "Rihab M Abou Zaki", role: "Media & Advertising · Portland, Oregon" },
+              { img: avatarAadhya, m: "AK", quote: "I spend my days listening to others. SHAKTHI gave me language for my own voice — clearer, more present, and no longer afraid of the pause.", name: "Dr. Aadhya Kesav", role: "Clinical Psychologist · UAE" },
+              { img: avatarRavisankar, m: "RM", quote: "Six focused hours changed how I open a conversation. I lead with clarity now — and it shows in every business room I step into.", name: "Ravisankar Menon", role: "VP, Business Development, Fingent · Connecticut" },
+            ].map((t, i) => (
+              <motion.figure
+                key={t.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+                className="flex flex-col gap-5 p-7 rounded-2xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+              >
+                <blockquote className="text-foreground/90 leading-relaxed">“{t.quote}”</blockquote>
+                <figcaption className="flex items-center gap-3 mt-auto">
+                  {t.img ? (
+                    <img src={t.img} alt={t.name} loading="lazy" className="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-primary/30" />
+                  ) : (
+                    <span className="w-11 h-11 rounded-full bg-gradient-to-r from-primary to-accent grid place-items-center text-white font-bold text-sm shrink-0">
+                      {t.m}
+                    </span>
+                  )}
+                  <span>
+                    <span className="block text-sm font-bold leading-tight text-foreground">{t.name}</span>
+                    <span className="block text-xs text-muted-foreground">{t.role}</span>
+                  </span>
+                </figcaption>
+              </motion.figure>
             ))}
           </div>
         </div>
