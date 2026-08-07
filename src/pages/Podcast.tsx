@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { Headphones, Mic, Play, ExternalLink, Youtube, Sparkles, Star, ChevronRight, RefreshCw } from "lucide-react";
+import { Headphones, Mic, Play, ExternalLink, Youtube, Sparkles, Star, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -61,91 +61,36 @@ const INITIAL_EPISODES: Episode[] = [
     description: "Deep dive into leadership, courage, and self-determination with Dr. Kiran Bedi."
   },
   {
-    title: "Can Success Be Catalyzed at a Young Age? | Insights from Praveen Parameswar",
+    title: "At 21, She Became India’s Youngest Municipal Chairperson | Diya Binu | Success369 Podcast",
     podcast: "Success369 Series",
     id: "wczEewh06Pc",
+    description: "A conversation with Diya Binu on stepping into leadership and responsibility at a young age."
+  },
+  {
+    title: "Can Success Be Catalyzed at a Young Age? | Insights from Praveen Parameswar",
+    podcast: "Success369 Series",
+    id: "ud9SZSZyCao",
     description: "Exploring early success catalysis, identity, and personal growth with Praveen Parameswar."
   },
   {
     title: "You’re Thinking About Success Wrong | Insights from Dr Ajayya Kumar",
     podcast: "Success369 Series",
-    id: "ud9SZSZyCao",
+    id: "dJcVgA1R0SY",
     description: "Rethinking traditional paradigms of success and alignment with Dr. Ajayya Kumar."
   },
   {
     title: "Is Success Actually Structured? | Insights from Methil Renuka (Forbes Africa)",
     podcast: "Success369 Series",
-    id: "dJcVgA1R0SY",
-    description: "Insights on structured success, media, and leadership from Forbes Africa's Methil Renuka."
-  },
-  {
-    title: "What is Success369? | Episode 1 | Success369 Podcast",
-    podcast: "The Success369 Podcast",
     id: "eg7rowfo19U",
-    description: "Deep dive into the core philosophy of Success369 with the creators themselves."
+    description: "Insights on structured success, media, and leadership from Forbes Africa's Methil Renuka."
   }
 ];
 
 const Podcast = () => {
-  const [episodes, setEpisodes] = useState<Episode[]>(INITIAL_EPISODES);
+  const episodes = INITIAL_EPISODES;
   const [activeVideoId, setActiveVideoId] = useState<string>(INITIAL_EPISODES[0].id);
-  const [isLiveUpdated, setIsLiveUpdated] = useState(false);
   const [showGuestForm, setShowGuestForm] = useState(false);
   const [guestForm, setGuestForm] = useState({ name: "", email: "", linkedin: "", story: "" });
-
-  useEffect(() => {
-    let isMounted = true;
-    const fetchLatestYouTubeEpisodes = async () => {
-      const proxies = [
-        "https://corsproxy.io/?https://www.youtube.com/@the369leader/videos",
-        "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://www.youtube.com/@the369leader/videos")
-      ];
-
-      for (const proxyUrl of proxies) {
-        try {
-          const res = await fetch(proxyUrl);
-          if (!res.ok) continue;
-          const text = await res.text();
-
-          const regex = /"videoId":"([a-zA-Z0-9_-]{11})".*?"lockupMetadataViewModel":\{"title":\{"content":"([^"]+)"\}/gs;
-          const fetched: Episode[] = [];
-          const seen = new Set<string>();
-          let match;
-
-          while ((match = regex.exec(text)) !== null) {
-            const id = match[1];
-            const rawTitle = match[2] || "";
-            const title = rawTitle
-              .replace(/\\u0026/g, "&")
-              .replace(/\\"/g, '"')
-              .replace(/&#39;/g, "'");
-
-            if (!seen.has(id)) {
-              seen.add(id);
-              fetched.push({
-                id,
-                title,
-                podcast: "Success369 Podcast Network",
-                description: `Watch "${title}" on the official Success369 YouTube channel.`
-              });
-            }
-          }
-
-          if (fetched.length > 0 && isMounted) {
-            setEpisodes(fetched);
-            setActiveVideoId(fetched[0].id);
-            setIsLiveUpdated(true);
-            break;
-          }
-        } catch (e) {
-          // Ignore proxy errors and continue to fallback
-        }
-      }
-    };
-
-    fetchLatestYouTubeEpisodes();
-    return () => { isMounted = false; };
-  }, []);
 
   const handleGuestSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -237,12 +182,6 @@ const Podcast = () => {
               <p className="font-display text-xs uppercase tracking-[0.4em] text-primary font-bold flex items-center gap-2">
                 Watch Latest Episodes
               </p>
-              {isLiveUpdated && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Auto-Synced
-                </span>
-              )}
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
             <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Visual <span className="italic font-normal">Transformation.</span></h2>
