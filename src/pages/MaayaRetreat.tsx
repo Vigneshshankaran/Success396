@@ -10,9 +10,10 @@ import {
   Calendar, 
   Moon, 
   CheckCircle2, 
-  Heart, 
+  Heart,
   Award,
-  PhoneCall
+  PhoneCall,
+  Linkedin
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -29,6 +30,8 @@ import certificateImg from "@/assets/shakthi-certificate.jpg";
 import avatarRihab from "@/assets/shakthi-new/testimonial-rihab.jpg";
 import avatarAadhya from "@/assets/shakthi-new/testimonial-aadhya.jpg";
 import avatarRavisankar from "@/assets/shakthi-new/testimonial-ravisankar.jpg";
+import coach1 from "@/assets/maaya-coaches/coach-1.jpg";
+import coach2 from "@/assets/maaya-coaches/coach-2.jpg";
 
 
 
@@ -649,6 +652,97 @@ const MaayaRetreat = () => {
 
               </motion.div>
             </AnimatePresence>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          MEET THE COACHES
+      ══════════════════════════════════════ */}
+      <section className="section bg-card/10 relative overflow-hidden" id="coaches">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16 max-w-3xl mx-auto"
+          >
+            <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Your Global Lead Coaches</span>
+            <h2>The two people in the room with you for five days</h2>
+            <p className="text-muted-foreground text-lg mt-4 max-w-2xl mx-auto">
+              Maaya runs with a deliberately small faculty. Two global lead coaches carry the cohort from the first mirror to the final blueprint — so the people who help you map your starting point are the same people who hold you to the roadmap.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                img: coach1,
+                name: "Anthony Sundström",
+                org: "Entrepreneur · CEO, FLG Finnish Logistics Group",
+                location: "Helsinki, Finland",
+                bio: "Anthony spent his career in senior sales leadership across the energy and logistics industries before founding his own company. He has run large B2B sales teams, closed deals up to €6M, and built the commercial engine behind a national biogas network in Finland. He competes in Highland Games and triathlons, and spends his time off in nature or somewhere new on the map. The appetite for the next hard thing is what he brings into the room.",
+                quote: "Life is to live.",
+                linkedin: "https://www.linkedin.com/in/logistiikka/?locale=en",
+              },
+              {
+                img: coach2,
+                name: "Aaro Angerpuro",
+                org: "Founder, Viran · Aalto University alumnus",
+                location: "Helsinki, Finland",
+                bio: "Aaro is the founder of Viran, where he is building an AI-native bid team that helps product and technology companies win public tenders across Europe. An Aalto University graduate, he works where business strategy meets sustainability, and he is currently training for a marathon. It is a build that rewards exactly the kind of patient, compounding effort Maaya asks of its participants.",
+                quote: null,
+                linkedin: "https://www.linkedin.com/in/aaroangerpuro/",
+              },
+            ].map((c, i) => (
+              <motion.div
+                key={c.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                className="flex flex-col p-8 rounded-3xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-center gap-5 mb-6">
+                  <img
+                    src={c.img}
+                    alt={c.name}
+                    loading="lazy"
+                    className="w-24 h-24 rounded-full object-cover object-top shrink-0 ring-2 ring-primary/30"
+                  />
+                  <div>
+                    <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Global Lead Coach</div>
+                    <h3 className="text-2xl mb-1.5">{c.name}</h3>
+                    <p className="text-sm text-muted-foreground leading-snug">
+                      {c.org}
+                      <br />
+                      {c.location}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-muted-foreground leading-relaxed mb-6">{c.bio}</p>
+
+                {c.quote && (
+                  <blockquote className="border-l-2 border-primary/60 pl-4 text-lg italic text-foreground/90 mb-6">
+                    “{c.quote}”
+                  </blockquote>
+                )}
+
+                <a
+                  href={c.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${c.name}'s LinkedIn profile`}
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors self-start group"
+                >
+                  <span className="w-9 h-9 rounded-full border border-border/60 flex items-center justify-center group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
+                    <Linkedin size={16} />
+                  </span>
+                  View LinkedIn profile
+                </a>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
