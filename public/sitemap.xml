@@ -1,117 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- HOMEPAGE -->
   <url>
-    <loc>https://success369.org</loc>
+    <loc>https://success369.org/</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- CORE PAGES -->
   <url>
     <loc>https://success369.org/success-369</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://success369.org/about-us</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://success369.org/programs</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://success369.org/program-gita</loc>
-    <lastmod>2026-03-22</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://success369.org/program-maya</loc>
-    <lastmod>2026-03-22</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://success369.org/program-sarvam</loc>
-    <lastmod>2026-03-22</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://success369.org/program-shakti</loc>
-    <lastmod>2026-03-22</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://success369.org/blog</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://success369.org/book</loc>
+    <lastmod>2026-08-05</lastmod>
     <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://success369.org/authors</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://success369.org/contact</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://success369.org/take-a-session</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.6</priority>
+  </url>
+
   <url>
     <loc>https://success369.org/events</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://success369.org/book</loc>
+    <loc>https://success369.org/podcast</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- PROGRAMS -->
+  <url>
+    <loc>https://success369.org/programs</loc>
     <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://success369.org/program-gita</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://success369.org/maaya</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://success369.org/program-sarvam</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://success369.org/program-shakti</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- BLOG -->
+  <url>
+    <loc>https://success369.org/blog</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://success369.org/contact</loc>
-    <lastmod>2026-03-22</lastmod>
-    <priority>0.6</priority>
+    <loc>https://success369.org/blog/how-to-align-identity-and-purpose</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://success369.org/take-a-session</loc>
-    <lastmod>2026-03-22</lastmod>
-    <priority>0.6</priority>
+    <loc>https://success369.org/blog/what-is-the-369-method</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://success369.org/blog/why-you-havent-succeeded-in-life-yet-the-real-reasons</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://success369.org/blog/best-books-on-character-development-that-actually-work</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://success369.org/blog/best-books-to-improve-personality-must-read-titles</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- LEGAL PAGES -->
   <url>
     <loc>https://success369.org/privacy-policy</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://success369.org/cookie-policy</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://success369.org/terms-conditions</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://success369.org/refund-policy</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://success369.org/shipping-policy</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://success369.org/legal-notice</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://success369.org/disclaimer</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://success369.org/community-charter</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://success369.org/acceptable-use</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.4</priority>
   </url>
+
 </urlset>
