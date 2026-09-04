@@ -153,8 +153,8 @@ const MaayaRetreat = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Helmet>
-        <title>MAAYA — A Success369 Destination Retreat</title>
-        <meta name="description" content="MAAYA is a five-day residential retreat by Success369 for accomplished people who want complete clarity about their life and their future. One cohort of 30. A personalised Blueprint you take home." />
+        <title>Self Alignment Coaching | Identity and Purpose Coaching — MAAYA</title>
+        <meta name="description" content="MAAYA is Success369's self alignment coaching journey for individuals who are progressing but feel something is off. Guided 1:1 sessions with a certified Success369 facilitator." />
         <link rel="canonical" href="https://success369.org/maaya" />
       </Helmet>
 
